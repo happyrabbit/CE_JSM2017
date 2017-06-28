@@ -257,10 +257,11 @@ Uncertainty:
 - Inherent stochasticity: even at a higher level, the modeling limitations of complicated systems are such that one might as well view the world as inherently stochastic.
 -->
 
+<!--
 ## General Process of Data Science 
 
 ```{r, out.width = "850px",out.height = "400px",echo=FALSE}
 knitr::include_graphics("http://scientistcafe.com/book/Figure/GeneralProcessEN.png")
 ```
-
+-->
 

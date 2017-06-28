@@ -1,40 +1,48 @@
 --- 
 title: "The Science and Art of Data"
 author: "Hui Lin and Ming Li"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-output: 
-  bookdown::gitbook:
-   config:
-     toc:
-       collapse: subsection
-       scroll_highlight: yes
-       before: null
-       after: null
-     toolbar:
-       position: fixed
-     edit : null
-     download: ["pdf", "epub", "mobi"]
-     search: yes
-     fontsettings:
-       theme: white
-       family: sans
-       size: 2
-     sharing:
-       facebook: yes
-       twitter: yes
-       google: no
-       weibo: no
-       instapper: no
-       vk: no
-       all: ['facebook', 'google', 'twitter', 'weibo', 'instapaper']
+date: '`r Sys.Date()`'
+output:
   bookdown::pdf_book:
     keep_tex: yes
+  bookdown::gitbook:
+    config:
+      download:
+      - pdf
+      - epub
+      - mobi
+      edit: null
+      fontsettings:
+        family: sans
+        size: 2
+        theme: white
+      search: yes
+      sharing:
+        all:
+        - facebook
+        - google
+        - twitter
+        - weibo
+        - instapaper
+        facebook: yes
+        google: no
+        instapper: no
+        twitter: yes
+        vk: no
+        weibo: no
+      toc:
+        after: null
+        before: null
+        collapse: subsection
+        scroll_highlight: yes
+      toolbar:
+        position: fixed
+description: This is the handouts for CE course at JSM 2017
 documentclass: book
-bibliography: [bibliography.bib]
-biblio-style: apalike
 link-citations: yes
-description: "This is the handouts for CE course at JSM 2017"
+bibliography: bibliography.bib
+site: bookdown::bookdown_site
+biblio-style: apalike
 ---
 
 
