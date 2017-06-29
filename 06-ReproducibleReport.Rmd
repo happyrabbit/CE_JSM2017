@@ -1004,7 +1004,7 @@ The reactive expressions are  (analogy to `server` in `shiny`):
 cat(readLines('segmentdb_server.csv'), sep = '\n')
 ```
 
-Click [here](https://raw.githubusercontent.com/happyrabbit/linhui.org/gh-pages/CE_JSM2017/Examples/segmentdb.Rmd) to download the complete source code.
+Click [here](https://raw.githubusercontent.com/happyrabbit/linhui.org/gh-pages/CE_JSM2017/Examples/segmentdb.Rmd) to download the complete source code. Here is the [app](https://scientistcafe.shinyapps.io/shinysample/).
 
 ## HTML Widgets 
 
