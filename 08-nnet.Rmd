@@ -288,3 +288,135 @@ nnetTune <- train(trainx, trainy,
 ```{r, echo=FALSE}
 load("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/nnetTune.RData")
 ```
+
+
+
+The results show that the optimum number of hidden units is 1 and the decay parameter is 0.1：
+
+```{r}
+nnetTune
+```
+
+You can directly apply `plot()` function to get a visualization of the whole process:
+
+```{r}
+plot(nnetTune)
+```
+
+### Averaged Neural Network
+
+Multiple local minimums will lead to unstable results. A solution is to use bootstrap samples and average the results.  We can use the same function `train()` to train the averaged neural network with ` method = "avNNet"`.  
+
+```r
+# it takes some time to run
+trainx = dplyr::select(sim1_da1, -y)
+trainy = paste0("BREAK",sim1_da1$y)
+
+avnnetGrid <- expand.grid(decay = c(0, 0.01, .1),
+                        size = c(1:10),
+                        bag = TRUE # indicate that we will use bootstrap
+)
+                        
+avnnetTune <- train(trainx, trainy,
+                   method = "avNNet",
+                   tuneGrid = avnnetGrid,
+                   trControl = ctrl,
+                   preProc = c("center", "scale"),
+                   trace = FALSE,
+                   MaxNWts = numWts, 
+                   maxit = 500)
+```
+
+```{r, echo=FALSE}
+load("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/avnnetTune.RData")
+```
+
+When the number of hidden units is 10, there are too many parameters in the model, so you will have the following warning:
+
+<pre>
+In eval(expr, envir, enclos) :
+  model fit failed for Fold10: decay=0.00, size=10, bag=TRUE Error in { : task 1 failed - "too many (2432) weights"
+</pre>
+
+But it won't hurt the model tuning from size=1 to 9. We can see the optimum estimates are `size = 3` and  `decay = 0.01`：
+
+```{r}
+avnnetTune
+```
+
+### Model Comparison
+
+Let's apply other models on the same dataset and compare the model results.
+
+- Stochastic Gradient Boosting
+
+```r
+trainx = dplyr::select(sim1_da1, -y)
+trainy = sim1_da1$y
+
+gbmGrid <- expand.grid(interaction.depth = seq(1, 7, by = 2), 
+                       n.trees = seq(100, 1000, by = 50),
+                       shrinkage = c(0.01, 0.1),
+                       n.minobsinnode = 5)
+set.seed(2017)
+gbmTune <- train(trainx, trainy,
+                 method="gbm",
+                 tuneGrid = gbmGrid,
+                 verbose = FALSE)
+```
+
+```{r, echo=FALSE}
+load("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/gbmTuneNN.RData")
+trainx = dplyr::select(sim1_da1, -y)
+trainy = sim1_da1$y
+```
+
+```{r,message=FALSE}
+library(pROC)
+pregbm <- predict(gbmTune, trainx)
+roc(pregbm, trainy)
+```
+
+The optimum result is `AUC=0.9503`.
+
+- Group lasso logistic regression
+
+The third model to try is group lasso logistic regression. It adds a group indicator to the lasso logistics regression which allows selecting variables within and across groups. 
+
+You can use `cv_glasso()` function from `DataScienceR` pacakge to tuning group lasso logistic regression:
+
+```r
+# trainx contains the independent variables
+trainx = dplyr::select(sim1_da1, -y)
+# trainy is the response variable
+trainy = sim1_da1$y
+# get group index
+index <- gsub("\\..*", "", names(trainx))
+# tune over 100 parameter values
+nlam <- 100
+# set the model response
+# - `link`：return value of link function
+# - `response`：return the probability response (note:  the real pobability number doesn't make sense but the rank does)
+# number of cross-validation folds
+kfold <- 10
+cv_fit <- cv_glasso(trainx, trainy, nlam = nlam, kfold = kfold)
+```
+
+```r
+cv_fit$lambda.max.auc 
+```
+
+```html
+   lambda       auc 
+1.0009576 0.9453094 
+```
+
+The optimum tuning parameter is `lambda=1`，the optimum `AUC=0.945`. It is a little better than neural network. But it runs much faster and is interpretable.  Here is a summary of the three models:
+
+```{r, echo=FALSE}
+AUC <- as.table(c(0.93, 0.95, 0.95 ))
+names(AUC)<- c("nnet","gbm","lasso")
+AUC
+```
+
+The three models perform similarly on this dataset.  Stochastic gradient boosting and lasso is slightly better than neural network.  Considering the computation time and model interpretability, I will choose group lasso logistic regression.
