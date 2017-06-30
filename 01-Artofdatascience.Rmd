@@ -105,9 +105,9 @@ Look at two examples:
 - Question 1:  How can I increase product sales?
 - Question 2:  Is the new promotional tool introduced at the beginning of this year boosting the annual sales of P1197 in Iowa and Wisconsin? (P1197 is an impressive corn seed product from DuPont Pioneer)
 
-[[[I would argue that as a data scientist, it should be possible to start with something general and unspecific like question 1 and eventually get to question 2.  In this way question 1 is the underlying question and question 2 is one method of helping to answer question 1]]]
-
 It is easy to see the difference between the two questions. Question 1 is a grammatically correct question, but it is proper for data analysis to answer. Why? It is too general. What is the response variable here? Product sales? Which product? Is it annual sales or monthly sales? What are the candidate predictors? You nearly can't get any useful information from the questions. In contrast, question 2 is much more specific. From the analysis point of view, the response variable is clearly "annual sales of P1197 in Iowa and Wisconsin". Even we don't know all the predictors, but the variable of interest is "the new promotional tool introduced early this year." We want to study the impact of the promotion on the sales. You can start from there and move on to figure out other variables need to include in the model by further communication. 
+
+As a data scientist, you may start with something general and unspecific like question 1 and eventually get to question 2.  Effective communication and in-depth domain knowledge about the business problem are essential to convert a general business question into a solvable analytical problem. Domain knowledge helps data scientist communicate with the language the other people can understand and obtain the required information. 
 
 However, defining the question and variables involved don't guarantee that you can answer it.  I have encountered a well-defined supply chain problem. My client asked about the stock needed for a product in a particular area. Why can not this question be answered? I did fit a Multivariate Adaptive Regression Spline (MARS) model and thought I found a reasonable solution. But it turned out later that the data they gave me was inaccurate. In some areas, only estimates of past supply figures were available.  The lesson lends itself to the next point.
 
@@ -246,7 +246,8 @@ Regression can refer to the algorithm or a particular type of problem. It is sup
 - Locally Estimated Scatterplot Smoothing (LOESS)
 
 The least squares regression and logistic regression are traditional statistical models. Both of them are highly interpretable. MARS is similar to neural networks and partial least squares (PLS) in the respect that they all use surrogate features instead of original predictors.  
-They differ in how to create the surrogate features. PLS and neural networks use linear combinations of the original predictors as surrogate features. [[[to be clear on neural nets, the linear combinations of predictors are put through non-linear activation functions, deeper neural nets have many layers of non-linear transformation]]] MARS creates two contrasted versions of a predictor by a truncation point. And LOESS is a non-parametric model, usually only used in visualization.
+
+They differ in how to create the surrogate features. PLS and neural networks use linear combinations of the original predictors as surrogate features ^[To be clear on neural networks, the linear combinations of predictors are put through non-linear activation functions, deeper neural networks have many layers of non-linear transformation]. MARS creates two contrasted versions of a predictor by a truncation point. And LOESS is a non-parametric model, usually only used in visualization.
 
 2. Similarity-based Algorithms
 
@@ -279,6 +280,16 @@ This method itself is not a complete model, but rather an add-on to other models
 -  Ridge Regression
 -  Least Absolute Shrinkage and Selection Operator (LASSO)
 -  Elastic Net
+
+5. Decision Tree
+
+Decision trees are no doubt one of the most popular machine learning algorithms. Thanks to all kinds of software, implementation is a no brainer which requires nearly zero understanding of the mechanism. The followings are some of the common trees: 
+
+-  Classification and Regression Tree (CART)
+-  Iterative Dichotomiser 3 (ID3)
+-  C4.5
+-  Random Forest
+-  Gradient Boosting Machines (GBM)
 
 ```{r, out.width = "600px",out.height = "900px",echo=FALSE}
 knitr::include_graphics("http://scientistcafe.com/book/Figure/AlogrithmTypes.png")

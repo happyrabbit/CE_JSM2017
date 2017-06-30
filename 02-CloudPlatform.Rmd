@@ -169,7 +169,7 @@ summary(fit1)
 ```
 
 In the above code, x is the R object wrapping the SparkDataFrame; the response is y-variable, features is the collection of explanatory variables. 
-[[[not quite following this part]]]
+
 
 ### Fit a K-means Cluster
 
