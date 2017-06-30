@@ -243,6 +243,26 @@ Regression can refer to the algorithm or a particular type of problem. It is sup
 - Multivariate Adaptive Regression Splines (MARS)
 - Locally Estimated Scatterplot Smoothing (LOESS)
 
+The least squares regression and logistic regression are traditional statistical models. Both of them are highly interpretable. MARS is similar to neural networks and partial least squares in the respect that they all use surrogate features instead of original predictors.  
+They differ in how to create the surrogate features. PLS and neural networks used linear combinations of the original predictors as surrogate features. MARS creates two contrasted versions of a predictor by a truncation point. And LOESS is a non-parametric model, usually only used in visualization.
+
+2. Similarity-based Algorithms
+
+This type of model is based on a similarity measure. There are three main steps: (1) compare the new sample with the existing ones; (2) search for the closest sample; (3) and let the response of the nearest sample be used as the prediction. 
+
+-   K-Nearest Neighbour [KNN]
+-   Learning Vector Quantization [LVQ]
+-   Self-Organizing Map [SOM]
+
+The biggest advantage of this type of model is that they are intuitive.  The key is to find the appropriate distance metric.  K-Nearest Neighbour is the most popular one. The other two are not heard often in the application. 
+
+3. Feature Selection Algorithms
+
+The primary purpose of feature selection is to exclude non-information or redundant variables and also reduce dimension. Although it is possible that all the independent variables are significant for explaining the response. But more often, the response is only related to a portion of the predictors. We will expand the feature selection in detail later. 
+
+- Filter method
+- Wrapper method
+- Embedded method
 
 ```{r, out.width = "600px",out.height = "900px",echo=FALSE}
 knitr::include_graphics("http://scientistcafe.com/book/Figure/AlogrithmTypes.png")
