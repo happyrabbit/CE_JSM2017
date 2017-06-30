@@ -264,6 +264,20 @@ The primary purpose of feature selection is to exclude non-information or redund
 - Wrapper method
 - Embedded method
 
+Filter method focuses on the relationship between a single feature and a target variable. It evaluates each feature (or an independent variable) before modeling and selects "important" variables. 
+
+Wrapper method removes the variable according to particular law and finds the feature combination that optimizes the model fitting by evaluating a set of feature combinations. In essence, it is a searching algorithm.
+
+Embedding method is part of the machine learning model.  Some model has built-in variable selection function such as lasso, and decision tree. 
+
+4. Regularization Method
+
+This method itself is not a complete model, but rather an add-on to other models (such as regression models). It appends a penalty function on the criteria used by the original model to estimate the variables (such as likelihood function or sum of squared error). In this way, it penalizes model complexity and contracts the model parameters. That is why people call them "shrinkage method." This approach is advantageous in practice. 
+
+-  Ridge Regression
+-  Least Absolute Shrinkage and Selection Operator (LASSO)
+-  Elastic Net
+
 ```{r, out.width = "600px",out.height = "900px",echo=FALSE}
 knitr::include_graphics("http://scientistcafe.com/book/Figure/AlogrithmTypes.png")
 ```
