@@ -3,13 +3,14 @@
 Before tackling analytics problem, we start by creating data to be analyzed in later chapters. Why do we simulate data instead of using real data set?  
 
 - Going through the simulation code helps you practice R skills. 
-- It makes the book less dependent on vagaties of finding and downloading online data set
+- It makes the book less dependent on downloading online data set
 - It allows you manipulate the synthetic data, run analysis and examine how the results change
 
 ## Customer Data for Clothing Company
 
 Our first data set represents customers of a clothing company who sells products
-in stores and online. This data is typical of what one might get from a company's marketing data base (the data base will have more data that the one we show here). This data includes 1000 customers for whom we have 3 types of data:
+in stores and online. This data is typical of what one might get from a company's marketing data base (the data base will have more data than the one we show here). This data includes 1000 customers for whom we have 3 types of data:
+
 
 1. Demography
     - `age`: age of the respondent
@@ -52,7 +53,7 @@ There are 4 segments of customers:
 1. Quality
 1. Style
 
-The simulation is not very straightforward and I will break it to three parts: 
+The simulation is not very straightforward and I will break it into three parts: 
 
 1. Define data structure: variable names, variable distribution, customer segment names, segment size
 1. Variable distribution parameters: mean and variance
@@ -145,7 +146,7 @@ set.seed(2016)
  }
 ```
 
-Now let's furbish the data we just simulated a little by adding tags to 0/1 binomial variables:
+Now let's edit the data we just simulated a little by adding tags to 0/1 binomial variables:
 
 ```r
 # assign variable names
@@ -162,7 +163,7 @@ sim.dat$online_trans<-sim.dat$online_trans+1
 sim.dat$age<-floor(sim.dat$age)
 ```
 
-In real world, the data always includes some noise such as missing, wrong imputation. So we will add some noise to the data:
+In the real world, the data always includes some noise such as missing, wrong imputation. So we will add some noise to the data:
 
 ```r
 # add missing values
@@ -176,7 +177,7 @@ sim.dat$store_exp[idx[2]]<- -500
 sim.dat$store_exp[idx[3:5]]<-c(50000,30000,30000)
 ```
 
-So far we have created part of the data. You can check it using `summary(sim.dat)`. Next we will move on to simulate survey data.
+So far we have created part of the data. You can check it using `summary(sim.dat).' Next, we will move on to simulate survey data.
 
 ```r
 # number of survey questions
@@ -233,9 +234,10 @@ str(sim.dat,vec.len=3)
 ```
 
 
+
 ## Customer Satisfaction Survey Data from Airline Company
 
-We will simulate a customer satisfaction survey for three airline companies. There are `N=1000` respondents and 15 questions. Market researcher asked respondents to recall the  experience with different airline companies and assign a score (1-9) to each airline company for all the 15 questions. The higher the score, the more satisfied the customer to the specific item. The 15 questions are of 4 types (the variable names are in the  parentheses):
+We will simulate a customer satisfaction survey for three airline companies. There are `N=1000` respondents and 15 questions. The market researcher asked respondents to recall the experience with different airline companies and assign a score (1-9) to each airline company for all the 15 questions. The higher the score, the more satisfied the customer to the specific item. The 15 questions are of 4 types (the variable names are in the  parentheses):
 
 
 - How satisfied are you with your______?
@@ -370,6 +372,7 @@ rating<-read_csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/m
 str(rating,vec.len=3)
 ```
 
+
 ## Swine Disease Breakout Data
 
 In this section, we are going to simulate a data set about swine disease. We simulate 800 farms (i.e. n=800) and 120 survey questions (i.e. G=120) in each data set. There are
@@ -378,7 +381,7 @@ the question answers:
 
 $$ln(\frac{p_i}{1-p_i})=\beta_0 + \Sigma_{g=1}^G\mathbf{x_{i,g}^T\beta_{g}}$$
 
-where $\beta_0$ is the intercept, $\mathbf{x_{i,g}}$ is a three dimensional indication vector for question answer and $\mathbf(\beta_g)$ is the
+where $\beta_0$ is the intercept, $\mathbf{x_{i,g}}$ is a three-dimensional indication vector for question answer and $\mathbf(\beta_g)$ is the
 parameter vector corresponding to the $g^{th}$ predictor. Three types of questions are
 considered regarding their effects on the outcome. The first forty survey questions
 are important questions such that the coefficients of the three answers to these
@@ -407,5 +410,6 @@ disease_dat<-read_csv("https://raw.githubusercontent.com/happyrabbit/DataScienti
 head(subset(disease_dat,select=c( "Q118.A","Q118.B","Q119.A","Q119.B","Q120.A","Q120.B","y"))) 
 ```
 
-Here `y` indicates the outbreak situation of the farms. `y=1` means there is an outbreak in 5 years after the survey. The rest columns indicate survey responses. For example `Q120.A = 1` means the respondent chose `A` in Q120. We consider `C` as baseline. 
+Here `y` indicates the outbreak situation of the farms. `y=1` means there is an outbreak in 5 years after the survey. The rest columns indicate survey responses. For example `Q120.A = 1` means the respondent chose `A` in Q120. We consider `C` as the baseline. 
+
 

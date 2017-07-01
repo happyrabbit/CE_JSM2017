@@ -1,8 +1,9 @@
 # Data Wrangling
 
-This chapter focuses on some of the most frequently used data manipulations and shows how to implement them in R. It is important to explore the data set with descriptive statistics (mean, standard deviation, etc.) and data visualization prior to analysis. Transform data so that the data structure is in line with the requirements of the model. You also need to summarize the results after analysis. 
 
-Here we assume the readers are already familiar with some of the traditional R data operations, such as subsetting data frame, deleting variables, read and write functions (`read.csv ()`, `write.csv ()`, etc.) in base R. We will also skip some basic descriptive functions in R. For example, for discrete variables, we often use the frequency table to look at the frequency (`table ()`) of the variable at various levels as needed, or a crosstab of two variables. You can also draw a bar chart for discrete variables (`bar()`). For continuous variables, we need to look at the mean (`mean ()`), standard deviation (`sd()`), quantile (`quantile()`) of a variable from time to time. There are also functions like `summary()`, `str()` and `describe()` (a functions in the 'psych' package) that give a summary of a data frame.
+This chapter focuses on some of the most frequently used data manipulations and shows how to implement them in R. It is important to explore the data set with descriptive statistics (mean, standard deviation, etc.) and data visualization before analysis. Transform data so that the data structure is in line with the requirements of the model. You also need to summarize the results after analysis. 
+
+Here we assume the readers are already familiar with some of the traditional R data operations, such as subsetting data frame, deleting variables, read and write functions (`read.csv ()`, `write.csv ()`, etc.) in base R.  We will also skip some basic descriptive functions in R. For example, for discrete variables, we often use the frequency table to look at the frequency (`table ()`) of the variable at various levels as needed, or a crosstab of two variables. You can also draw a bar chart for discrete variables (`bar()`). For continuous variables, we need to look at the mean (`mean ()`), standard deviation (`sd()`), quantile (`quantile()`) of a variable from time to time. There are also functions like `summary()`, `str()` and `describe()` (a functions in the 'psych' package) that give a summary of a data frame.
 
 <!--
 These are some of the most basic methods of exploring data at all stages (including model results). But only these are not enough, the flexibility of these methods is not high, the output of the information is fixed. We may not want the `summary ()` function to output all of the information, and some of the information we want is not. For example, if we want to know the mean of customer revenue, online spend, and so on for each category, or if we want to find the highest-earning people in each category, then extract them together, or we want a The new variable indicates whether the channel was purchased (online or in-store) and used this for modeling, where the data needs to be reshaped, the records for online purchases and the records for physical store purchases are row by row rather than now Of the column. These operations can be cumbersome and inefficient when used only with primitive functions. There are some other packages in R that can be very efficient and succinct to accomplish these seemingly complex tasks. The first contact with these functions of the small partners will feel that they are not very studious, it is natural, more flexible tools need to learn to master the natural longer, but this is a ** practice makes perfect process.
@@ -14,11 +15,12 @@ The focus here is to introduce some of the more efficient data wrangling methods
 
 ### `readr`
 
-You must be familar with `read.csv()`, `read.table()` and `write.csv()` in base R. Here we will introduce a more efficient package from RStudio in 2015 for reading and writing data: `readr` package. The corresponding functions are `read_csv()`, `read_table()` and `write_csv()`. The commands look quite similar, but `readr` is different in the following respects:
+You must be familiar with `read.csv()`, `read.table()` and `write.csv()` in base R. Here we will introduce a more efficient package from RStudio in 2015 for reading and writing data: `readr` package. The corresponding functions are `read_csv()`, `read_table()` and `write_csv()`. The commands look quite similar, but `readr` is different in the following respects:
 
 1. It is 10x faster. The trick is that `readr` uses C++ to process the data quickly. 
 
-1. It doesn't change the column names. The names can start with number and "`.`"  will not be substitued to "`_`". For example:  
+1. It doesn't change the column names. The names can start with a number and "`.`"  will not be substituted to "`_`". For example:  
+
     
     ```{r}
     library(readr)
@@ -27,9 +29,10 @@ You must be familar with `read.csv()`, `read.table()` and `write.csv()` in base 
     4,5,6")
     ```
 
+
 1. `readr` functions do not convert strings to factors by default, are able to parse dates and times and can automatically determine the data types in each column. 
 
-1. The killing character in my opinion is that `readr` provides **progress bar**. What makes you feel worse than waiting is not knowing how long you have to wait. Without "progress bar" might be the No.1 reason that people break up with the one they have been dating.
+1. The killing character, in my opinion, is that `readr` provides **progress bar**. What makes you feel worse than waiting is not knowing how long you have to wait. Without "progress bar" might be the No.1 reason that people break up with the one they have been dating.
 
 ![](http://scientistcafe.com/book/Figure/prograssbar.png)
 
@@ -53,15 +56,16 @@ sim.dat <- read_csv("https://raw.githubusercontent.com/happyrabbit/DataScientist
 head(sim.dat)
 ```
 
-The function reads the file to R as a `tibble`. You can consider `tibble` as next iteration of data frame. They are different with data frame for the following aspects:
+
+The function reads the file to R as a `tibble`. You can consider `tibble` as next iteration of the data frame. They are different with data frame for the following aspects:
 
 - It never changes an input’s type (i.e., no more `stringsAsFactors = FALSE`!)
 - It never adjusts the names of variables
-- It has a refined print method that shows only the first 10 rows, and all the columns that fit on screen. You can also control the default print behavior by setting options.
+- It has a refined print method that shows only the first 10 rows and all the columns that fit on the screen. You can also control the default print behavior by setting options.
 
 Refer to http://r4ds.had.co.nz/tibbles.html for more information about ‘tibble’.
 
-When you run `read_csv()`  it prints out a column specification that gives the name and type of each column. In order to better understanding how `readr` works, it is helpful to type in some baby data set and check the results:
+When you run `read_csv()`  it prints out a column specification that gives the name and type of each column. To better understanding how `readr` works, it is helpful to type in some baby data set and check the results:
 
 ```{r}
 dat=read_csv("2015,2016,2017
@@ -118,7 +122,8 @@ dat=read_delim("THE|UNBEARABLE|RANDOMNESS|OF|LIFE\n", delim = "|", col_names = F
 print(dat)
 ```
 
-Another situation you will often run into is missing value. In marketing survey, people like to use "99" to represent missing. You can tell R to set all observation with value "99" as missing when you read the data:
+Another situation you will often run into is the missing value. In marketing survey, people like to use "99" to represent missing. You can tell R to set all observation with value "99" as missing when you read the data:
+
 
 ```{r}
 dat=read_csv("Q1,Q2,Q3
@@ -145,7 +150,7 @@ For other data types, you can use the following packages:
 
 Some other useful materials:
 
-- For getting data from internet, you can refere to the book “XML and Web Technologies for Data Sciences with R”. 
+- For getting data from the internet, you can refer to the book “XML and Web Technologies for Data Sciences with R”.  
 - [R data import/export manual](https://cran.r-project.org/doc/manuals/r-release/R-data.html#Acknowledgements)
 - `rio` package：https://github.com/leeper/rio
 
@@ -160,7 +165,7 @@ What is `data.table`? It is an R package that provides an enhanced version of `d
 - It has characteristics of both a matrix and a list
 - It uses `[]` to subset data
 
-I will use the clothes customer data to illustrate. There are two dimensions in `[]`. The first one indicates row and second one indicates column. It uses comma to separate them.
+I will use the clothes customer data to illustrate. There are two dimensions in `[]`. The first one indicates the row and second one indicates column. It uses a comma to separate them.
 
 
 ```{r}
@@ -177,7 +182,7 @@ sim.dat[sim.dat$age>70,]
 sim.dat[sim.dat$age>68 & sim.dat$gender == "Male", 3:4]
 ```
 
-Remember that there are usually different ways to conduct the same manipulation. For example, the following code presents three ways to calculate average number of online transactions for male and female:
+Remember that there are usually different ways to conduct the same manipulation. For example, the following code presents three ways to calculate an average number of online transactions for male and female:
 
 ```{r,message=FALSE}
 tapply(sim.dat$online_trans, sim.dat$gender, mean )
@@ -190,7 +195,7 @@ sim.dat%>%
   summarise(Avg_online_trans=mean(online_trans))
 ```
 
-There is no gold standard to choose a specific function to manipulate data. The goal is to solve real problem not the tool itself. So just use whatever tool that is convenient for you.  
+There is no gold standard to choose a specific function to manipulate data. The goal is to solve the real problem, not the tool itself. So just use whatever tool that is convenient for you.  
 
 The way to use `[]` is straightforward. But the manipulations are limited. If you need more complicated data reshaping or aggregation, there are other packages to use such as `dplyr`, `reshape2`, `tidyr` etc. But the usage of those packages are not as straightforward as `[]`. You often need to change functions.  Keeping related operations together, such as subset, group, update, join etc,  will allow for:
 
@@ -508,7 +513,7 @@ summary(sdat$store_exp)
 summary(sdat$online_exp)
 ```
 
-There are some odd values in store expense. The minimum value is -500 which is a wrong imputation which indicates that you should preprocess data before analyzing it. Checking those simple statistics will help you better understand your data. It then give you some idea how to preprocess and analyze them. How about using `lapply()` and `sapply()`?
+There are some odd values in store expense. The minimum value is -500 which is a wrong imputation which indicates that you should preprocess data before analyzing it. Checking those simple statistics will help you better understand your data. It then gives you some idea how to preprocess and analyze them. How about using `lapply()` and `sapply()`?
 
 Run the following code and compare the results:
 
@@ -522,7 +527,8 @@ sapply(sdat, function(x) sd(na.omit(x)), simplify = FALSE)
 
 _`dplyr` is a set of clean and consistent tools that implement the split-apply-combine pattern in R. This is an extremely common pattern in data analysis: you solve a complex problem by breaking it down into small pieces, doing something to each piece and then combining the results back together again. [From package description]_ 
 
-You may find the description sounds familiar. The package is sort of a wrapper of apply family. We will only introduce the main function `ddply()`. Because the package has next iteration which is `dplyr` package. We will introduce `dplyr` in more details. The reason we still want to spend some time on the older version is because they have similar idea and knowing the lineage will deeper your understanding of the whole family.
+You may find the description sounds familiar. The package is sort of a wrapper of apply family. We will only introduce the main function `ddply()`. Because the package has next iteration which is `dplyr` package. We will introduce `dplyr` in more details. The reason we still want to spend some time on the older version is that they have the similar idea and knowing the lineage will deeper your understanding of the whole family.
+
 
 We will use the same data frame `sim.dat` to illustrate. Run the following command:
 
@@ -541,49 +547,49 @@ Now, let's peel the onion in order.
 
 The first argument `sim.dat` is easy. It is the data you want to work on. 
 
-The second argument `"segment"` is the column you want to group by. It is a very standard marketing segmentation problem. The final segment is the result you want to get by designing survey, collecting and analyzing data.  Here we assume those segments are known and we want to understand how each group of customer look like. It is a common task in segmentation: figuring out a profile. Here we only summarize data by one categorical variable but you can group by multiply variables using ` ddply(sim.dat, c("segment","house"), .)`. So the second argument tell the function we want to divide data by customer segment. 
+The second argument `"segment"` is the column you want to group by. It is a very standard marketing segmentation problem. The final segment is the result you want to get by designing survey, collecting and analyzing data.  Here we assume those segments are known, and we want to understand how each group of customer look like. It is a common task in segmentation: figuring out a profile. Here we only summarize data by one categorical variable, but you can group by multiple variables using ` ddply(sim.dat, c("segment","house"), .)`. So the second argument tells the function we want to divide data by customer segment. 
 
 The third argument `summarize` tells R the kind of manipulation you want to do which is to summarize data.  There are other choices for this argument such as `transform` (transform data within each group) and `subset`(subset data within each group). 
 
 Then the rest commands tell R the exact action. For example,  ` Age=round(mean(na.omit(age)),0)` tell R the following things:
 
-1.	Calculate the mean of column `age` ignoring missing value
-2.	Round the result to the specified number of decimal places 
-3.	Store the result to a new variable named `Age`
+1.    Calculate the mean of column `age` ignoring missing value
+2.    Round the result to the specified number of decimal places 
+3.    Store the result in a new variable named `Age`
 
-The rest of the command above are similar. In the end we calculate the following for each segment:
+The rest of the command above is similar. In the end, we calculate the following for each segment:
 
-1.	`Age`: average age for each segment
-2.	`FemalePct`: percentage for each segment
-1.	`HouseYes`: percentage of people who own a house
-2.	`stroe_exp`: average expense in store
-3.	`online_exp`: average expense online
-4.	`store_trans`: average times of transactions in store
-5.	`online_trans`: average times of online transactions 
+1.    `Age`: average age for each segment
+2.    `FemalePct`: percentage for each segment
+1.    `HouseYes`: percentage of people who own a house
+2.    `stroe_exp`: average expense in store
+3.    `online_exp`: average expense online
+4.    `store_trans`: average times of transactions in store
+5.    `online_trans`: average times of online transactions 
 
 There is a lot of information you can draw from those simple averages.
 
-- Conspicuous: average age is about 40.  Target for middle-age wealthy people. 1/3 of them are female and 2/3 are male. They may be good target for candy dad. They buy regardless the price. Almost all of them own house (0.86).  It makes us wonder what is wrong with the rest 14%? They may live in Manhattan
+- Conspicuous: average age is about 40.  Target for middle-age wealthy people. 1/3 of them are female and 2/3 are male. They may be a good target for candy dad. They buy regardless the price. Almost all of them own house (0.86).  It makes us wonder what is wrong with the rest 14%? They may live in Manhattan
 
-- Price: They are older people, average age 60. Nearly all of them own a house(0.94). They are less likely to purchase online (store_trans=6 while online_trans=3). This is the only group that is less likely to purchase online.
+- Price: They are older people, average age 60. Nearly all of them own a house(0.94). They are less likely to purchase online (store_trans=6 while online_trans=3). This is the only group that is less likely to buy online.
 
-- Quality: The average age is 35. They are not way different with Conspicuous in terms of age. But they spend much less. The percentages of male and female are similar. They prefer online shopping. More than half of them don't own a house (0.66).
+- Quality: The average age is 35. They are not way different with Conspicuous regarding age. But they spend much less. The percentages of male and female are similar. They prefer online shopping. More than half of them don't own a house (0.66).
 
-- Style: They are young people with average age 24. Majority of them are female (0.81). Most of them don't own a house (0.73). They are very likely to be digital natives and definitely prefer online shopping.
+- Style: They are young people with average age 24. The majority of them are female (0.81). Most of them don't own a house (0.73). They are very likely to be digital natives and definitely prefer online shopping.
 
 You may notice that Style group purchase more frequently online (online_trans=21) but the expense (online_exp=1962) is not higher.  This makes us wondering what is the average expense each time so you have a better idea about the price range the group fall in. 
 
 The analytical process is aggregated instead of independent steps. What you learn before will help you decide what to do next. Sometimes you also need to go backward to fix something in the previous steps. For example, you may need to check those negative expense value.
 
-We continue to use `ddply()` to calculate the two statistics:
+We continue to use `ddply()` to  calculate the two statistics:
 
 ```{r}
 ddply(sim.dat,"segment",summarize,avg_online=round(sum(online_exp)/sum(online_trans),2),
       avg_store=round(sum(store_exp)/sum(store_trans),2))
 ```
 
-Price group has the lowest averaged one time purchasing price.  The Conspicuous group will pay the highest price. When we build profile in real life, we will need to look at the survey results too.  Those simple data manipulations can provide you lots of information already. 
-As  mentioned before, other than "`summarize`" there are other functions such as "`transform`" and "`subset`". 
+Price group has the lowest averaged one-time purchasing price.  The Conspicuous group will pay the highest price. When we build the profile in real life, we will need to look at the survey results too.  Those simple data manipulations can provide you lots of information already. 
+As mentioned before, other than "`summarize`" there are other functions such as "`transform`" and "`subset`". 
 
 For simplicity, I draw 11 random samples and 3 variables (`age`, `store_exp` and `segment`) from the original data according to the different segments. We will explain stratified sampling later. Here we just do it without explanation. 
 
@@ -788,7 +794,8 @@ It will apply **window function** to the columns and return a column with the sa
 dplyr::mutate_each(sim.dat, funs(min_rank)) 
 ```
 
-The other similar function is `transmute()`. The differece is that `transmute()` will delete the original columns and only keep the new ones.
+
+The other similar function is `transmute()`. The difference is that `transmute()` will delete the original columns and only keep the new ones.
 
 ```r
 dplyr::transmute(sim.dat, total_exp = store_exp + online_exp) 
@@ -842,7 +849,7 @@ There are two commonly used packages for this kind of manipulations: `tidyr` and
 
 ### ` reshape2` package
 
-It is a reboot of previous package `reshape`. Why? Here is what I got from Stack Overflow:
+It is a reboot of the previous package `reshape`. Why? Here is what I got from Stack Overflow:
 
 _"`reshape2` let Hadley make a rebooted reshape that was way, way faster, while avoiding busting up people's dependencies and habits."_
 
@@ -933,13 +940,13 @@ sepdat<- msdat %>%
 sepdat %>% tbl_df()
 ```
 
-You can see that the function separates the original column "`variable`" to two new columns "`Source`" and "`Type`". You can use `sep=` to set the string or regular express to separate the column. By default, it is "`_`". 
+You can see that the function separates the original column "`variable`" to two new columns "`Source`" and "`Type`". You can use `sep=` to set the string or regular expression to separate the column. By default, it is "`_`". 
 
-The `unite()` function will do the opposite: combining two columns. It is like the generalization of `paste()` to data frame.
+The `unite()` function will do the opposite: combining two columns. It is the generalization of `paste()` to a data frame.
 
 ```{r}
 sepdat %>% 
   unite("variable",Source,Type,sep="_")
 ```
 
-The reshaping manipulations may be the trickiest part. You have to practice a lot to get familiar with those functions. Unfortunately there is no short cut. 
+The reshaping manipulations may be the trickiest part. You have to practice a lot to get familiar with those functions. Unfortunately, there is no shortcut. 
