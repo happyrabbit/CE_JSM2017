@@ -291,6 +291,42 @@ Decision trees are no doubt one of the most popular machine learning algorithms.
 -  Random Forest
 -  Gradient Boosting Machines (GBM)
 
+6. Bayesian Models
+
+People usually confuse Bayes theorem with Bayesian models. Bayes theorem is an implication of probability theory which gives Bayesian data analysis its name. 
+
+$$Pr(\theta|y)=\frac{Pr(y|\theta)Pr(\theta)}{Pr(y)}$$
+
+The actual Bayesian model is not identical to Bayes theorem. Given a likelihood, parameters to estimate, and a prior for each parameter, a Bayesian model treats the estimates as a purely logical consequence of those assumptions. The resulting estimates are the posterior distribution which is the relative plausibility of different parameter values, conditional on the observations.
+The Bayesian model here is not strictly in the sense of Bayesian but rather model using Bayes theorem. 
+
+- Naïve Bayes
+- Averaged One-Dependence Estimators (AODE)
+- Bayesian Belief Network (BBN)
+
+7.  Kernel Methods    
+
+The most common kernel method is the support vector machine (SVM). This type of algorithm maps the input data to a higher order vector space where classification or regression problems are easier to solve.
+
+- Support Vector Machine (SVM)
+- Radial Basis Function (RBF)
+- Linear Discriminate Analysis  (LDA)
+
+8. Clustering Methods
+
+Like regression, when people mention clustering,  sometimes they mean a class of problems, sometimes a class of algorithms. The clustering algorithm usually clusters similar samples to categories in a centroidal or hierarchical manner. The two are the most common clustering methods:
+
+- K-Means
+- Hierarchical Clustering
+
+9. Association Rule
+
+The basic idea of an association rule is: when events occur together more often than one would expect from their individual rates of occurrence, such co- occurrence is an interesting pattern.  The most used algorithms are: 
+
+-  Apriori algorithm
+-  Eclat algorithm
+
+
 ```{r, out.width = "600px",out.height = "900px",echo=FALSE}
 knitr::include_graphics("http://scientistcafe.com/book/Figure/AlogrithmTypes.png")
 ```
