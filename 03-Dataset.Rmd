@@ -3,8 +3,9 @@
 Before tackling analytics problem, we start by creating data to be analyzed in later chapters. Why do we simulate data instead of using real data set?  
 
 - Going through the simulation code helps you practice R skills. 
-- It makes the book less dependent on downloading online data set
-- It allows you manipulate the synthetic data, run analysis and examine how the results change
+- It makes the book less dependent on downloading online data sets.
+- It allows you manipulate the synthetic data, run analysis and examine how the results change.
+- The authors do not need to worry about intellectual property rights.
 
 ## Customer Data for Clothing Company
 
@@ -25,7 +26,7 @@ in stores and online. This data is typical of what one might get from a company'
 
 1. Survey on product preference
 
-It is common for companies to survey their customers and draw insights from it to guide future marketing activities. The survey is as below:
+It is common for companies to survey their customers and draw insights to guide future marketing activities. The survey is as below:
 
 How strongly do you agree or disagree with the following statements:
 
@@ -37,13 +38,13 @@ How strongly do you agree or disagree with the following statements:
 
 - Q1. I like to buy clothes from different brands
 - Q2. I buy almost all my clothes from some of my favorite brands
-- Q3. I like to buy good brand
+- Q3. I like to buy premium brands
 - Q4. Quality is the most important factor in my purchasing decision
 - Q5. Style is the most important factor in my purchasing decision
 - Q6. I prefer to buy clothes in store
 - Q7. I prefer to buy clothes online
 - Q8. Price is important 
-- Q9. I like to try different style
+- Q9. I like to try different styles
 - Q10. I like to make a choice by myself and don't need too much of others' suggestions 
 
 There are 4 segments of customers: 
