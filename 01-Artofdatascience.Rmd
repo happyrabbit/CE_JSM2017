@@ -330,7 +330,43 @@ The basic idea of an association rule is: when events occur together more often 
 -  Apriori algorithm
 -  Eclat algorithm
 
+10. Artificial Neural Network
 
+The term neural network has evolved to encompass a repertoire of models and learning methods. There has been lots of hype around the model family making them seem magical and mysterious.  A neural network is a two-stage regression or classification model.  The basic idea is that it uses linear combinations of the original predictors as surrogate features, and then the new features are put through non-linear activation functions to get hidden units in the 2nd stage. When there are multiple hidden layers, it is called deep learning, another over hyped term. Among varies of neural network models, the most widely used "vanilla" net is the single hidden layer back-propagation network. 
+
+- Perceptron Neural Network
+- Back Propagation
+- Hopield Network
+- Self-Organizing Map (SOM)
+- Learning Vector Quantization (LVQ)
+
+11. Deep Learning
+
+The name is a little misleading. As mentioned before, it is multilayer neural network. It is hyped tremendously especially after AlphaGO defeated Li Shishi. Many of the deep learning algorithms are semi-supervised learning algorithms that deal with large data sets with a few unlabeled samples. 
+
+- Restricted Boltzmann Machine (RBN)
+- Deep Belief Networks (DBN)
+- Convolutional Network
+- Stacked Autoencoders
+
+12. Dimensionality Reduction
+
+Its purpose is to construct new features that have significant physical or statistical characteristics, such as capturing as much of the variance as possible.
+
+- Principle Component Analysis (PCA)
+- Partial Least Square Regression (PLS)
+- Multi-Dimensional Scaling (MDS)
+- Exploratory Factor Analysis (EFA)
+
+PCA attempts to find uncorrelated linear combinations of original variables that can explain the variance to the greatest extent possible. EFA also tries to explain as much variance as possible in a lower dimension. MDS maps the observed similarity to a low dimension, such as a two-dimensional plane.  Instead of extracting underlying components or latent factors, MDS attempts to find a lower-dimensional map that best preserves all the observed similarities between items. So it needs to define a similarity measure as in clustering methods. 
+
+13. Ensemble Methods
+
+Ensemble method made its debut in the 1990s. The idea is to build a prediction model by combining the strengths of a collection of simpler base models.  Bagging, originally proposed by Leo Breiman, is one of the earliest ensemble methods. After that, people developed Random Forest [@Ho1998; @amit1997] and Boosting method [@Valiant1984; @KV1989]. This is a class of powerful and effective algorithms.
+
+- Bootstrapped Aggregation (Bagging)
+- Random Forest
+- Gradient Boosting Machine (GBM)
 ```{r, out.width = "600px",out.height = "900px",echo=FALSE}
 knitr::include_graphics("http://scientistcafe.com/book/Figure/AlogrithmTypes.png")
 ```
