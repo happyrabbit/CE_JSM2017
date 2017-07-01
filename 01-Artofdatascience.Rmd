@@ -297,6 +297,10 @@ People usually confuse Bayes theorem with Bayesian models. Bayes theorem is an i
 
 $$Pr(\theta|y)=\frac{Pr(y|\theta)Pr(\theta)}{Pr(y)}$$
 
+<center>
+ ![300 yrs ago Thomas Bayes, a minister, revolutionized statistics w/a simple theorem](http://linhui.org/images/Jokes/jokeBayes.png)
+ </center>
+ 
 The actual Bayesian model is not identical to Bayes theorem. Given a likelihood, parameters to estimate, and a prior for each parameter, a Bayesian model treats the estimates as a purely logical consequence of those assumptions. The resulting estimates are the posterior distribution which is the relative plausibility of different parameter values, conditional on the observations.
 The Bayesian model here is not strictly in the sense of Bayesian but rather model using Bayes theorem. 
 
