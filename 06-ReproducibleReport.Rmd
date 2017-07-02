@@ -109,24 +109,24 @@ Blockquotes are indicated using email-style '>' angle brackets.
 
 
 ```pre
-In the end, it's not the years in your life that count. It's the life in your years. 
+A statistician gave birth to twins, but only had one of them baptised. She kept the other as a control.
 
-The sole cause of men's unhappiness is that he does not know how to stay quietly in his room. 
+News bulletin: A local Physicist declared that he has figured out the ingredients in McDonald’s secret sauce: protons, nuetrons, and electrons.
 
-> Every person takes the limits of their own field of vision for the limits of the world.[Arthur Schopenhauer]
+> All you need in this life is ignorance and confidence, and then success is sure. [Mark Twain]
 > 
-> Reading makes a full man, conference a ready man, and writing an exact man.[Bacon]
+> A bartender says, “We don’t serve faster than light particles in here.” A tachyon walks into a bar. [A joke from Prof. Bill Rand]
 ```
 
 Output:
 
-In the end, it's not the years in your life that count. It's the life in your years. 
+A statistician gave birth to twins, but only had one of them baptised. She kept the other as a control.
 
-The sole cause of men's unhappiness is that he does not know how to stay quietly in his room. 
+News bulletin: A local Physicist declared that he has figured out the ingredients in McDonald’s secret sauce: protons, nuetrons, and electrons.
 
-> Every person takes the limits of their own field of vision for the limits of the world.[Arthur Schopenhauer]
+> All you need in this life is ignorance and confidence, and then success is sure. [Mark Twain]
 > 
-> Reading makes a full man, conference a ready man, and writing an exact man.[Bacon]
+> A bartender says, “We don’t serve faster than light particles in here.” A tachyon walks into a bar. [A joke from Prof. Bill Rand]
 
 #### Phrase Emphasis
 
@@ -159,46 +159,54 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 Unordered (bulleted) lists use asterisks, pluses, and hyphens (*, +, and -) as list markers. These three markers are interchangeable; this:
 
+
 ```pre
-*   Candy.
-*   Gum.
-*   Booze.
+* If it’s green and wiggles, it’s biology.
+* If it stinks, it’s chemistry.
+* If it doesn’t work, it’s Physics.
 ```
 
 Output:
 
-*   Candy.
-*   Gum.
-*   Booze.
+* If it’s green and wiggles, it’s biology.
+* If it stinks, it’s chemistry.
+* If it doesn’t work, it’s Physics.
 
 this:
 
 ```pre
-+   Candy.
-+   Gum.
-+   Booze.
++ Engineers think that equations approximate the real world.
++ Scientists think that the real world approximates equations.
++ Mathematicians don’t care.
 ```
 
 Output:
 
-+   Candy.
-+   Gum.
-+   Booze.
++ Engineers think that equations approximate the real world.
++ Scientists think that the real world approximates equations.
++ Mathematicians don’t care.
 
 and this:
 
 ```pre
--   Candy.
--   Gum.
--   Booze.
+An engineer, a physicist, and a mathematician were on a train heading north, and had just crossed the border into Scotland.
+
+- The engineer looked out of the window and said “Look! Scottish sheep are black!”
+- The physicist said, “No, no. Some Scottish sheep are black.”
+- The mathematician looked irritated. “There is at least one field, containing at least one sheep, of - which at least one side is black.”
+- The statistician : “It’s not significant. We only know there’s one black sheep”
+- The computer scientist : “Oh, no! A special case!”
 ```
 
 Output:
 
--   Candy.
--   Gum.
--   Booze.
+An engineer, a physicist, and a mathematician were on a train heading north, and had just crossed the border into Scotland.
 
+- The engineer looked out of the window and said “Look! Scottish sheep are black!”
+- The physicist said, “No, no. Some Scottish sheep are black.”
+- The mathematician looked irritated. “There is at least one field, containing at least one sheep, of - which at least one side is black.”
+- The statistician : “It’s not significant. We only know there’s one black sheep”
+- The computer scientist : “Oh, no! A special case!”
 
 Next, we will show how to build HTML report and dashboard in more detail.
 

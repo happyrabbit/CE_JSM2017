@@ -184,7 +184,7 @@ We talked about the bewildering definitions of data scientist. With the data sci
 
 - Educational Background
 
-Most of the data scientists today have undergraduate or higher degree from one of the following areas: computer science, electronic engineering, mathematics or statistics. According to a 2015 survey, 48% of US data scientists have a doctoral degree, 44% have a master degree, and only 8% are undergraduate. 
+Most of the data scientists today have undergraduate or higher degree from one of the following areas: computer science, electronic engineering, mathematics or statistics. According to a 2017 survey, 25% of US data scientists have a PhD degree, 64% have a Master’s degree, and 11% are Bachelors. 
 
 - Database Skills
 

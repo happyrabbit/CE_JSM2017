@@ -282,6 +282,7 @@ describe(sim.dat)
 
 The output shows the sample size (50), number of variables (2) and the $\lambda$ estimates for each variable. After calling the `preProcess()` function, the `predict()` method applies the results to a data frame. 
 
+#########################
 
 ```{r,message=FALSE}
 transformed<-predict(trans,cars)
