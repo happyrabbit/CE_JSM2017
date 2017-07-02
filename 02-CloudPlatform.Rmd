@@ -160,7 +160,8 @@ ggplot(iris_summary, aes(Sepal_Width, Sepal_Length, color = Species)) +
 
 ### Fit Regression to SparkDataFrame
 
-One of the largest advantages is that, within Spark system, there are already many statistical and machine learning algorithms developed to run parallel across many CPUs with data across many memory units. So, we can easily fit a linear regression for big dataset far beyond the memory limit of one single computer. Below is an illustration of how to fit a linear regression to SparkDataFrame using R notebook:
+One of the largest advantages is that, within Spark system, there are already many statistical and machine learning algorithms developed to run parallelly across many CPUs with data across many memory units. In this example, we have already uploaded the data to Spark system, and the data in the Spark system can be referred through iris_tbl.  The linear regression implemented in Spark system can be called through `ml_linear_regression()` function. The syntax to call the function is to define the Spark Data Frame (i.e. iris_tbl), response variable (i.e. y-variable in linear regression in the Spark data frame iris_tbl) and features (i.e. the x-variable in linear regression in the Spark data frame iris_tbl). So, we can easily fit a linear regression for large dataset far beyond the memory limit of one single computer, and it is truly scalable and only constrained by the resource of the Spark cluster. Below is an illustration of how to fit a linear regression to SparkDataFrame using R notebook:
+
 
 ```r
 fit1 <-  ml_linear_regression(x = iris_tbl, response = "Sepal_Length", 
@@ -168,8 +169,7 @@ fit1 <-  ml_linear_regression(x = iris_tbl, response = "Sepal_Length",
 summary(fit1)
 ```
 
-In the above code, x is the R object wrapping the SparkDataFrame; the response is y-variable, features is the collection of explanatory variables. 
-
+In the above code, x is the R object wrapping the SparkDataFrame; the response is y-variable, features are the collection of explanatory variables. For this function, both the data and computation are in the Spark cluster which leverages multiple CPUs and distributed memories. 
 
 ### Fit a K-means Cluster
 
