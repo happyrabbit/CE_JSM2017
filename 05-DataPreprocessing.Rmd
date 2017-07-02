@@ -99,34 +99,48 @@ demo_imp<-impute(sim.dat,method="median/mode")
 summary(demo_imp[,1:5])
 ```
 
-Note that the median/mode method imputes mode to character vectors and median to numeric and integer vectors.So you can see the 10 missing values for variable "education" are imputed with "High School" since it is the mode.
+After imputation, `demo_imp` has no missing value. This method is straightforward and widely used. The disadvantage is that it does not take into account the relationship between the variables. When there is a significant proportion of missing, it will distort the data. In this case, it is better to consider the relationship between variables and study the missing mechanism. In the example here, the missing variables are numeric. If the missing variable is a categorical/factor variable, the `impute ()` function will imput with the mode.
 
-You can also use function 'preProcess()' to attain this.But it only works for numeric variable.
-
-```{r,message=FALSE}
-imp<-preProcess(demo_missing[,c("income","age")],method="medianImpute")
-demo_imp<-predict(imp,demo_missing[,c("income","age")])
-summary(demo_imp)
-```
-### Impute missing values based on K-nearest neighbors
-
-k-nearest neighbor will find the k closest samples (Euclidian distance) in the training set and impute the mean of those "neighbors". 
-
-```{r,error=TRUE}
-imp<-preProcess(demo_missing[,c("income","age")],method="knnImpute",k=2)
-demo_imp<-predict(imp,demo_missing[,c("income","age")])
-```
-
-Now we get a error saying "cannot impute when all predictors are missing in the new data point". It is because there is at least one sample with both "income" and "age" missing. We can delete the corresponding row and do it again.
+You can also use `preProcess ()` function, but it is only for numeric variables, and can not imput categorical variables. Since missing values here are numeric, we can use the `preProcess ()` function. The result is the same as the `impute ()` function. `PreProcess ()`  is a powerful function that can link to a variety of data preprocessing methods.  We will use the function later for other data preprocessing.
 
 ```{r}
-idx<-which(is.na(demo_missing$income)&is.na(demo_missing$age))
-
-imp<-preProcess(demo_missing[-idx,c("income","age")],method="knnImpute",k=2)
-demo_imp<-predict(imp,demo_missing[-idx,c("income","age")])
-summary(demo_imp)
+imp<-preProcess(sim.dat,method="medianImpute")
+demo_imp2<-predict(imp,sim.dat)
+summary(demo_imp2[,1:5])
 ```
-The error doesn't show up this time. This method considers all predictors together but it requires them to be in the same scale since the "euclidian distance" is used to find the neighbours.
+
+### K-nearest neighbors
+
+K-nearest neighbor (KNN) will find the k closest samples (Euclidian distance) in the training set and imput the mean of those "neighbors". 
+
+Use `preProcess()` to conduct KNN:
+
+```r
+imp<-preProcess(sim.dat,method="knnImpute",k=5)
+# need to use predict() to get KNN result
+demo_imp<-predict(imp,sim.dat)
+```
+```html
+Error in `[.data.frame`(old, , non_missing_cols, drop = FALSE) : 
+  undefined columns selected
+```
+
+Now we get an error saying “undefined columns selected”.  It is because `sim.dat` has non-numeric variables. The `preProcess()` in the first line will automatically ignore non-numeric columns so there is no error. However, there is a problem when using `predict()` to get the result. Removing those variable will solve the problem.
+
+```{r}
+# find factor columns
+imp<-preProcess(sim.dat,method="knnImpute",k=5)
+idx<-which(lapply(sim.dat,class)=="factor")
+demo_imp<-predict(imp,sim.dat[,-idx])
+summary(demo_imp[,1:3])
+```
+
+`lapply(data,class)` can return a list of column class. Here the data frame is `sim.dat` and the following code will give the list of column class:
+
+```{r}
+# only show the fist 3 elements
+lapply(sim.dat,class)[1:3]
+```
 
 ## Centering and Scaling
 
