@@ -17,6 +17,8 @@ Priority 1:
 - Render pdf version and submit by July 6 2017
 - Slides for Reproducible Report by July 12 2017
 - Slides for the rest by July 28 2017
+- Add R code folder & sort out code 
+
 
 Priority 2: 
 
