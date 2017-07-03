@@ -433,29 +433,34 @@ The absolute value of the elements in the correlation matrix after removal are a
 
 ## Sparse Variables
 
-Other than the highly related predictors, predictors with degenerate distributions need to be removed as well. Removing those variables can significant improve some models' performance and/or stability (such as linear regression and logistic regression but tree based model is impervious to this type of predictors). One extreme example is a variable with single value which is called zero-variance variable. 
+Other than the highly related predictors, predictors with degenerate distributions can cause the problem too.  Removing those variables can significantly improve some models’ performance and stability (such as linear regression and logistic regression but the tree based model is impervious to this type of predictors). One extreme example is a variable with a single value which is called zero-variance variable. Variables with very low frequency of unique values are near-zero variance predictors. In general, detecting those variables follows two rules: 
 
-Similarly those variables with very low frequency of unique values are **_near-zero variance predictors_**. How to detect those variables? There are two rules:
--  The fraction of unique values over the sample size 
--	The ratio of the frequency of the most prevalent value to the frequency of the second most prevalent value. The `caret` package funciton `nearZeroVar()` can filter near-zero variance predictors. 
+- The fraction of unique values over the sample size 
+- The ratio of the frequency of the most prevalent value to the frequency of the second most prevalent value. 
+
+`nearZeroVar()` function in the `caret` package can filter near-zero variance predictors according to the above rules. In order to show the useage of the function, let's arbitaryly add some problematic variables to the origional data `sim.dat`:
 
 ```{r}
-#add two variables with low variance 
-zero_demo<-demo
-zero_demo$zero1<-rep(0,nrow(demo))
-zero_demo$zero2<-c(1,rep(0,nrow(demo)-1))
+# make a copy
+zero_demo<-sim.dat
+# add two sparse variable
 # zero1 only has one unique value
 # zero2 is a vector with the first element 1 and the rest are 0s
-summary(zero_demo)
-# the function will return a vector of integers indicating which columns to remove
+zero_demo$zero1<-rep(1,nrow(zero_demo))
+zero_demo$zero2<-c(1,rep(0,nrow(zero_demo)-1))
+```
+
+The function will return a vector of integers indicating which columns to remove:
+
+```r
 nearZeroVar(zero_demo,freqCut = 95/5, uniqueCut = 10)
 ```
 
-Note the two arguments in the function `freqCut =` and `uniqueCut = `. They are corresponding to the previous two rules.
+As expected, it returns the two columns we generated. You can go ahead to remove them. Note the two arguments in the function `freqCut =` and `uniqueCut =` are corresponding to the previous two rules.
 
 - `freqCut`: the cutoff for the ratio of the most common value to the second most common value
+- `uniqueCut`: the cutoff for the percentage of distinct values out of the number of total samples
 
-- `uniqueCut`:the cutoff for the percentage of distinct values out of the number of total samples
 
 ## Re-encode Dummy Variables
 
