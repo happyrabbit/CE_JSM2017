@@ -7,7 +7,7 @@ Priority 1:
 
 - Add reference
 - ~~Summary of algorithms~~
-- Rewrite Data Preprocessing
+- ~~Rewrite Data Preprocessing~~
 - ~~Update data science survey results~~
 - Add jokes
 - ~~Markdown basics~~
