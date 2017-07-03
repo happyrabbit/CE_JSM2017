@@ -12,6 +12,8 @@ Priority 1:
 - Add jokes
 - ~~Markdown basics~~
 - Double check the description of deep learning: The name is a little misleading. As mentioned before, it is multilayer neural network. It is hyped tremendously especially after AlphaGO defeated Li Shishi. Many of the deep learning algorithms are semi-supervised learning algorithms that deal with large data sets with a few unlabeled samples. 
+- I --> we (Ming, can you check this?)
+- Acknowledgements
 - Render pdf version and submit by July 6 2017
 - Slides for Reproducible Report by July 12 2017
 - Slides for the rest by July 28 2017
