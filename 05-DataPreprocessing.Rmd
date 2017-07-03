@@ -71,7 +71,7 @@ Missing value imputation can be the topic for a book. This section will show som
 
 One question to ask before imputation:  Is there any auxiliary information? Being aware of any auxiliary information is critical.  For example, if the system set customer who did not purchase as missing, then the real purchasing amount should be 0.  Is missing a random occurrence? If so, it may be reasonable to imput with mean or median. If not, what is the potential mechanism for the missing? For example, older people are more reluctant to disclose their ages in the questionnaire, so that the absence of age is not completely random. In this case, the missing values need to be estimated using the relationship between age and other independent variables. For example, use variables such as whether they have children, income, and other survey questions to build a model to predict age.
 
-Also, the purpose of modeling is important for selecting imputation methods. If the goal is to interpret the parameter estimate or statistical inference, then it is important to study the missing mechanism carefully and to estimate the missing values using non-missing information as much as possible. If the goal is to predict,  people usually will not study the absence mechanism rigorously (but sometimes the mechanism is obvious). If the absence mechanism is not clear, treat it as missing at random and use mean, median, or k-nearest neighbor to imput. Since statistical inference is sensitive to missing values, researchers from survey statistics have conducted in-depth studies of various imputation schemes which focus on valid statistical inference. The problem of missing values in the prediction model is different from that in the traditional survey.  Therefore, there are not many papers on missing value imputation in the prediction model. Those who want to study further can refer to Saar-Tsechansky and Provost's comparison of different imputation methods [@missing1]and De Waal, Pannekoek and Scholtus' book [@impute1].
+Also, the purpose of modeling is important for selecting imputation methods. If the goal is to interpret the parameter estimate or statistical inference, then it is important to study the missing mechanism carefully and to estimate the missing values using non-missing information as much as possible. If the goal is to predict,  people usually will not study the absence mechanism rigorously (but sometimes the mechanism is obvious). If the absence mechanism is not clear, treat it as missing at random and use mean, median, or k-nearest neighbor to imput. Since statistical inference is sensitive to missing values, researchers from survey statistics have conducted in-depth studies of various imputation schemes which focus on valid statistical inference. The problem of missing values in the prediction model is different from that in the traditional survey.  Therefore, there are not many papers on missing value imputation in the prediction model. Those who want to study further can refer to Saar-Tsechansky and Provost's comparison of different imputation methods [@missing1]and De Waal, Pannekoek and Scholtus' book [@impute1].
 
 The following code randomly assigns some missing values to the previous data `demo`  and names the new data set `demo_missing`.
 
@@ -389,38 +389,47 @@ Some readers may have found that the above code does not seem to standardize the
 
 ## Collinearity
 
-It is probably a technical term that many un-technical people also know. There is an excellent function in `corrplot` package with the same name `corrplot()` that can visualize correlation structure of a set of predictors. The function has option to reorder the variables in a way that reveals clusters of highly correlated ones. We add some columns to `demo` that are correlated.
+
+It is probably a technical term that many un-technical people also know. There is an excellent function in `corrplot` package with the same name `corrplot()` that can visualize correlation structure of a set of predictors. The function has the option to reorder the variables in a way that reveals clusters of highly correlated ones. 
+
+```{r corp out.width='80%', fig.asp=.75, fig.align='center'}
+# select non-survey numerical variables
+sdat<-subset(sim.dat,select=c("age","income","store_exp","online_exp","store_trans","online_trans" ))
+# use bagging imputation here
+imp<-preProcess(sdat,method="bagImpute")
+sdat<-predict(imp,sdat)
+# get the correlation matrix
+correlation<-cor(sdat)
+# plot 
+par(oma=c(2,2,2,2))
+corrplot.mixed(correlation,order="hclust",tl.pos="lt",upper="ellipse")
+```
+
+Here use `corrplot.mixed()function to visualize the correlation matrix (figure \@ref(fig:corp)).  The closer the correlation is to 0, the lighter the color is and the closer the shape is to a circle. The elliptical means the correlation is not equal to 0 (because we set the `upper = "ellipse"`), the greater the correlation, the narrower the ellipse. Blue represents a positive correlation, red represents a negative correlation. The direction of the ellipse also changes with the correlation. The correlation coefficient is shown in the lower triangle of the matrix. The variables relationship from previous scatter matrix (figure \@ref(fig: scm)) are clear here: the negative correlation between age and online shopping, the positive correlation between income and amount of purchasing. Some correlation is very strong ( such as the correlation between `online_trans` and` age` is -0.85) which means the two variables contain duplicate information
+
+. Section 3.5 of “Applied Predictive Modeling” [@APM] presents a heuristic algorithm to remove a minimum number of predictors to ensure all pairwise correlations are below a certain threshold:
+
+> 
+(1) Calculate the correlation matrix of the predictors.
+(2) Determine the two predictors associated with the largest absolute pairwise correlation (call them predictors A and B).
+(3) Determine the average correlation between A and the other variables. Do the same for predictor B.
+(4) If A has a larger average correlation, remove it; otherwise, remove predictor B.
+(5) Repeat Step 2-4 until no absolute correlations are above the threshold.
+
+The `findCorrelation()` function in package `caret` will apply the above algorithm.
 
 ```{r}
-adddemo<-demo[,-3]
-adddemo$added1<-sqrt(demo$age)+10
-adddemo$added2<-log(demo$income)+demo$age
-adddemo$added2<-log(demo$age)
-adddemo$added4<-demo$income/1000+5*demo$age
-adddemo$added5<-sin(demo$age)
+(highCorr<-findCorrelation(cor(sdat),cutoff=.75))
 ```
-The following command will produce visualization for the correlation matrix of `adddemo`.
+It returns the index of columns need to be deleted. It tells us that we need to remove the first column to make sure the correlations are all below 0.75.
 
 ```{r}
-corrplot(cor(adddemo),order="hclust")
+# delete highly correlated columns
+sdat<-sdat[-highCorr]
+# check the new correlation matrix
+cor(sdat)
 ```
-The size and color of the points are associated with the strength of corresponding correlation. Section 3.5 of "[Applied Predictive Modeling](http://appliedpredictivemodeling.com/)" presents a heuristic algorithm to remove minium number of predicitors to ensure all pairwise corelations are below a certain threshold:
-
-> 1.  Calculate the correlation matrix of the predictors. 
-1. Determine the two predictors associated with the largest absolute pairwise correlation (call them predictors A and B).
-1. Determine the average correlation between A and the other variables. Do the same for predictor B.
-1. If A has a larger average correlation, remove it; otherwise, remove predictor B.
-1. Repeat Step 2-4 until no absolute correlations are above the threshold.
-
-The `findCorrelation()` function in package `caret` will apaply the above algorithm. 
-
-```{r}
-(highCorr<-findCorrelation(cor(adddemo),cutoff=.75))
-# remove columns with high correlations
-filter_demo<-adddemo[,-highCorr]
-# correlation matrix for filtered data
-corrplot(cor(filter_demo),order="hclust")
-```
+The absolute value of the elements in the correlation matrix after removal are all below 0.75. 
 
 ## Sparse Variables
 
