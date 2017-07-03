@@ -260,7 +260,20 @@ $$ skewness=\frac{\sum(x_{i}+\bar{x})^{3}}{(n-1)v^{3/2}}$$
 $$v=\frac{\sum(x_{i}=\bar{x})^{2}}{(n-1)}$$
 Skewness=0 means that the destribution is symmetric, i.e. the probability of falling on either side of the distribution's  mean is equal. 
 
-You can easily tell if a distribution is skewed by simple visualization. There are different ways may help to remove skewness such as log, square root or inverse. However it is often difficult to determine from plots which transformation is most appropriate for correcting skewness. The Box-Cox procedure automatically identified a transformation from the family of power transformations that are indexed by a parameter $\lambda$. 
+```{r skew, fig.cap='Shewed Distribution', out.width='80%', fig.asp=.75, fig.align='center'}
+# need skewness() function from e1071 package
+set.seed(1000)
+par(mfrow=c(1,2),oma=c(2,2,2,2))
+# random sample 1000 chi-square distribution with df=2
+# right skew
+x1<-rchisq(1000,2, ncp = 0)
+# get left skew variable x2 from x1
+x2<-max(x1)-x1
+plot(density(x2),main=paste("left skew, skewnwss =",round(skewness(x2),2)), xlab="X2")
+plot(density(x1),main=paste("right skew, skewness =",round(skewness(x1),2)), xlab="X1")
+```
+
+You can easily tell if a distribution is skewed by simple visualization(Figure\@ref(fig:skew)). There are different ways may help to remove skewness such as log, square root or inverse. However it is often difficult to determine from plots which transformation is most appropriate for correcting skewness. The Box-Cox procedure automatically identified a transformation from the family of power transformations that are indexed by a parameter $\lambda$[@BOXCOX1]. 
 
 $$
 x^{*}=\begin{cases}
@@ -279,33 +292,41 @@ It is easy to see that this family includes log transformation ($\lambda=0$), sq
 describe(sim.dat)
 ```
 
+It is easy to see the skewed variables.  If `mean` and `trimmed` differ a lot, there is very likely outliers. By default, `trimmed` reports mean by dropping the top and bottom 10%. It can be adjusted by setting argument `trim= `. It is clear that `store_exp` has outliers.
 
-The output shows the sample size (50), number of variables (2) and the $\lambda$ estimates for each variable. After calling the `preProcess()` function, the `predict()` method applies the results to a data frame. 
+As an example, we will apply Box-Cox transformation on `store_trans` and `online_trans`:
 
-#########################
-
-```{r,message=FALSE}
-transformed<-predict(trans,cars)
-par(mfrow=c(1,2))
-hist(cars$dist,main="Original",xlab="dist")
-hist(transformed$dist,main="After BoxCox Transformation",xlab="dist")
+```{r}
+# select the two columns and save them as dat_bc
+dat_bc<-subset(sim.dat,select=c("store_trans","online_trans"))
+(trans<-preProcess(dat_bc,method=c("BoxCox")))
 ```
 
+The last line of the output shows the estimates of $\lambda$ for each variable.  As before,   use `predict()` to get the transformed result:
 
-An alternative is to use function `BoxCoxTrans()` in package `caret`.
+```{r bc, fig.cap='Box-Cox Transformation', out.width='80%', fig.asp=.75, fig.align='center'}
+transformed<-predict(trans,dat_bc)
+par(mfrow=c(1,2),oma=c(2,2,2,2))
+hist(dat_bc$store_trans,main="Before Transformation",xlab="store_trans")
+hist(transformed$store_trans,main="After Transformation",xlab="store_trans")
+```
 
-```{r,message=FALSE}
-(trans<-BoxCoxTrans(cars$dist))
-transformed<-predict(trans,cars$dist)
+Before the transformation, the `stroe_trans` is skewed right. The situation is significantly improved after (figure\@ref(fig:bc)). `BoxCoxTrans ()` can also conduct Box-Cox transform. But note that `BoxCoxTrans ()` can only be applied to a single variable, and it is not possible to transform difference columns in a data frame at the same time.
+
+```{r}
+(trans<-BoxCoxTrans(dat_bc$store_trans))
+```
+
+```{r}
+transformed<-predict(trans,dat_bc$store_trans)
 skewness(transformed)
 ```
 
-The estimated $\lambda$ is the same 0.5. Original skewness is 0.759 and after transformation, the skewness is  -0.01902765 which is close to 0. You can use function `skewness()` in package `e1071` to get the skewness statistics.
-
+The estimate of $\lambda$ is the same as before (0.1). The skewness of the original observation is 1.1, and -0.2 after transformation. Although it is not strictly 0, it is greatly improved. 
 
 ## Resolve Outliers
 
-Even under certain assumptions we can statistically define outliers, it can be hard to define in some situations. You can refer to ["Detection of Outliers"](http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h.htm) for more information. Some models are resistant to outliers (such as tree-based model and support vector machine). If a model is sensitive to outliers (such as linear regression and logistic regression), we can use _spatial sign_  transformation to minimize the problem. It projects the original sample points to the surface of a sphere by:
+Some models are resistant to outliers (such as tree-based model and support vector machine). If a model is sensitive to outliers (such as linear regression and logistic regression), we can use _spatial sign_  transformation to minimize the problem. It projects the original sample points to the surface of a sphere by:
 
 $$x_{ij}^{*}=\frac{x_{ij}}{\sqrt{\sum_{j=1}^{p}x_{ij}^{2}}}$$
 
