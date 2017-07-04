@@ -3,8 +3,6 @@ title: "The Science and Art of Data"
 author: "Hui Lin and Ming Li"
 date: '`r Sys.Date()`'
 output:
-  bookdown::pdf_book:
-    keep_tex: yes
   bookdown::gitbook:
     config:
       download:
