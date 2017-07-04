@@ -53,7 +53,7 @@ There are 4 segments of customers:
 1. Quality
 1. Style
 
-The simulation is not very straightforward and I will break it into three parts: 
+The simulation is not very straightforward and we will break it into three parts: 
 
 1. Define data structure: variable names, variable distribution, customer segment names, segment size
 1. Variable distribution parameters: mean and variance
