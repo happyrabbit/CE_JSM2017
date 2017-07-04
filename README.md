@@ -6,7 +6,7 @@ The science and art of data
 Priority 1:
 
 - Add reference
-- change links for data/files
+- ~~change links for data/files~~
 - Problem with compiling pdf (ask Yihui)
 - ~~Summary of algorithms~~
 - ~~Rewrite Data Preprocessing~~
