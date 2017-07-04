@@ -5,17 +5,17 @@ The science and art of data
 
 Priority 1:
 
-- Add reference
+- Add reference [Ming's piece is done, no addtianl reference for Ming's park]
 - ~~change links for data/files~~
 - Problem with compiling pdf (ask Yihui)
-- ~~Learning outcome~~
+- ~~Learning outcome~~ [Ming's comment: Learning outcome needs to be shown before and after the CE material]
 - ~~Summary of algorithms~~
 - ~~Rewrite Data Preprocessing~~
 - ~~Update data science survey results~~
 - Add jokes
 - ~~Markdown basics~~
 - Double check the description of deep learning: The name is a little misleading. As mentioned before, it is multilayer neural network. It is hyped tremendously especially after AlphaGO defeated Li Shishi. Many of the deep learning algorithms are semi-supervised learning algorithms that deal with large data sets with a few unlabeled samples. 
-- ~~I --> we (Ming, can you check this?)~~
+- ~~I --> we (Ming, can you check this?)~~ [Ming have check every sections]
 - Acknowledgements
 - Render pdf version and submit by July 6 2017
 - Slides for Reproducible Report by July 12 2017
