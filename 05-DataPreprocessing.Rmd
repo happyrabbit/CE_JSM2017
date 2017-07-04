@@ -207,7 +207,7 @@ Now the two variables are in the same scale:
 summary(transformed)
 ```
 
-Sometimes you only need to scale the variable. For example, if the model adds penalty to the parameter estimates (such as $L_2$ penalty is ridge regression and $L_1$ penalty in LASSO), the variables need to have similar scale to ensure a fair variable selection. I am heavy user of this kind of penalty-based model in my work and I used the following quantile transformation:
+Sometimes you only need to scale the variable. For example, if the model adds penalty to the parameter estimates (such as $L_2$ penalty is ridge regression and $L_1$ penalty in LASSO), the variables need to have similar scale to ensure a fair variable selection. We are heavy user of this kind of penalty-based model in my work and we used the following quantile transformation:
 
 $$
 x_{ij}^{*}=\frac{x_{ij}-quantile(x_{.j},0.01)}{quantile(x_{.j}-0.99)-quantile(x_{-j},0.01)}
