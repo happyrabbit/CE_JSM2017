@@ -8,7 +8,7 @@ Priority 1:
 - Add reference
 - ~~change links for data/files~~
 - Problem with compiling pdf (ask Yihui)
-- Learning outcome
+- ~~Learning outcome~~
 - ~~Summary of algorithms~~
 - ~~Rewrite Data Preprocessing~~
 - ~~Update data science survey results~~
