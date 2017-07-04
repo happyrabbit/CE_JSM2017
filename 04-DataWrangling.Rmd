@@ -403,9 +403,8 @@ dt[order(gender, -online_exp)][1:5]
 
 Other than `read.csv` in base R, we have introduced 'read_csv' in 'readr'.  `read_csv` is much faster and will provide progress bar which makes user feel much better (at least make me feel better). `fread()` in `data.table` further increase the efficiency of reading data. The following are three examples of reading the same data file `topic.csv`. The file includes text data scraped from an agriculture forum with 209670 rows and 6 columns:
 
-[[[change link]]]
 ```r
-system.time(topic<-read.csv("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/topic.csv"))
+system.time(topic<-read.csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/topic.csv"))
 ```
 
 ```html
@@ -414,7 +413,7 @@ system.time(topic<-read.csv("/Users/happyrabbit/Documents/GitHub/DataScientistR/
 ```
 
 ```r
-system.time(topic<-readr::read_csv("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/topic.csv"))
+system.time(topic<-readr::read_csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/topic.csv"))
 ```
 
 ```html
@@ -423,7 +422,7 @@ system.time(topic<-readr::read_csv("/Users/happyrabbit/Documents/GitHub/DataScie
 ```
 
 ```r
-system.time(topic<-data.table::fread("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/topic.csv"))
+system.time(topic<-data.table::fread("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/topic.csv"))
 ```
 
 ```html
