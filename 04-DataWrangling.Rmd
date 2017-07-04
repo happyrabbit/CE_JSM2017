@@ -165,7 +165,7 @@ What is `data.table`? It is an R package that provides an enhanced version of `d
 - It has characteristics of both a matrix and a list
 - It uses `[]` to subset data
 
-I will use the clothes customer data to illustrate. There are two dimensions in `[]`. The first one indicates the row and second one indicates column. It uses a comma to separate them.
+We will use the clothes customer data to illustrate. There are two dimensions in `[]`. The first one indicates the row and second one indicates column. It uses a comma to separate them.
 
 
 ```{r}
@@ -590,7 +590,7 @@ ddply(sim.dat,"segment",summarize,avg_online=round(sum(online_exp)/sum(online_tr
 Price group has the lowest averaged one-time purchasing price.  The Conspicuous group will pay the highest price. When we build the profile in real life, we will need to look at the survey results too.  Those simple data manipulations can provide you lots of information already. 
 As mentioned before, other than "`summarize`" there are other functions such as "`transform`" and "`subset`". 
 
-For simplicity, I draw 11 random samples and 3 variables (`age`, `store_exp` and `segment`) from the original data according to the different segments. We will explain stratified sampling later. Here we just do it without explanation. 
+For simplicity, we draw 11 random samples and 3 variables (`age`, `store_exp` and `segment`) from the original data according to the different segments. We will explain stratified sampling later. Here we just do it without explanation. 
 
 ```{r}
 library(caret)
@@ -623,7 +623,7 @@ You get all rows with ` store_exp ` greater than its group median.
 - It performs faster for in-memory data by writing key pieces in C++ using `Rcpp`
 - The interface is the same for data frame, data table or database
 
-I will illustrate the following functions in order: 
+We will illustrate the following functions in order: 
 
 1. Display
 1. Subset
@@ -850,7 +850,7 @@ There are two commonly used packages for this kind of manipulations: `tidyr` and
 
 ### ` reshape2` package
 
-It is a reboot of the previous package `reshape`. Why? Here is what I got from Stack Overflow:
+It is a reboot of the previous package `reshape`. Why? Here is what we got from Stack Overflow:
 
 _"`reshape2` let Hadley make a rebooted reshape that was way, way faster, while avoiding busting up people's dependencies and habits."_
 
