@@ -170,7 +170,7 @@ I will use the clothes customer data to illustrate. There are two dimensions in 
 
 ```{r}
 # read data
-sim.dat<-read.csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/SegData.csv")
+sim.dat<-readr::read_csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/SegData.csv")
 # subset the first two rows
 sim.dat[1:2,]
 # subset the first two rows and column 3 and 5
@@ -403,7 +403,7 @@ dt[order(gender, -online_exp)][1:5]
 
 Other than `read.csv` in base R, we have introduced 'read_csv' in 'readr'.  `read_csv` is much faster and will provide progress bar which makes user feel much better (at least make me feel better). `fread()` in `data.table` further increase the efficiency of reading data. The following are three examples of reading the same data file `topic.csv`. The file includes text data scraped from an agriculture forum with 209670 rows and 6 columns:
 
-
+[[[change link]]]
 ```r
 system.time(topic<-read.csv("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/topic.csv"))
 ```
@@ -686,10 +686,11 @@ ave_exp <- filter(
   n > 200
 ) 
 ```
+
 Now look at the identical code using "`%>%`":
 
 ```r
-avg_exp <- sim.dat %>% 
+ave_exp <- sim.dat %>% 
  filter(!is.na(income)) %>% 
  group_by(segment) %>% 
  summarise( 
@@ -709,8 +710,9 @@ Isn't it much more straight forward now? Let's read it:
 You can use `distinct()` to delete duplicated rows. 
 
 ```r
-dplyr distinct(sim.dat)
+dplyr::distinct(sim.dat)
 ```
+
 `sample_frac()` will randomly select some rows with specified percentage. `sample_n()` can randomly select rows with specified number.
 
 ```r

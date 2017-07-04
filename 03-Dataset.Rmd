@@ -225,7 +225,7 @@ So far we have gotten all the data. Let's check it:
 
 ```{r, echo=FALSE}
 library(readr)
-sim.dat <- read_csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/SegData.csv")
+sim.dat <- read.csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/SegData.csv")
 ```
 
 
