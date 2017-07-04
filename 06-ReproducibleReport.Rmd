@@ -37,7 +37,7 @@ R Markdown encapsulates all of the above processing into a single render functio
 
 ### Get Started
 
-Install R and RStudio. If you have RStudio installed ready, I suggest you make sure it is in the latest version. You can install the `rmarkdown` package from CRAN with:
+Install R and RStudio. If you have RStudio installed ready, We suggest you make sure it is in the latest version. You can install the `rmarkdown` package from CRAN with:
 
 ```r
 install.packages("rmarkdown")
