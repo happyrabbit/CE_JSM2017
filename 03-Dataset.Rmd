@@ -503,7 +503,7 @@ write.csv(dummy.sim1,paste('dummy.sim',j,'.csv',sep=''),row.names=F)
 For each value of $\gamma$, 20 data sets are simulated. The bigger $\gamma$ is, the larger the corresponding parameter. We provided the data sets with $\gamma = 2$. Let's check the data:
 
 ```{r}
-disease_dat<-read_csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/sim1_da1.csv")
+disease_dat<-read.csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/sim1_da1.csv")
 # only show the last 7 columns here
 head(subset(disease_dat,select=c( "Q118.A","Q118.B","Q119.A","Q119.B","Q120.A","Q120.B","y"))) 
 ```

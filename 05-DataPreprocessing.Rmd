@@ -73,21 +73,6 @@ One question to ask before imputation:  Is there any auxiliary information? Bein
 
 Also, the purpose of modeling is important for selecting imputation methods. If the goal is to interpret the parameter estimate or statistical inference, then it is important to study the missing mechanism carefully and to estimate the missing values using non-missing information as much as possible. If the goal is to predict,  people usually will not study the absence mechanism rigorously (but sometimes the mechanism is obvious). If the absence mechanism is not clear, treat it as missing at random and use mean, median, or k-nearest neighbor to imput. Since statistical inference is sensitive to missing values, researchers from survey statistics have conducted in-depth studies of various imputation schemes which focus on valid statistical inference. The problem of missing values in the prediction model is different from that in the traditional survey.  Therefore, there are not many papers on missing value imputation in the prediction model. Those who want to study further can refer to Saar-Tsechansky and Provost's comparison of different imputation methods [@missing1]and De Waal, Pannekoek and Scholtus' book [@impute1].
 
-The following code randomly assigns some missing values to the previous data `demo`  and names the new data set `demo_missing`.
-
-
-```{r,message=FALSE}
-set.seed(100)
-id1<-sample(1:nrow(demo),15)
-id2<-sample(1:nrow(demo),10)
-id3<-sample(1:nrow(demo),10)
-demo_missing<-demo
-demo_missing$age[id1]<-NA
-demo_missing$income[id2]<-NA
-demo_missing$education[id3]<-NA
-summary(demo_missing)
-```
-
 ### Impute missing values with median/mode
 
 In the case of missing at random, a common method is to imput with the mean (continuous variable) or median (categorical variables). You can use `impute ()` function in `imputeMissings` package.
