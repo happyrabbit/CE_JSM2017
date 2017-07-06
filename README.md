@@ -8,7 +8,7 @@ Priority 1:
 - ~~Add reference [Ming's piece is done, no addtianl reference for Ming's park](Hui: thank you Ming!)~~
 - ~~change links for data/files~~
 - ~~Problem with compiling pdf (ask Yihui)~~
-- ~~Learning outcome~~ [Ming's comment: Learning outcome needs to be shown before and after the CE material]
+- ~~Learning outcome[Ming's comment: Learning outcome needs to be shown before and after the CE material]~~ 
 - ~~Summary of algorithms~~
 - ~~Rewrite Data Preprocessing~~
 - ~~Update data science survey results~~
@@ -16,9 +16,9 @@ Priority 1:
 - ~~Markdown basics~~
 - Double check the description of deep learning: The name is a little misleading. As mentioned before, it is multilayer neural network. It is hyped tremendously especially after AlphaGO defeated Li Shishi. Many of the deep learning algorithms are semi-supervised learning algorithms that deal with large data sets with a few unlabeled samples. 
 - ~~I --> we (Ming, can you check this?) [Ming have check every sections] (Hui: Thank you: ))~~
-- webshot package and webshot::install_phantomjs()
-- add package list at the beginning: https://github.com/rstudio/bookdown/blame/master/inst/examples/index.Rmd#L29-L31 
-- Acknowledgements
+- ~~webshot package and webshot::install_phantomjs()~~
+- ~~add package list at the beginning:~~ https://github.com/rstudio/bookdown/blame/master/inst/examples/index.Rmd#L29-L31 
+- ~~Acknowledgements~~
 - ~~Render pdf version and submit by July 6 2017~~
 - Slides for Reproducible Report by July 12 2017
 - Slides for the rest by July 28 2017
