@@ -23,7 +23,7 @@ The raw data is the first-hand data that analyst pull from the database, market 
 
 Most of the time, you need to clean the data so that R can import them. Some data format requires a specific package. Technically correct data is the data, after preliminary cleaning or format conversion, that R (or another tool you use) can successfully import it.   
 
-Assume we have loaded the data into R with reasonable column names, variable format and so on. That does not mean the data is entirely correct. There may be some observations that do not make sense, such as age is negative, the discount percentage is greater than 1, or data is missing. Depending on the situation, there may be a variety of problems with the data. It is necessary to clean the data before modeling. Moreover, different models have different requirements on the data. For example, some model may require the variables are of consistent [[[missing a word here?]]]; some may be susceptible to outliers or collinearity, some may not be able to handle categorical variables and so on. The modeler has to preprocess the data to make it proper for the specific model.
+Assume we have loaded the data into R with reasonable column names, variable format and so on. That does not mean the data is entirely correct. There may be some observations that do not make sense, such as age is negative, the discount percentage is greater than 1, or data is missing. Depending on the situation, there may be a variety of problems with the data. It is necessary to clean the data before modeling. Moreover, different models have different requirements on the data. For example, some model may require the variables are of consistent scale; some may be susceptible to outliers or collinearity, some may not be able to handle categorical variables and so on. The modeler has to preprocess the data to make it proper for the specific model.
 
 Sometimes we need to aggregate the data.  For example, add up the daily sales to get annual sales of a product at different locations.  In customer segmentation, it is common practice to build a profile for each segment. It requires calculating some statistics such as average age, average income, age standard deviation, etc. Data aggregation is also necessary for presentation, or for data visualization.
 
@@ -375,7 +375,7 @@ Some readers may have found that the above code does not seem to standardize the
 ## Collinearity
 
 
-It is probably a technical term that many un-technical people also know. [[[I think a simple explanation of collinearity should be included:  Collinearity is when two or more predictor variables are correlated.]]] There is an excellent function in `corrplot` package with the same name `corrplot()` that can visualize correlation structure of a set of predictors. The function has the option to reorder the variables in a way that reveals clusters of highly correlated ones. 
+It is probably a technical term that many un-technical people also know. When two predictors are very strongly correlated, including both in a model may lead to confusion or problem with a singular matrix. There is an excellent function in `corrplot` package with the same name `corrplot()` that can visualize correlation structure of a set of predictors. The function has the option to reorder the variables in a way that reveals clusters of highly correlated ones. 
 
 ```{r corp, out.width='80%', fig.asp=.75, fig.align='center'}
 # select non-survey numerical variables
@@ -414,7 +414,7 @@ sdat<-sdat[-highCorr]
 # check the new correlation matrix
 cor(sdat)
 ```
-The absolute value of the elements in the correlation matrix after removal are all below 0.75. 
+The absolute value of the elements in the correlation matrix after removal are all below 0.75. How strong does a correlation have to get, before you should start worrying about multicollinearity? There is no easy answer to that question. You can treat the threshold as a tuning parameter and pick one that gives you best prediction accuracy. 
 
 ## Sparse Variables
 
