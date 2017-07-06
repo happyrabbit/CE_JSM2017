@@ -23,7 +23,7 @@ The raw data is the first-hand data that analyst pull from the database, market 
 
 Most of the time, you need to clean the data so that R can import them. Some data format requires a specific package. Technically correct data is the data, after preliminary cleaning or format conversion, that R (or another tool you use) can successfully import it.   
 
-Assume we have loaded the data into R with reasonable column names, variable format and so on. That does not mean the data is entirely correct. There may be some observations that do not make sense, such as age is negative, the discount percentage is greater than 1, or data is missing. Depending on the situation, there may be a variety of problems with the data. It is necessary to clean the data before modeling. Moreover, different models have different requirements on the data. For example, some model may require the variables are of consistent; some may be susceptible to outliers or collinearity, some may not be able to handle categorical variables and so on. The modeler has to preprocess the data to make it proper for the specific model.
+Assume we have loaded the data into R with reasonable column names, variable format and so on. That does not mean the data is entirely correct. There may be some observations that do not make sense, such as age is negative, the discount percentage is greater than 1, or data is missing. Depending on the situation, there may be a variety of problems with the data. It is necessary to clean the data before modeling. Moreover, different models have different requirements on the data. For example, some model may require the variables are of consistent [[[missing a word here?]]]; some may be susceptible to outliers or collinearity, some may not be able to handle categorical variables and so on. The modeler has to preprocess the data to make it proper for the specific model.
 
 Sometimes we need to aggregate the data.  For example, add up the daily sales to get annual sales of a product at different locations.  In customer segmentation, it is common practice to build a profile for each segment. It requires calculating some statistics such as average age, average income, age standard deviation, etc. Data aggregation is also necessary for presentation, or for data visualization.
 
@@ -52,7 +52,7 @@ Are there any problems? Questionnaire response Q1-Q10 seem reasonable, the minim
 - There is a negative value ( -500) in `store_exp ` which is not logical. 
 - Someone is 300 years old. 
 
-How to deal with that? Depending on the real situation, if the sample size is large enough, it will not hurt to delete those problematic samples. Here we have 1000 observations. Since marketing survey is usually expensive,  it is better to set these values as missing and imput them instead of deleting the rows. 
+How to deal with that? Depending on the real situation, if the sample size is large enough, it will not hurt to delete those problematic samples. Here we have 1000 observations. Since marketing survey is usually expensive,  it is better to set these values as missing and impute them instead of deleting the rows. 
 
 
 ```{r}
@@ -69,9 +69,9 @@ Now we will deal with the missing values in the data.
 
 Missing value imputation can be the topic for a book. This section will show some of the commonly used methods without getting too deep into the topic. Chapter 7 of the book by De Waal, Pannekoek and Scholtus [@impute1] makes a concise overview of some of the existing imputation methods. The choice of specific method depends on the actual situation. There is no method always better than the others.
 
-One question to ask before imputation:  Is there any auxiliary information? Being aware of any auxiliary information is critical.  For example, if the system set customer who did not purchase as missing, then the real purchasing amount should be 0.  Is missing a random occurrence? If so, it may be reasonable to imput with mean or median. If not, what is the potential mechanism for the missing? For example, older people are more reluctant to disclose their ages in the questionnaire, so that the absence of age is not completely random. In this case, the missing values need to be estimated using the relationship between age and other independent variables. For example, use variables such as whether they have children, income, and other survey questions to build a model to predict age.
+One question to ask before imputation:  Is there any auxiliary information? Being aware of any auxiliary information is critical.  For example, if the system set customer who did not purchase as missing, then the real purchasing amount should be 0.  Is missing a random occurrence? If so, it may be reasonable to impute with mean or median. If not, is there a potential mechanism for the missing data? For example, older people are more reluctant to disclose their ages in the questionnaire, so that the absence of age is not completely random. In this case, the missing values need to be estimated using the relationship between age and other independent variables. For example, use variables such as whether they have children, income, and other survey questions to build a model to predict age.
 
-Also, the purpose of modeling is important for selecting imputation methods. If the goal is to interpret the parameter estimate or statistical inference, then it is important to study the missing mechanism carefully and to estimate the missing values using non-missing information as much as possible. If the goal is to predict,  people usually will not study the absence mechanism rigorously (but sometimes the mechanism is obvious). If the absence mechanism is not clear, treat it as missing at random and use mean, median, or k-nearest neighbor to imput. Since statistical inference is sensitive to missing values, researchers from survey statistics have conducted in-depth studies of various imputation schemes which focus on valid statistical inference. The problem of missing values in the prediction model is different from that in the traditional survey.  Therefore, there are not many papers on missing value imputation in the prediction model. Those who want to study further can refer to Saar-Tsechansky and Provost's comparison of different imputation methods [@missing1]and De Waal, Pannekoek and Scholtus' book [@impute1].
+Also, the purpose of modeling is important for selecting imputation methods. If the goal is to interpret the parameter estimate or statistical inference, then it is important to study the missing mechanism carefully and to estimate the missing values using non-missing information as much as possible. If the goal is to predict,  people usually will not study the absence mechanism rigorously (but sometimes the mechanism is obvious). If the absence mechanism is not clear, treat it as missing at random and use mean, median, or k-nearest neighbor to impute. Since statistical inference is sensitive to missing values, researchers from survey statistics have conducted in-depth studies of various imputation schemes which focus on valid statistical inference. The problem of missing values in the prediction model is different from that in the traditional survey.  Therefore, there are not many papers on missing value imputation in the prediction model. Those who want to study further can refer to Saar-Tsechansky and Provost's comparison of different imputation methods [@missing1]and De Waal, Pannekoek and Scholtus' book [@impute1].
 
 ### Impute missing values with median/mode
 
@@ -127,7 +127,7 @@ summary(demo_imp[,1:3])
 lapply(sim.dat,class)[1:3]
 ```
 
-Comparing the KNN result with the previous median imputation, the two are very different. This is because when you tell the `preProcess ()` function to use KNN (the option `method =" knnImpute"`), it will automatically standardize the data. Another way is to use Bagging tree (in the next section). Note that KNN can not imput sample with the entire row missing. The reason is straightforward. Since the algorithm uses the average of its neighbors if none of them has a value, what does it use to calculate the mean?
+Comparing the KNN result with the previous median imputation, the two are very different. This is because when you tell the `preProcess ()` function to use KNN (the option `method =" knnImpute"`), it will automatically standardize the data. Another way is to use Bagging tree (in the next section). Note that KNN can not impute samples with the entire row missing. The reason is straightforward. Since the algorithm uses the average of its neighbors if none of them has a value, what does it use to calculate the mean?
 Let's append a new row with all values missing to the original data frame to get a new object called `temp`. Then apply KNN to `temp` and see what happens:
 
 ```{r}
@@ -287,7 +287,7 @@ dat_bc<-subset(sim.dat,select=c("store_trans","online_trans"))
 (trans<-preProcess(dat_bc,method=c("BoxCox")))
 ```
 
-The last line of the output shows the estimates of $\lambda$ for each variable.  As before,   use `predict()` to get the transformed result:
+The last line of the output shows the estimates of $\lambda$ for each variable.  As before, use `predict()` to get the transformed result:
 
 ```{r bc, fig.cap='Box-Cox Transformation', out.width='80%', fig.asp=.75, fig.align='center'}
 transformed<-predict(trans,dat_bc)
@@ -375,7 +375,7 @@ Some readers may have found that the above code does not seem to standardize the
 ## Collinearity
 
 
-It is probably a technical term that many un-technical people also know. There is an excellent function in `corrplot` package with the same name `corrplot()` that can visualize correlation structure of a set of predictors. The function has the option to reorder the variables in a way that reveals clusters of highly correlated ones. 
+It is probably a technical term that many un-technical people also know. [[[I think a simple explanation of collinearity should be included:  Collinearity is when two or more predictor variables are correlated.]]] There is an excellent function in `corrplot` package with the same name `corrplot()` that can visualize correlation structure of a set of predictors. The function has the option to reorder the variables in a way that reveals clusters of highly correlated ones. 
 
 ```{r corp, out.width='80%', fig.asp=.75, fig.align='center'}
 # select non-survey numerical variables
@@ -478,3 +478,6 @@ head(predict(dumMod,sim.dat))
 ```
 
 If you think the impact income levels on purchasing behavior is different for male and female, then you may add the interaction term between `income` and `gender`. You can do this by adding `income: gender` in the formula. 
+
+
+[[[Any thoughts on including topics about feature building for ML?  Often some complicated transformation on raw data is done before it is used as a feature in a ML model.  Also special types of data such as pictures or text need some basic preprocessing to be represented correctly for ML algorithms.]]]
