@@ -332,7 +332,7 @@ The basic idea of an association rule is: when events occur together more often 
 
 10. Artificial Neural Network
 
-The term neural network has evolved to encompass a repertoire of models and learning methods. There has been lots of hype around the model family making them seem magical and mysterious.  A neural network is a two-stage regression or classification model.  The basic idea is that it uses linear combinations of the original predictors as surrogate features, and then the new features are put through non-linear activation functions to get hidden units in the 2nd stage. When there are multiple hidden layers, it is called deep learning, another over hyped term. Among varies of neural network models, the most widely used "vanilla" net is the single hidden layer back-propagation network. 
+The term neural network has evolved to encompass a repertoire of models and learning methods. There has been lots of hype around the model family making them seem magical and mysterious.  A neural network is a two-stage regression or classification model.  The basic idea is that it uses linear combinations of the original predictors as surrogate features, and then the new features are put through non-linear activation functions to get hidden units in the 2nd stage. When there are multiple hidden layers, it is called deep learning, another over hyped term. Among varieties of neural network models, the most widely used "vanilla" net is the single hidden layer back-propagation network. 
 
 - Perceptron Neural Network
 - Back Propagation
@@ -342,12 +342,16 @@ The term neural network has evolved to encompass a repertoire of models and lear
 
 11. Deep Learning
 
-The name is a little misleading. As mentioned before, it is multilayer neural network. It is hyped tremendously especially after AlphaGO defeated Li Shishi. Many of the deep learning algorithms are semi-supervised learning algorithms that deal with large data sets with a few unlabeled samples. 
+The name is a little misleading. As mentioned before, it is multilayer neural network. It is hyped tremendously especially after AlphaGO defeated Li Shishi at the board game Go. Many of the deep learning algorithms are semi-supervised learning algorithms that deal with large data sets with a few unlabeled samples. 
+
+[[[
+There are many different types of deep learning applications, some are supervised (computer vision image classification), some are reinforment learning (I think I read that a lot of game AIs use this, such as bots to beat games like super mario), and can also be used to build features in an unsupervised way (autoencoders).  There is a lot of hype in this topic but I think deep learning differentiates itself from earlier ANN because of many recent advacements that make it possible to have very large and very deep networks: backprop, new ways to initialize weights, dropout etc.
 
 - Restricted Boltzmann Machine (RBN)
 - Deep Belief Networks (DBN)
 - Convolutional Network
 - Stacked Autoencoders
+- Long short-term memory (LSTM)
 
 12. Dimensionality Reduction
 
