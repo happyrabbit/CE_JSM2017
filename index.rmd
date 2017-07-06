@@ -5,10 +5,6 @@ date: '`r Sys.Date()`'
 output:
   bookdown::gitbook:
     config:
-      download:
-      - pdf
-      - epub
-      - mobi
       edit: null
       fontsettings:
         family: sans
@@ -36,15 +32,18 @@ output:
       toolbar:
         position: fixed
 description: This is the handouts for CE course at JSM 2017
-documentclass: book
+documentclass: krantz
 link-citations: yes
+colorlinks: yes
+monofont: "Source Code Pro"
+monofontoptions: "Scale=0.7"
 bibliography: bibliography.bib
 site: bookdown::bookdown_site
 biblio-style: apalike
 ---
 
-
-```{r, echo=FALSE}
+```{r}
+options(formatR.indent = 2, width = 55)
 #setwd("/Users/happyrabbit/Documents/GitHub/CE_JSM2017")
 #bookdown::render_book("index.Rmd", "bookdown::gitbook")
 ```
@@ -65,5 +64,9 @@ The authors have striven to minimize the number of errors, but no guarantee is m
 She holds MS and Ph.D. in statistics from Iowa State University, BS in mathematical statistics from Beijing Normal University.
 
 **Ming Li** is currently a Sr. Data Scientist at Amazon. He was Data Scientist at Wal-Mart and an Adjunct Faculty of Department and Marketing and Business Analytics in TAMU – Commerce. He is also the Chair of Quality & Productivity Section of ASA for 2016. He was a Statistical Leader at General Electric Global Research Center and Research Statistician at SAS Institute. He obtained his Ph.D. in Statistics from Iowa State University at 2010. With deep statistics background and a few years’ experience in data science, he has trained and mentored numerous junior data scientist with different backgrounds such as statistics, computer science, and business analytics. 
+
+# Acknowledgements {-}
+
+We want to give special thanks to Alex Shum and David Body for their editing and comments on the sections of this book. 
 
 
