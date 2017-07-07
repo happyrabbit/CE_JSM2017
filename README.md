@@ -30,16 +30,16 @@ Ming Li
 **Requirements**
 
 The prerequisite knowledge is MS level education in statistics and entry level of R-Studio.
- Please bring a laptop with the latest version of R and Rstudio installed (see more below for the technical setup). 
+Please bring a laptop with the latest version of R and Rstudio installed (see more below for the technical setup). 
 
 **Time schedule**
 
 |  | Time | Topic |
 |--------|-------------------------|---------------------------------------------------------|
-| Slot 1 | 8.30 a.m. - 10.15 a.m. | Introduction, setup, and overview |
-| Slot 2 | 10.30 a.m. - 12.30 a.m. |  |
-| Slot 3 | 2.00 p.m. - 3.15 p.m. | |
-| Slot 4 | 3.30 p.m. - 5.00 p.m. | |
+| Slot 1 | 8.30 a.m. - 10.15 a.m. | Introduction, setup, overview and The art of data science |
+| Slot 2 | 10.30 a.m. - 12.30 a.m. | Big Data Cloud Platform and Data Wrangling |
+| Slot 3 | 2.00 p.m. - 3.15 p.m. | Data Pre-processing, Markdown, HTML5 Slides|
+| Slot 4 | 3.30 p.m. - 5.00 p.m. | Shiny Dashboard, Soft Skills for Data Scientists|
 
 
 ## Accompanying Electronic Book
@@ -52,9 +52,10 @@ Chinese book: [need to ask publisher]
 
 Please make sure that the current version of R is installed. If not, update from here: [https://cran.r-project.org/](https://cran.r-project.org/)
 
-We will use RStudio in the course. You might want to use it, too: [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)
+We will use RStudio in the course: [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)
 
 We are going to need a couple of packages from CRAN: You can install them all by executing the following code chunk:
+
 
 ```r
 p_needed <- c("plyr", "dplyr", "caret","e1071","gridExtra","lattice","imputeMissings",

@@ -1091,7 +1091,7 @@ The dygraphs package is an R interface to the dygraphs JavaScript charting libra
 
 ```{r, message=FALSE}
 library(dygraphs)
-wikiview<-read.csv("https://raw.githubusercontent.com/happyrabbit/linhui.org/gh-pages/CE_JSM2017/Slides/wikiview.csv")
+wikiview<-read.csv("Data/wikiview.csv")
 
 tr<-wikiview%>%
   filter(article == "Donald_Trump")%>%

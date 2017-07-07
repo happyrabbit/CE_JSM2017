@@ -44,7 +44,6 @@ biblio-style: apalike
 
 ```{r}
 options(formatR.indent = 2, width = 55)
-#setwd("/Users/happyrabbit/Documents/GitHub/CE_JSM2017")
 #bookdown::render_book("index.Rmd", "bookdown::gitbook")
 ```
 
