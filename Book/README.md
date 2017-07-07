@@ -31,6 +31,7 @@ Priority 2:
 - Feature selection
 - Regularized regression
 - Regularized generalized regression
+- Deep Learning and its application
 
 Priority 3:
 
