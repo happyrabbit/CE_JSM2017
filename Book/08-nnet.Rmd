@@ -290,7 +290,7 @@ nnetTune <- train(trainx, trainy,
 
 
 ```{r, echo=FALSE}
-load("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/nnetTune.RData")
+load("Data/nnetTune.RData")
 ```
 
 
@@ -332,7 +332,7 @@ avnnetTune <- train(trainx, trainy,
 ```
 
 ```{r load_result, echo=FALSE}
-load("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/avnnetTune.RData")
+load("Data/avnnetTune.RData")
 ```
 
 When the number of hidden units is 10, there are too many parameters in the model, so you will have the following warning:
@@ -370,7 +370,7 @@ gbmTune <- train(trainx, trainy,
 ```
 
 ```{r, echo=FALSE}
-load("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/gbmTuneNN.RData")
+load("Data/gbmTuneNN.RData")
 trainx = dplyr::select(sim1_da1, -y)
 trainy = sim1_da1$y
 ```

@@ -429,7 +429,7 @@ install.packages("flexdashboard")
 
 Then you can create an R Markdown document with the `flexdashboard::flex_dashboard` output format within RStudio using the New R Markdown dialog:
 
-```{r, fig.retina=NULL, out.width=400, echo=FALSE, fig.align='center'}
+```{r RR_fig1, fig.retina=NULL, out.width=400, echo=FALSE, fig.align='center'}
 knitr::include_graphics("http://scientistcafe.com/CE_JSM2017/Examples/createdashboard.PNG")
 ```
 
@@ -1026,7 +1026,7 @@ The R package DT provides an R interface to the JavaScript library DataTables. R
 
 Here is a simple example using our clothes customer data:
 
-```{r,message=FALSE}
+```{r DT,message=FALSE}
 library(DT)
 library(dplyr)
 
@@ -1050,9 +1050,6 @@ seg<-sim.dat%>%
   datatable( seg,
              # no row names
              rownames = FALSE, 
-             # Assign colomn names for output table
-            colnames = c('Segment', 'Age', 'Female %', 'House Owner', 
-                         'Store $','Online $', 'Store #', 'Online #' ),
              # Define table CSS Classes
              class = "cell-border stripe",
              # Define table caption
