@@ -17,6 +17,16 @@ E(\mathbf{y}-\hat{\mathbf{y}})^{2}=E[f(\mathbf{X})+\mathbf{\epsilon}-\hat{f}(\ma
   \label{eq:error}$$
   
 
-In the above equation, (1) is the systematic error, It exists because $\hat{f}$  usually does not completely model the "systematic relation" between X and y, where the system relation refers to the stable relationship that exists on different samples. This part of the error can be improved by improving the model; (2) is the random error which represents the part of the response that can not be explained by current input data. A more complex model does not reduce the error. The biggest problem with black-box models is to fit random error as well, i.e., over-fitting.
+In the above equation, (1) is the systematic error, It exists because $\hat{f}$  usually does not completely model the "systematic relation" between X and y, where the system relation refers to the stable relationship that exists on different samples. This part of the error can be improved by improving the model; (2) is the random error which represents the part of the response that can not be explained by current input data. A more complex model does not reduce the error. The biggest problem with black-box models is to fit random error as well, i.e., over-fitting. The notable feature of random error is that it can not be repeated on different samples. So a way to determine whether there is overfitting is to reserve a part of the sample as a test set and then check the performance of the trained model on the test data. Note that overfitting is a general problem, and any model may be overly fitted. Because black-box model usually has a large number of parameters,  it is more suspectable to over-fitting. 
+
+The systematic error can be further decomposed as:
+
+\[
+\begin{array}{ccc}
+E[f(\mathbf{X})-\hat{f}(\mathbf{X})]^{2} & = & E\left(f(\mathbf{X})-E[\hat{f}(\mathbf{X})]+E[\hat{f}(\mathbf{X})]-\hat{f}(\mathbf{X})\right)^{2}\\
+ & = & E\left(E[\hat{f}(\mathbf{X})]-f(\mathbf{X})\right)^{2}+E\left(\hat{f}(\mathbf{X})-E[\hat{f}(\mathbf{X})]\right)^{2}\\
+ & = & [Bias(\hat{f}(\mathbf{X}))]^{2}+Var(\hat{f}(\mathbf{X}))
+\end{array}
+\]
 
 
