@@ -1,14 +1,18 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Neural Network
 
 Neural Network and its derivatives are so far the most hyped models. Those models sound fancy and mysterious, but it is no more than a button push in the implementation (thanks to all kinds of software). They require nearly no data preprocessing, and the users do not need to understand the reason behind the algorithms.  People usually react to things they do not understand in two ways: deification and demonization. The black box model is the first case.  In any case, in this chapter will illustrate the basic mathematical background of the neural network, what need to pay attention when using it and how to use R to train the neural network model. Hope it will help to demystify neural network in some degree.  Many models are like T stage exaggerated clothes, they look fancy but not necessarily practical in real life.
-
 
 ## Projection Pursuit Regression
 
 Before moving onto neural networks, let us start with a broader framework, PPR (Projection Pursuit Regression). It has a form of **additive model** of the derived features rather than the inputs themselves. Another widely used algorithm, AdaBoost, also fits an additive model in a base learner. I will talk more about it in my future post on tree model.  [element of statistical learning]
 
 
-Assume $\mathbf{X^{T}}=(X_1,X_2,\dots,X_P)$ is a vector with p variables. $Y$ is the corresponding response variable. $\mathbf{\omega_{m}},m=1,2,\dots,M$ is parameter vector with 7 elements. 
+Assume $\mathbf{X^{T}}=(X_1,X_2,\dots,X_p)$ is a vector with $p$ variables. $Y$ is the corresponding response variable. $\mathbf{\omega_{m}},m=1,2,\dots,M$ is parameter vector with $p$ elements. 
 
 
 
@@ -30,7 +34,7 @@ I know it is very abstract. Let's look at some examples. Assume $p=2$, i.e. ther
 
 Here is how you can simulate the data and plot it using R:
 
-```{r}
+```{r nnet_simulate_data}
 # use plot3D package to generate 3D plot
 library(plot3D)
 # get x1 and x2
@@ -327,7 +331,7 @@ avnnetTune <- train(trainx, trainy,
                    maxit = 500)
 ```
 
-```{r, echo=FALSE}
+```{r load_result, echo=FALSE}
 load("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/avnnetTune.RData")
 ```
 

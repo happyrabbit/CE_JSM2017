@@ -1,0 +1,22 @@
+# Model Error
+
+## Systematic Error and Random Error
+
+Assume $\mathbf{X}$ is $n \times p$ observation matrix and $\mathbf{y}$ is response variable, we have:
+
+$$\mathbf{y}=f(\mathbf{X})+\mathbf{\epsilon}$$
+
+where $\mathbf{\epsilon}$ is the random error with a mean of zero. The function $f(\cdot)$ is our modeling target, which represents the information of Y that can be explained by X. The main goals of estimating $f(\cdot)$ are inference and prediction, or sometimes both. In general, there is a trade-off between flexibility and interpretability of the model. So data scientists need to comprehend the delicate balance between the two. 
+
+Depending on the modeling purposes, the requirement for interpretability varies. If the prediction is the only goal, then as long as the prediction is accurate enough,  the interpretability is not under consideration. In this case, people often use "black box" model, such as random forest, boosting tree, neural network, support vector machine and so on. These models are very flexible but nearly impossible to explain. Their predictive accuracy is usually higher on the training set, but not necessary when it predicts. It is not surprising since those models have a huge number of parameters and high flexibility that they can memorize the entire training data. A paper by Chiyuan Zhang et. al. in 2017 pointed out that "Deep neural networks (even just two-layer net) easily fit random labels" (https://arxiv.org/abs/1611.03530). The traditional forms of regularization, such as weight decay, dropout, and data augmentation, fail to control generalization error. It poses a conceptual challenge to statistical theory and also calls our attention when we use such black-box models.
+
+Assume we have $\hat{f}$ which is an estimator of $f$. Then we can further get  $\mathbf{\hat{y}}=\hat(f)(\mathbf(X))$. The predicted error is divided into two parts, systematic error and random error:
+
+$$
+E(\mathbf{y}-\hat{\mathbf{y}})^{2}=E[f(\mathbf{X})+\mathbf{\epsilon}-\hat{f}(\mathbf{X})]^{2}=\underset{\text{(1)}}{\underbrace{E[f(\mathbf{X})-\hat{f}(\mathbf{X})]^{2}}}+\underset{\text{(2)}}{\underbrace{Var(\mathbf{\epsilon})}}
+  \label{eq:error}$$
+  
+
+In the above equation, (1) is the systematic error, It exists because $\hat{f}$  usually does not completely model the "systematic relation" between X and y, where the system relation refers to the stable relationship that exists on different samples. This part of the error can be improved by improving the model; (2) is the random error which represents the part of the response that can not be explained by current input data. A more complex model does not reduce the error. The biggest problem with black-box models is to fit random error as well, i.e., over-fitting.
+
+

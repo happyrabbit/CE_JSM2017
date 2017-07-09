@@ -210,7 +210,7 @@ knitr::include_graphics("http://scientistcafe.com/book/Figure/SkillEN.png")
 
 ## Types of Learning
 
-There are three broad groups of styles: supervised learning, reinforcement learning, and unsupervised learning. [Skip semi-supervised learning]
+There are three broad groups of styles: supervised learning, reinforcement learning, and unsupervised learning. 
 
 In supervised learning, each observation of the predictor measurement(s) corresponds to a response measurement. There are two flavors of supervised learning: regression and classification. In regression, the response is a real number such as the total net sales in 2017, or the yield of corn next year. The goal is to approximate the response measurement as much as possible. In classification, the response is a class label, such as dichotomous response such as yes/no. The response can also have more than two categories, such as four segments of customers. A supervised learning model is a function that maps some input variables with corresponding parameters to a response y.  Modeling tuning is to adjust the value of parameters to make the mapping fit the given response.  In other words, it is to minimize the discrepancy between given response and the model output. When the response y is a real value, it is intuitive to define discrepancy as the squared difference between model output and given the response. When y is categorical,  there are other ways to measure the difference, such as AUC or information gain. 
 
@@ -275,7 +275,7 @@ Embedding method is part of the machine learning model.  Some model has built-in
 
 4. Regularization Method
 
-This method itself is not a complete model, but rather an add-on to other models (such as regression models). It appends a penalty function on the criteria used by the original model to estimate the variables (such as likelihood function or sum of squared error). In this way, it penalizes model complexity and contracts the model parameters. That is why people call them "shrinkage method." This approach is advantageous in practice. 
+This method itself is not a complete model, but rather an add-on to other models (such as regression models). It appends a penalty function on the criteria used by the original model to estimate the variables (such as likelihood function or sum of squared error). In this way, it penalizes model complexity and contracts the model parameters. That is why people call them "shrinkage method." This approach is advantageous in practice. 
 
 -  Ridge Regression
 -  Least Absolute Shrinkage and Selection Operator (LASSO)

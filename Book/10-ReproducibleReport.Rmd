@@ -1002,14 +1002,14 @@ width=100% }
 
 The control part of the source code is (analogy to `ui` in `shiny`): 
 
-```{r comment='',echo=FALSE}
-cat(readLines('segmentdb_ui.csv'), sep = '\n')
+```{r segmentdb_ui, comment='',echo=FALSE}
+cat(readLines('Data/segmentdb_ui.csv'), sep = '\n')
 ```
 
 The reactive expressions are  (analogy to `server` in `shiny`): 
 
-```{r comment='',echo=FALSE}
-cat(readLines('segmentdb_server.csv'), sep = '\n')
+```{r segmentdb_server, comment='',echo=FALSE}
+cat(readLines('Data/segmentdb_server.csv'), sep = '\n')
 ```
 
 Click [here](https://raw.githubusercontent.com/happyrabbit/linhui.org/gh-pages/CE_JSM2017/Examples/segmentdb.Rmd) to download the complete source code. Here is the [app](https://scientistcafe.shinyapps.io/shinysample/).

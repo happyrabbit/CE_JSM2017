@@ -9,6 +9,9 @@ Priority 1:
 - Add R code folder & sort out code 
 - Update setting up package list
 - Slides for the rest by July 28 2017
+- Add it's your turn & solution
+- Add http://scientistcafe.com text
+
 
 Priority 2: 
 

@@ -1,0 +1,216 @@
+---
+title: "Dynamic/Reproducible Report"
+subtitle: "R Markdown and HTML5"
+author: "Hui Lin"
+date: "`r Sys.Date()`"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+- Example: [EX1_Markdown.Rmd](https://raw.githubusercontent.com/happyrabbit/linhui.org/gh-pages/CE_JSM2017/Examples/EX1_Markdown.Rmd)([output](http://scientistcafe.com/CE_JSM2017/Examples/EX1_Markdown.html))
+
+- Markdown: lightweight markup language designed to make authoring content easy for everyone
+
+- R + Markdown = R Markdown
+
+- How It Works? 
+
+![](http://scientistcafe.com/CE_JSM2017/images/RMarkdownFlow.png)
+
+## Get Started
+
+- Create a sample `.Rmd` file in R Studio:
+
+<center>
+![](http://scientistcafe.com/CE_JSM2017/images/newmd1.PNG)
+</center>
+
+## Get Started
+
+- Input your document title and author name and click "OK":
+
+<center>
+![](http://scientistcafe.com/CE_JSM2017/images/newmd2.PNG)
+</center>
+
+## Markdown Basic - Paragraphs, Headers
+
+```pre
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+
+Alternatively, for H1 and H2, an underline-ish style:
+
+A First Level Header
+=====================
+
+A Second Level Header
+---------------------
+```
+
+## Markdown Basic - Paragraphs, Headers
+
+```{r, out.width = "500px",out.height = "350px",echo=FALSE}
+knitr::include_graphics("http://scientistcafe.com/CE_JSM2017/images/headermd.PNG")
+```
+
+## Markdown Basic - Blockquotes
+
+```pre
+A statistician gave birth to twins, but only had one of them baptised. 
+She kept the other as a control.
+
+News bulletin: A local Physicist declared that he has figured out the ingredients in
+McDonald’s secret sauce: protons, nuetrons, and electrons.
+
+> All you need in this life is ignorance and confidence, 
+and then success is sure. [Mark Twain]
+> 
+> A bartender says, “We don’t serve faster than light particles in here.” 
+A tachyon walks into a bar. [A joke from Prof. Bill Rand]
+```
+
+A statistician gave birth to twins, but only had one of them baptised. 
+She kept the other as a control.
+
+News bulletin: A local Physicist declared that he has figured out the ingredients in
+McDonald’s secret sauce: protons, nuetrons, and electrons.
+
+> All you need in this life is ignorance and confidence, 
+and then success is sure. [Mark Twain]
+> 
+> A bartender says, “We don’t serve faster than light particles in here.” 
+A tachyon walks into a bar. [A joke from Prof. Bill Rand]
+
+## Markdown Basic - Phrase Emphasis
+
+```pre
+Some of these words *are italic*.
+Some of these words _are italic also_.
+
+Use two asterisks for **bold**.
+Or, if you prefer, __use two underscores instead__.
+
+Strikethrough uses two tildes. ~~Scratch this.~~
+```
+
+Some of these words *are italic*.
+Some of these words _are italic also_.
+
+Use two asterisks for **bold**.
+Or, if you prefer, __use two underscores instead__.
+
+Strikethrough uses two tildes. ~~Scratch this.~~
+
+## Markdown Basic - Lists
+
+```pre
+* If it’s green and wiggles, it’s biology.
+* If it stinks, it’s chemistry.
+* If it doesn’t work, it’s Physics.
+```
+
+* If it’s green and wiggles, it’s biology.
+* If it stinks, it’s chemistry.
+* If it doesn’t work, it’s Physics.
+
+## Markdown Basic - Lists
+
+```pre
++ Engineers think that equations approximate the real world.
++ Scientists think that the real world approximates equations.
++ Mathematicians don’t care.
+```
+
++ Engineers think that equations approximate the real world.
++ Scientists think that the real world approximates equations.
++ Mathematicians don’t care.
+
+
+## Markdown Basic - Lists
+
+```pre
+An engineer, a physicist, and a mathematician were on a train heading north, and had
+just crossed the border into Scotland.
+
+- The engineer looked out of the window and said “Look! Scottish sheep are black!”
+- The physicist said, “No, no. Some Scottish sheep are black.”
+- The mathematician looked irritated. “There is at least one field, containing at
+least one sheep, of - which at least one side is black.”
+- The statistician : “It’s not significant. We only know there’s one black sheep”
+- The computer scientist : “Oh, no! A special case!”
+```
+
+## HTML
+
+- Create
+
+```pre
+---
+title: "Tidy and Reshape Data"
+author: Hui Lin
+date: May 11, 2017
+output: html_document
+---
+```
+
+## Table of Contents (TOC)
+
+- Top
+
+```pre
+---
+title: "Tidy and Reshape Data"
+author: Hui Lin
+date: May 11, 2017
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+---
+```
+
+- Floating
+
+```pre
+---
+title: "Tidy and Reshape Data"
+author: Hui Lin
+date: May 11, 2017
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+---
+```
+
+- `collapsed` (defaults to `TRUE`)
+- `smooth_scroll` (defaults to `TRUE`)
+
+## Code Chunks
+
+- start with ` ```{r} ` and end with ` ``` `
+- keyboard shortcut Ctrl + Alt + I (OS X: Cmd + Option + I)
+- Add Chunk command in the editor toolbar
+
+<center>
+![](http://scientistcafe.com/CE_JSM2017/images/codechunk.PNG)
+</center>
+
+## Customize Chunks
+
+- `include = FALSE` prevents code and results from appearing in the finished file. R Markdown still runs the code in the chunk, and the results can be used by other chunks.
+- `echo = FALSE` prevents code, but not the results from appearing in the finished file. This is a useful way to embed figures.
+- `message = FALSE` prevents messages that are generated by code from appearing in the finished file.
+- `warning = FALSE` prevents warnings that are generated by code from appearing in the finished.
+- `fig.height`, `fig.width` The width and height to use in R for plots created by the chunk (in inches).
