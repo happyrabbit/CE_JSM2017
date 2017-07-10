@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Hui Lin" />
-  <meta name="date" content="2017-07-09" />
+  <meta name="date" content="2017-07-10" />
   <title>Data Pre-processing</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -55,7 +55,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <p class="author">
 Hui Lin
   </p>
-  <p class="date">2017-07-09</p>
+  <p class="date">2017-07-10</p>
 </div>
 <div id="data-types" class="slide section level2">
 <h1>Data types</h1>
@@ -88,6 +88,178 @@ sim.dat$store_exp[<span class="kw">which</span>(sim.dat$store_exp&lt;<span class
 </div>
 <div id="missing-values" class="slide section level2">
 <h1>Missing Values</h1>
+<ul>
+<li>Is there any auxiliary information?</li>
+<li>Is missing a random occurrence?</li>
+<li>What is the purpose of modeling?</li>
+</ul>
+</div>
+<div id="missing-values-medianmode" class="slide section level2">
+<h1>Missing Values: median/mode</h1>
+<ul>
+<li><code>impute()</code> function in <code>imputeMissings</code> package</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># save the result as another object</span>
+demo_imp&lt;-<span class="kw">impute</span>(sim.dat,<span class="dt">method=</span><span class="st">&quot;median/mode&quot;</span>)
+<span class="co"># check the first 5 columns, there is no missing values in other columns</span>
+<span class="kw">summary</span>(demo_imp[,<span class="dv">1</span>:<span class="dv">5</span>])</code></pre></div>
+<ul>
+<li><code>preProcess()</code> function in <code>caret</code> package</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">imp&lt;-<span class="kw">preProcess</span>(sim.dat,<span class="dt">method=</span><span class="st">&quot;medianImpute&quot;</span>)
+demo_imp2&lt;-<span class="kw">predict</span>(imp,sim.dat)
+<span class="kw">summary</span>(demo_imp2[,<span class="dv">1</span>:<span class="dv">5</span>])</code></pre></div>
+</div>
+<div id="missing-values-k-nearest-neighbors" class="slide section level2">
+<h1>Missing Values: K-nearest neighbors</h1>
+<ul>
+<li><code>preProcess()</code> function in <code>caret</code> package</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">imp&lt;-<span class="kw">preProcess</span>(sim.dat,<span class="dt">method=</span><span class="st">&quot;knnImpute&quot;</span>,<span class="dt">k=</span><span class="dv">5</span>)
+<span class="co"># need to use predict() to get KNN result</span>
+demo_imp&lt;-<span class="kw">predict</span>(imp,sim.dat)</code></pre></div>
+</div>
+<div id="solve-the-problem" class="slide section level2">
+<h1>Solve the problem</h1>
+<ul>
+<li>Reason: <code>sim.dat</code> has non-numeric variables</li>
+<li>Solution:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># find factor columns</span>
+imp&lt;-<span class="kw">preProcess</span>(sim.dat,<span class="dt">method=</span><span class="st">&quot;knnImpute&quot;</span>,<span class="dt">k=</span><span class="dv">5</span>)
+idx&lt;-<span class="kw">which</span>(<span class="kw">lapply</span>(sim.dat,class)==<span class="st">&quot;factor&quot;</span>)
+demo_imp&lt;-<span class="kw">predict</span>(imp,sim.dat[,-idx])
+<span class="kw">summary</span>(demo_imp[,<span class="dv">1</span>:<span class="dv">3</span>])</code></pre></div>
+</div>
+<div id="missing-values-bagging-tree" class="slide section level2">
+<h1>Missing Values: Bagging Tree</h1>
+<ul>
+<li>Bagging (Bootstrap aggregating) [[[need to fix it in the material]]]</li>
+<li>Powerful</li>
+<li>Computation is much more intense than KNN</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">imp&lt;-<span class="kw">preProcess</span>(sim.dat,<span class="dt">method=</span><span class="st">&quot;bagImpute&quot;</span>)
+demo_imp&lt;-<span class="kw">predict</span>(imp,sim.dat)
+<span class="kw">summary</span>(demo_imp[,<span class="dv">1</span>:<span class="dv">5</span>])</code></pre></div>
+</div>
+<div id="centering-and-scaling" class="slide section level2">
+<h1>Centering and Scaling</h1>
+<ul>
+<li>Easy to DIY</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">income&lt;-sim.dat$income
+<span class="co"># calculate the mean of income</span>
+mux&lt;-<span class="kw">mean</span>(income,<span class="dt">na.rm=</span>T)
+<span class="co"># calculate the standard deviation of income</span>
+sdx&lt;-<span class="kw">sd</span>(income,<span class="dt">na.rm=</span>T)
+<span class="co"># centering</span>
+tr1&lt;-income-mux
+<span class="co"># scaling</span>
+tr2&lt;-tr1/sdx</code></pre></div>
+<ul>
+<li>Use <code>preProcess()</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sdat&lt;-<span class="kw">subset</span>(sim.dat,<span class="dt">select=</span><span class="kw">c</span>(<span class="st">&quot;age&quot;</span>,<span class="st">&quot;income&quot;</span>))
+<span class="co"># set the &quot;method&quot; option</span>
+trans&lt;-<span class="kw">preProcess</span>(sdat,<span class="dt">method=</span><span class="kw">c</span>(<span class="st">&quot;center&quot;</span>,<span class="st">&quot;scale&quot;</span>))
+<span class="co"># use predict() function to get the final result</span>
+transformed&lt;-<span class="kw">predict</span>(trans,sdat)</code></pre></div>
+</div>
+<div id="resolve-skewness" class="slide section level2">
+<h1>Resolve Skewness</h1>
+<ul>
+<li><code>describe(sim.dat)</code></li>
+<li>Box-Cox transformation</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># select the two columns and save them as dat_bc</span>
+dat_bc&lt;-<span class="kw">subset</span>(sim.dat,<span class="dt">select=</span><span class="kw">c</span>(<span class="st">&quot;store_trans&quot;</span>,<span class="st">&quot;online_trans&quot;</span>))
+(trans&lt;-<span class="kw">preProcess</span>(dat_bc,<span class="dt">method=</span><span class="kw">c</span>(<span class="st">&quot;BoxCox&quot;</span>)))</code></pre></div>
+<p>Use <code>predict()</code> to get the transformed result:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">transformed&lt;-<span class="kw">predict</span>(trans,dat_bc)</code></pre></div>
+</div>
+<div id="your-turn" class="slide section level2">
+<h1>Your Turn</h1>
+<ul>
+<li>Check before and after transformation</li>
+</ul>
+</div>
+<div id="resolve-outliers" class="slide section level2">
+<h1>Resolve Outliers</h1>
+<ul>
+<li>Defining outliers is hard</li>
+<li>Basic visualizations: box-plot, histogram and scatterplot</li>
+<li>Statistical methods to define outliers</li>
+</ul>
+</div>
+<div id="z-score-and-modified-z-score" class="slide section level2">
+<h1>Z-score and modified Z-score</h1>
+<ul>
+<li>Z-score</li>
+</ul>
+<p><span class="math display">\[Z_{i}=\frac{Y_{i}-\bar{Y}}{s}\]</span> where <span class="math inline">\(\bar{Y}\)</span> and <span class="math inline">\(s\)</span> are mean and standard deviation for <span class="math inline">\(Y\)</span></p>
+<ul>
+<li>Modified Z-score</li>
+</ul>
+<p><span class="math display">\[M_{i}=\frac{0.6745(Y_{i}-\bar{Y})}{MAD}\]</span></p>
+<p>where MAD is the median of a series of <span class="math inline">\(|Y_{i} - \bar{Y}|\)</span>, called the median of the absolute dispersion</p>
+<ul>
+<li>Iglewicz and Hoaglin suggest that the points with the Z-score greater than 3.5 are possible outliers</li>
+</ul>
+</div>
+<div id="spatial-sign-transformation" class="slide section level2">
+<h1>Spatial Sign Transformation</h1>
+<p><span class="math display">\[x_{ij}^{*}=\frac{x_{ij}}{\sqrt{\sum_{j=1}^{p}x_{ij}^{2}}}\]</span></p>
+<ol style="list-style-type: decimal">
+<li>It is important to center and scale the predictor data before using this transformation</li>
+<li>Unlike centering or scaling, this manipulation of the predictors transforms them as a group</li>
+<li>If there are some variables to remove (for example, highly correlated variables), do it before the transformation</li>
+</ol>
+<ul>
+<li>Function <code>spatialSign()</code> in <code>caret</code> package can conduct the transformation</li>
+</ul>
+</div>
+<div id="collinearity" class="slide section level2">
+<h1>Collinearity</h1>
+<ul>
+<li>Define: <code>corrplot()</code></li>
+<li>Algorithm to remove a minimum number of predictors to ensure all pairwise correlations are below a certain threshold</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li>Calculate the correlation matrix of the predictors.</li>
+<li>Determine the two predictors associated with the largest absolute pairwise correlation (call them predictors A and B).</li>
+<li>Determine the average correlation between A and the other variables. Do the same for predictor B.</li>
+<li>If A has a larger average correlation, remove it; otherwise, remove predictor B.</li>
+<li>Repeat Step 2-4 until no absolute correlations are above the threshold.</li>
+</ol>
+<ul>
+<li>How to choose the threshold?</li>
+</ul>
+</div>
+<div id="sparse-variables" class="slide section level2">
+<h1>Sparse Variables</h1>
+<ul>
+<li>Detecting rules:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>The fraction of unique values over the sample size</li>
+<li>The ratio of the frequency of the most prevalent value to the frequency of the second most prevalent value.</li>
+</ol>
+</div>
+<div id="re-encode-dummy-variables" class="slide section level2">
+<h1>Re-encode Dummy Variables</h1>
+<ul>
+<li><code>class.ind()</code> from <code>nnet</code> package</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dumVar&lt;-<span class="kw">class.ind</span>(sim.dat$gender)
+<span class="kw">head</span>(dumVar)</code></pre></div>
+<ul>
+<li><code>dummyVars()</code> from <code>caret</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dumMod&lt;-<span class="kw">dummyVars</span>(~gender+house+income,
+                  <span class="dt">data=</span>sim.dat,
+                  <span class="co"># use &quot;origional variable name + level&quot; as new name</span>
+                  <span class="dt">levelsOnly=</span>F)
+<span class="kw">head</span>(<span class="kw">predict</span>(dumMod,sim.dat))</code></pre></div>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
