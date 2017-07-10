@@ -47,3 +47,54 @@ ggplot(dat,aes(x,fx))+
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 ```
+
+The estimated parameters will be different for the different training data. Intuitively, the estimated variance indicates that if we fit the same model with different data sets, how much the estimated results will change. Ideally, the change is small. For high variance models, small changes in the training data result in very different estimates. In general, a model with high flexibility also has high variance., such as the CART tree, and the initial boosting method. The Random Forest and Gradient Boosting Model aim to reduce the variance by summarizing the results obtained on different samples. 
+
+The blue curve in the figure below is obtained by fitting the above nonlinear observations by a smoothing method, which is highly flexible and can fit the current data tightly:
+
+```{r}
+ggplot(dat,aes(x,fx))+geom_smooth(span = 0.03)
+```
+
+However, this method has a high variance, and if we simulate different subsets of the sample, the result curve will change significantly:
+
+```{r, warning=FALSE}
+# set random seed
+set.seed(2016)
+# sample part of the data to fit model
+# sample 1
+idx1=sample(1:length(x),100)
+dat1=data.frame(x1=x[idx1],fx1=fx[idx1])
+p1=ggplot(dat1,aes(x1,fx1))+geom_smooth(span = 0.03)
+# sample 2
+idx2=sample(1:length(x),100)
+dat2=data.frame(x2=x[idx2],fx2=fx[idx2])
+p2=ggplot(dat2,aes(x2,fx2))+geom_smooth(span = 0.03)
+# sample 3
+idx3=sample(1:length(x),100)
+dat3=data.frame(x3=x[idx3],fx3=fx[idx3])
+p3=ggplot(dat3,aes(x3,fx3))+geom_smooth(span = 0.03)
+# sample 4
+idx4=sample(1:length(x),100)
+dat4=data.frame(x4=x[idx4],fx4=fx[idx4])
+p4=ggplot(dat4,aes(x4,fx4))+geom_smooth(span = 0.03)
+multiplot(p1,p2,p3,p4,cols=2)
+```
+
+Fitting the linear model using the same four subsets, the result barely changes:
+
+```{r,warning=FALSE}
+p1=ggplot(dat1,aes(x1,fx1))+ 
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+p2=ggplot(dat2,aes(x2,fx2))+ 
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+p3=ggplot(dat3,aes(x3,fx3))+ 
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+p4=ggplot(dat4,aes(x4,fx4))+ 
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+multiplot(p1,p2,p3,p4,cols=2)
+```
