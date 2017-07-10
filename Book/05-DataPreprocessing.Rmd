@@ -8,7 +8,7 @@ knitr::include_graphics("http://scientistcafe.com/images/dataclean.png")
 
 In real life, depending on the stage of data cleanup, data has the following types:
 
-1. raw data
+1. Raw data
 2. Technically correct data
 3. Data that is proper for the model
 4. Summarized data
@@ -52,7 +52,7 @@ Are there any problems? Questionnaire response Q1-Q10 seem reasonable, the minim
 - There is a negative value ( -500) in `store_exp ` which is not logical. 
 - Someone is 300 years old. 
 
-How to deal with that? Depending on the real situation, if the sample size is large enough, it will not hurt to delete those problematic samples. Here we have 1000 observations. Since marketing survey is usually expensive,  it is better to set these values as missing and impute them instead of deleting the rows. 
+How to deal with that? Depending on the real situation, if the sample size is large enough, it will not hurt to delete those problematic samples. Here we have 1000 observations. Since marketing survey is usually expensive,  it is better to set these values as missing and impute them instead of deleting the rows. 
 
 
 ```{r}
