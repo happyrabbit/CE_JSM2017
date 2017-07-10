@@ -30,3 +30,20 @@ E[f(\mathbf{X})-\hat{f}(\mathbf{X})]^{2} & = & E\left(f(\mathbf{X})-E[\hat{f}(\m
 \]
 
 
+The systematic error consists of two parts,  $ Bias(\hat{f}(\mathbf{X}))$ and  $Var (\hat{f} (\mathbf{X}))$. To minimize the systematic error, we need to minimize the bias and variance. The bias represents the error caused by the approximation of the reality of the model, which may be very complex. For example, linear regression assumes that there is a linear relationship between the independent variable and the response, but the perfect linear relationship in real life is not common. The relationship between x and fx in the following figure is non-linear. Therefore, despite a large sample size, linear regression can not give the accurate prediction. In other words, in this case, the prediction of the linear regression model has a high bias.
+
+```{r}
+library(grid)
+library(lattice)
+library(ggplot2)
+source("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/R_Code/multiplot.r")
+# randomly simulate some non-linear samples
+x=seq(1,10,0.01)*pi
+e=rnorm(length(x),mean=0,sd=0.2)
+fx<-sin(x)+e+sqrt(x)
+dat=data.frame(x,fx)
+# plot fitting result
+ggplot(dat,aes(x,fx))+ 
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```

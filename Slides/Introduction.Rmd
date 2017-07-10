@@ -2,7 +2,7 @@
 title: "Introduction: the art of data science"
 author: "Hui Lin"
 date: "3/29/2017"
-output:
+output: 
   slidy_presentation: default
   ioslides_presentation: default
 ---
