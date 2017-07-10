@@ -98,3 +98,50 @@ p4=ggplot(dat4,aes(x4,fx4))+
   geom_smooth(method = "lm", se = FALSE)
 multiplot(p1,p2,p3,p4,cols=2)
 ```
+
+In general, the variance ($Var(\hat{f}(\mathbf{X}))$) **increases** and the bias ($Bias(\hat{f}(\mathbf{X}))$) **decreases** as the model flexibility increases. Variance and bias together determine the systematic error (or mean square error, MSE). As we increase the flexibility of the model, at first the rate at which $Bias(\hat{f}(\mathbf{X}))$ decreases is faster than $Var (\hat{f} (\mathbf{X}))$, so the MSE decreases. However, to some degree, higher flexibility has little effect on $Bias(\hat{f}(\mathbf{X}))$ but $Var (\hat{f} (\mathbf{X}))$ increases significantly, so the MSE increases. 
+
+### Measurement Error in the Response
+
+The random error ($\mathbf{\epsilon}$) reflects the measurement error in the response.  This part of the error is irreducible, and so it makes the root mean square error (RMSE) and $R^2$ have the corresponding upper and lower limits. RMSE and $R^2$ are commonly used performance measures for the regression model which we will talk in more detail later.  Therefore, the random error term not only represents the part of fluctuations the model can not explain but also contains measurement error in the response variables. Section 20.2 of Applied Predictive Modeling [@APM] has an example that shows the effect of the measurement error in the response variable on the model performance (RMSE and $R^2$). 
+
+The authors increased the error in the response proportional to a base level error which was gotten using the original data without introducing extra noise.  Then fit a set of models repeatedly using the "contaminated" data sets to study the change of $RMSE$ and $R^2 $ as the level of noise. Here we use clothing consumer data for a similar illustration. Suppose many people do not want to disclose their income and so we need to use other variables to establish a model to predict income. We set up the following model:
+
+```{r}
+# load data
+sim.dat <- read.csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/SegData.csv ")
+ymad<-mad(na.omit(sim.dat$income))
+# calculate z-score
+zs<-(sim.dat$income-mean(na.omit(sim.dat$income)))/ymad
+# which(na.omit(zs>3.5)): identify outliers
+# which(is.na(zs)): identify missing values
+idex<-c(which(na.omit(zs>3.5)),which(is.na(zs)))
+# delete rows with outliers and missing values
+sim.dat<-sim.dat[-idex,]
+fit<-lm(income~store_exp+online_exp+store_trans+online_trans,data=sim.dat)
+```
+
+The output shows that without additional noise, the root mean square error (RMSE) of the model is `r as.integer (summary(fit)$sigma), $R^2$ is `r round(summary(fit)$adj.r.squared,2)`.  
+
+Let's add various degrees of noise (0 to 3 times the RMSE) to the variable `income`:
+
+$$ RMSE \times (0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0) $$
+
+```r
+noise<-matrix(rep(NA,7*nrow(sim.dat)),nrow=nrow(sim.dat),ncol=7)
+for (i in 1:nrow(sim.dat)){
+noise[i,]<-rnorm(7,rep(0,7),summary(fit)$sigma*seq(0,3,by=0.5))
+}
+```
+
+We then examine the effect of noise intensity on $R^2$ for models with different complexity. The models with complexity from low to high are ordinary linear regression, partial least square regression(PLS), multivariate adaptive regression spline, support vector machine (kernel function is radial basis function), and random forest.
+
+```r
+# fit ordinary linear regression
+rsq_linear<-rep(0,ncol(noise))
+for (i in 1:7){
+withnoise<-sim.dat$income+noise[,i]
+fit0<-lm(withnoise~store_exp+online_exp+store_trans+online_trans,data=sim.dat)
+rsq_linear[i]<-summary(fit0)$adj.r.squared
+}
+```
