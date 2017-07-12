@@ -42,11 +42,11 @@ Please bring a laptop with the latest version of R and Rstudio installed (see mo
 | Slot 4 | 3.30 p.m. - 5.00 p.m. | Shiny Dashboard, Soft Skills for Data Scientists|
 
 
-## Accompanying Electronic Book
+## Accompanying Book
 
-http://scientistcafe.com/CE_JSM2017/
+Online Book (still writing): http://scientistcafe.com/CE_JSM2017/ 
 
-Chinese book: [need to ask publisher]
+Chinese Book: http://scientistcafe.com/book/ [need to ask the publisher]
 
 ## Set up
 
@@ -80,7 +80,6 @@ if (length(p_to_install) > 0) {
 
 lapply(p_needed, require, character.only = TRUE)
 ```
-
 
 ## Live updates
 
