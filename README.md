@@ -48,11 +48,19 @@ http://scientistcafe.com/CE_JSM2017/
 
 Chinese book: [need to ask publisher]
 
-## Technical setup for the course
+## Set up
 
-Please make sure that the current version of R is installed. If not, update from here: [https://cran.r-project.org/](https://cran.r-project.org/)
+### Obtaining R and RStudio
 
-We will use RStudio in the course: [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)
+To run the code in this workshop, you will need to install both
+R and the RStudio IDE. Both are open source, free, and easy to install.
+They are already available on our lab computers, but you can install
+manually on your own machine from the following sources:
+
+- Download and install R, <https://www.r-project.org/>.
+- Download and install RStudio, <http://www.rstudio.com/download>.
+
+### Required packages
 
 We are going to need a couple of packages from CRAN: You can install them all by executing the following code chunk:
 
