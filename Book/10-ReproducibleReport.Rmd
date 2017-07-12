@@ -1092,24 +1092,20 @@ wikiview<-read.csv("Data/wikiview.csv")
 
 tr<-wikiview%>%
   filter(article == "Donald_Trump")%>%
-  select(timestamp, Donald_Trump = views)
+  dplyr::select(timestamp, Donald_Trump = views)
 
 iv<-wikiview%>%
   filter(article == "Ivanka_Trump")%>%
-  select(timestamp, Ivanka_Trump = views)
+  dplyr::select(timestamp, Ivanka_Trump = views)
 
 ku<-wikiview%>%
   filter(article == "Jared_Kushner")%>%
-  select(timestamp, Jared_Kushner = views)
+  dplyr::select(timestamp, Jared_Kushner = views)
 
 cl<-wikiview%>%
   filter(article == "Hillary_Clinton")%>%
-  select(timestamp, Hillary_Clinton = views)
+  dplyr::select(timestamp, Hillary_Clinton = views)
 
-#dplot<- cbind(Donald_Trump = ts(tr$Donald_Trump, frequency = 365, start=c(2016,01,01)),
-#Ivanka_Trump = ts(iv$Ivanka_Trump, frequency = 365, start=c(2016,01,01)),
-#Jared_Kushner = ts(ku$Jared_Kushner, frequency = 365, start=c(2016,01,01)),
-#Hillary_Clinton = ts(cl$Hillary_Clinton, frequency = 365, start=c(2016,01,01)))
 library(xts)
 library(lubridate)
 dplot<-merge(tr,iv)
@@ -1117,7 +1113,7 @@ dplot<-merge(dplot,ku)
 dplot<-merge(dplot,cl)
 dplot$timestamp<-ymd(dplot$timestamp/100)
 
-dplot <- xts(select(dplot, -timestamp), order.by = dplot$timestamp)
+dplot <- xts(dplyr::select(dplot, -timestamp), order.by = dplot$timestamp)
 dygraph(dplot, main = "Wikipedia Views")%>% 
   dyRangeSelector()
 ```

@@ -93,7 +93,6 @@ To be simple I will still use data science in the rest of the book. But it is im
 
 ## What kind of questions can data science solve?
 
-
 ### Prerequisites
 
 Data science is not a panacea, and data scientists are not magicians. There are problems data science can't help. It is best to make a judgment as early in the analytical cycle as possible. Tell your clients honestly and clearly when you figure data analytics can't give the answer they want. What kind of questions can data science solve? What are the requirements for our question?
@@ -144,12 +143,12 @@ In the problem such as customer segmentation, after you cluster the sample, the 
 - What is the difference in the magnitude of the variable? (Decide whether the data needs to be standardized)
 - What is the prediction variable in the model?
 - What is the age distribution of the respondents?
- 
+
 Data description is often used to check data, find the appropriate data preprocessing method, and demonstrate the model results.
 
 3. Clustering
 
- Clustering is a widespread problem, which is usually related to classification. Clustering answers questions like:
+Clustering is a widespread problem, which is usually related to classification. Clustering answers questions like:
 
 - Which consumers have similar product preferences? (Marketing)
 - Which printer performs similar pattern to the broken ones? (Quality Control)

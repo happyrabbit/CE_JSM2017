@@ -89,7 +89,7 @@ summary(demo_imp[,1:3])
 
 ## Missing Values: Bagging Tree
 
-- Bagging (Bootstrap aggregating) [[[need to fix it in the material]]]
+- Bagging (Bootstrap aggregating) 
 - Powerful
 - Computation is much more intense than KNN
 

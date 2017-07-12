@@ -121,7 +121,7 @@ sim.dat<-sim.dat[-idex,]
 fit<-lm(income~store_exp+online_exp+store_trans+online_trans,data=sim.dat)
 ```
 
-The output shows that without additional noise, the root mean square error (RMSE) of the model is `r as.integer (summary(fit)$sigma), $R^2$ is `r round(summary(fit)$adj.r.squared,2)`.  
+The output shows that without additional noise, the root mean square error (RMSE) of the model is `r as.integer (summary(fit)$sigma)`, $R^2$ is `r round(summary(fit)$adj.r.squared,2)`.  
 
 Let's add various degrees of noise (0 to 3 times the RMSE) to the variable `income`:
 
@@ -144,4 +144,66 @@ withnoise<-sim.dat$income+noise[,i]
 fit0<-lm(withnoise~store_exp+online_exp+store_trans+online_trans,data=sim.dat)
 rsq_linear[i]<-summary(fit0)$adj.r.squared
 }
+```
+
+PLS is a method of linearizing nonlinear relationships through hidden layers. It is similar to the principal component regression (PCR), except that PCR does not take into account the information of the dependent variable when selecting the components, and its purpose is to find the linear combinations (i.e., unsupervised) that capture the most variance of the independent variables. When the independent variables and response variables are related, PCR can well identify the systematic relationship between them. However, when there exist independent variables not related to response variable, it will undermine PCR's performance. And PLS maximizes the linear combination of dependencies with the response variable.  In the current case, the more complex PLS does not perform better than simple linear regression. 
+
+```r
+# pls: conduct PLS and PCR
+library(pls)
+rsq_pls<-rep(0,ncol(noise))
+# fit PLS
+for (i in 1:7){
+withnoise<-sim.dat$income+noise[,i]
+fit0<-plsr(withnoise~store_exp+online_exp+store_trans+online_trans,data=sim.dat)
+rsq_pls[i]<-max(drop(R2(fit0, estimate = "train",intercept = FALSE)$val))
+}
+```
+
+```r
+# earth: fit mars 
+library(earth)
+rsq_mars<-rep(0,ncol(noise))
+for (i in 1:7){
+withnoise<-sim.dat$income+noise[,i]
+fit0<-earth(withnoise~store_exp+online_exp+store_trans+online_trans,data=sim.dat)
+rsq_mars[i]<-fit0$rsq
+}
+```
+
+```r
+# caret: awesome package for tuning predictive model
+library(caret)
+rsq_svm<-rep(0,ncol(noise))
+# Need some time to run
+for (i in 1:7){
+idex<-which(is.na(sim.dat$income))
+withnoise<-sim.dat$income+noise[,i]
+trainX<-sim.dat[,c("store_exp","online_exp","store_trans","online_trans")]
+trainY<-withnoise
+fit0<-train(trainX,trainY,method="svmRadial",
+            tuneLength=15,
+            trControl=trainControl(method="cv"))
+rsq_svm[i]<-max(fit0$results$Rsquared)
+}
+```
+
+```r
+# randomForest: random forest model
+library(randomForest)
+rsq_rf<-rep(0,ncol(noise))
+# ntree=500 number of trees
+# na.action = na.omit  ignore missing value
+for (i in 1:7){
+withnoise<-sim.dat$income+noise[,i]
+fit0<-randomForest(withnoise~store_exp+online_exp+store_trans+online_trans,data=sim.dat,ntree=500,na.action = na.omit)
+rsq_rf[i]<-tail(fit0$rsq,1)
+}
+library(reshape2)
+rsq<-data.frame(cbind(Noise=c(0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0),rsq_linear,rsq_pls,rsq_mars,rsq_svm,rsq_rf))
+rsq<-melt(rsq,id.vars="Noise",measure.vars=c("rsq_linear","rsq_pls","rsq_mars","rsq_svm","rsq_rf"))
+```
+
+```{r,echo=FALSE}
+rsq<-read.csv("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/ResponseError.csv")
 ```
