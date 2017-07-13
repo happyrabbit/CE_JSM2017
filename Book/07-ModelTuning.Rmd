@@ -1,4 +1,4 @@
-# Model Error
+# Model Tuning Technique
 
 ## Systematic Error and Random Error
 

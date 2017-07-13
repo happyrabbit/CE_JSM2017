@@ -74,6 +74,8 @@ She kept the other as a control.
 and then success is sure. [Mark Twain]
 ```
 
+Output:
+
 A statistician gave birth to twins, but only had one of them baptised. 
 She kept the other as a control.
 
@@ -92,6 +94,8 @@ Or, if you prefer, __use two underscores instead__.
 Strikethrough uses two tildes. ~~Scratch this.~~
 ```
 
+Output:
+
 Some of these words *are italic*.
 Some of these words _are italic also_.
 
@@ -108,6 +112,8 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 * If it doesn’t work, it’s Physics.
 ```
 
+Output:
+
 * If it’s green and wiggles, it’s biology.
 * If it stinks, it’s chemistry.
 * If it doesn’t work, it’s Physics.
@@ -119,6 +125,8 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 + Scientists think that the real world approximates equations.
 + Mathematicians don’t care.
 ```
+
+Output:
 
 + Engineers think that equations approximate the real world.
 + Scientists think that the real world approximates equations.
@@ -132,6 +140,8 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 - Scientists think that the real world approximates equations.
 - Mathematicians don’t care.
 ```
+
+Output:
 
 - Engineers think that equations approximate the real world.
 - Scientists think that the real world approximates equations.

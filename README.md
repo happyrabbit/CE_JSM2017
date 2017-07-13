@@ -66,12 +66,11 @@ We are going to need a couple of packages from CRAN: You can install them all by
 
 
 ```r
-# install packages from CRAN
 p_needed <- c("plyr", "dplyr", "caret","e1071","gridExtra","lattice","imputeMissings",
               "RANN","corrplot","nnet","car","gpairs","reshape2","psych","tidyr",
               "ggplot2","sparklyr","readr","mvtnorm","MASS","data.table","magrittr",
               "shiny","metricsgraphics","DT","leaflet","dygraphs","xts","lubridate",
-              "highcharter","rbokeh","networkD3","threejs","knitr")
+              "highcharter","rbokeh","networkD3","threejs","knitr","formatR")
 packages <- rownames(installed.packages())
 p_to_install <- p_needed[!(p_needed %in% packages)]
 if (length(p_to_install) > 0) {
@@ -79,6 +78,7 @@ if (length(p_to_install) > 0) {
 }
 
 lapply(p_needed, require, character.only = TRUE)
+
 ```
 
 ## Live updates
