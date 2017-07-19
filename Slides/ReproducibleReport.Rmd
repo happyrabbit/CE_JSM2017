@@ -1,6 +1,5 @@
 ---
 title: "Dynamic/Reproducible Report"
-subtitle: "R Markdown and HTML5"
 author: "Hui Lin"
 date: "`r Sys.Date()`"
 output: slidy_presentation

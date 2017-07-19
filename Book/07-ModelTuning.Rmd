@@ -258,3 +258,5 @@ ggplot(data=rsq, aes(x=Noise, y=value, group=variable, colour=variable)) +
 ```
 
 Comparing figure \@ref(fig:errorvariable) and figure \@ref(fig:error), the influence of the two types of error is very different. The error in response can not be overcome for any model but it is not the case for the independent variables. Imagine an extreme case, if `online_exp` is completely random, that is, no information in it, the impact on the performance of random forest and support vector machine is marginal. Linear regression and PLS still perform similarly. With the increase of noise, the performance starts to decline faster. After a certain extent, it becomes steady.  In general, if an independent variable contains error, other variables associated with it can compensate to some extent. 
+
+## Data Splitting and Resampling

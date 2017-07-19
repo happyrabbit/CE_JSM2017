@@ -471,7 +471,6 @@ glimpse(sim.dat)
 - Get rows with `income` more than 300000:
 
 ```r
-library(magrittr)
 filter(sim.dat, income >300000) %>%
   tbl_df()
 ```
@@ -487,6 +486,8 @@ filter(sim.dat, income >300000) %>%
 x %>% f(y) = f(x, y)
 y %>% f(x, ., z) = f(x, y, z )
 ```
+
+For example: `"Hello World" %>% substring(7, 11) %>% grepl("Wo", .)`
 
 ## Pipe operator: `%>%`
 
@@ -545,7 +546,7 @@ Isn't it much more straight forward now? Let's read it:
 - `distinct()`: a generalization of `unique()` from vector to data frame
 
 ```r
-dplyr distinct(sim.dat)
+dplyr::distinct(sim.dat)
 ```
 
 - `sample_frac()`: randomly select some rows with specified percentage. 
@@ -679,8 +680,7 @@ anti_join(x,y,by="ID")
 
 - have a variable indicating the purchasing channel (i.e. online or in-store) and another column with the corresponding expense amount
 
-```{
-r
+```r
 library(reshape2)
 (mdat <- melt(sdat, measure.vars=c("store_exp","online_exp"),
               variable.name = "Channel",
