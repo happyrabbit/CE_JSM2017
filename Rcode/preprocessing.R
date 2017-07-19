@@ -1,12 +1,11 @@
 ### -----------------------------
-### workshop setup
 ### Hui Lin
 ### @gossip_rabbit
 ### 
 ### http://scientistcafe.com
 ### -----------------------------
 
-## Data Cleaning
+## Data Preprocessing
 ## -----------------------------
 
 sim.dat <- read.csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/SegData.csv ")

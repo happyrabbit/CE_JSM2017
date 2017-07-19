@@ -1,5 +1,4 @@
 ### -----------------------------
-### workshop setup
 ### Hui Lin
 ### @gossip_rabbit
 ### 
@@ -9,4 +8,3 @@
 ## preparations -----------------------
 
 source("Rcode/00-course-setup.r")
-wd <- getwd()

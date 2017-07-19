@@ -122,6 +122,9 @@ Often the quality of the data is more important than the quantity, but the quant
 
 Many of the data science books classify the various models from a technical point of view. Such as supervised vs. unsupervised models, linear vs. nonlinear models, parametric models vs. non-parametric models, and so on. Here we will continue on "problem-oriented" track. We first introduce different groups of real problems and then present which models can be used to answer the corresponding category of questions. 
 
+![](http://scientistcafe.com/book/Figure/DataScienceQuestion.png)
+
+
 1. Comparison
 
 The first common problem is to compare different groups. Such as: Is A better in some way than B? Or more comparisons: Is there any difference among A, B, C in a certain aspect? Here are some examples:

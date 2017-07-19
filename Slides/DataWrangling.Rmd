@@ -14,8 +14,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Outline
 
-- Materials: http://scientistcafe.com/2017/04/30/DataWrangling.html
-- Syllabus: http://scientistcafe.com/CE_JSM2017/
 - Read and write data
     - `readr`
     - `data.table` — enhanced `data.frame`
@@ -26,11 +24,6 @@ knitr::opts_chunk$set(echo = FALSE)
 - Tidy and Reshape Data
     - `reshape2` package
     - `tidyr` package
-
-## Heads up
-
-![](/Users/happyrabbit/Documents/GitHub/happyrabbit.github.com/images/Jokes/DoProgrammingRight.png)
-
 
 ## Read and write data
 
@@ -122,7 +115,7 @@ print(dat)
 
 ## `read_tsv()`
 
-read tab delimited files：
+- Read tab delimited files：
 
 ```r
 dat=read_tsv("every\tman\tis\ta\tpoet\twhen\the\tis\tin\tlove\n", col_names = FALSE)
