@@ -12,16 +12,14 @@ Priority 1:
 - ~~Add it's your turn & solution~~
 - ~~Add http://scientistcafe.com text~~
 
-
 Priority 2: 
 
 - Tree model 
 - Model error and tuning technique
 - Model evaluation
-- Feature selection
+- Feature engineering
 - Regularized regression
 - Regularized generalized regression
-- Deep Learning and its application
 
 Priority 3:
 
@@ -30,3 +28,5 @@ Priority 3:
 
 Priority 4:
 - Bayesian
+- Deep Learning and its application
+
