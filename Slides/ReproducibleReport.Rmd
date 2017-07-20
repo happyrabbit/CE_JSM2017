@@ -440,7 +440,6 @@ width=60%}
    1. report an output back to user
 
 - see the [Reactivity Overview](http://shiny.rstudio.com/articles/reactivity-overview.html)
-- Excellent Shiny tutorial from beginning to deep level: http://shiny.rstudio.com/tutorial/
 
 ## Using `shiny` with `flexdashboard`
 
@@ -458,3 +457,8 @@ output:
 runtime: shiny
 ---</pre>
 
+## Some links
+
+- Excellent [Shiny tutorial from beginning to deep level](http://shiny.rstudio.com/tutorial/)
+- [Reactivity Overview](http://shiny.rstudio.com/articles/reactivity-overview.html)
+- [Dashboard Appearance](http://rmarkdown.rstudio.com/flexdashboard/using.html#appearance)

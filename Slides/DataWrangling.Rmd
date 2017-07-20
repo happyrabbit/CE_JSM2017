@@ -770,3 +770,7 @@ sepdat %>%
   unite("variable",Source,Type,sep="_")
 ```
 
+# Some links
+
+- SQL Learning: https://www.w3schools.com/sql/
+
