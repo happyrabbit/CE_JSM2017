@@ -17,6 +17,10 @@ knitr::opts_chunk$set(echo = FALSE)
 4. Summarized data
 5. Data with fixed format
 
+## Preprocessing Map
+
+![](http://scientistcafe.com/book/Figure/DataPre-processing.png){width=90%}
+
 ## Data Cleaning
 
 - Do you see any problems?

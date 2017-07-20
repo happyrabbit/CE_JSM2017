@@ -2,9 +2,7 @@
 
 Many data analysis related books focus on models, algorithms and statistical inferences. However, in practice, raw data is usually not directly used for modeling. Data preprocessing is the process of converting raw data into clean data that is proper for modeling. A model fails for various reasons. One is that the modeler doesn't correctly preprocess data before modeling. Data preprocessing can significantly impact model results, such as imputing missing value and handling with outliers. So data preprocessing is a very critical part. 
 
-```{r, out.width = "500px",echo=FALSE,fig.align='center'}
-knitr::include_graphics("http://scientistcafe.com/images/dataclean.png")
-```
+![](http://scientistcafe.com/book/Figure/DataPre-processing.png){width=90%}
 
 In real life, depending on the stage of data cleanup, data has the following types:
 
@@ -36,6 +34,7 @@ Load the R packages first:
 ```{r}
 source("https://raw.githubusercontent.com/happyrabbit/CE_JSM2017/master/Rcode/00-course-setup.R")
 ```
+
 ## Data Cleaning
 
 After you load the data, the first thing is to check how many variables are there, the type of variables, the distributions, and data errors. Let's read and check the data:
@@ -446,7 +445,6 @@ As expected, it returns the two columns we generated. You can go ahead to remove
 - `freqCut`: the cutoff for the ratio of the most common value to the second most common value
 - `uniqueCut`: the cutoff for the percentage of distinct values out of the number of total samples
 
-
 ## Re-encode Dummy Variables
 
 A dummy variable is a binary variable (0/1) to represent subgroups of the sample.  Sometimes we need to recode categories to smaller bits of information named “dummy variables”.  For example, some questionnaires have five options for each question, A, B, C, D, and E. After you get the data, you will usually convert the corresponding categorical variables for each question into five nominal variables, and then use one of the options as the baseline. 
@@ -478,6 +476,3 @@ head(predict(dumMod,sim.dat))
 ```
 
 If you think the impact income levels on purchasing behavior is different for male and female, then you may add the interaction term between `income` and `gender`. You can do this by adding `income: gender` in the formula. 
-
-
-[[[Any thoughts on including topics about feature building for ML?  Often some complicated transformation on raw data is done before it is used as a feature in a ML model.  Also special types of data such as pictures or text need some basic preprocessing to be represented correctly for ML algorithms.]]]

@@ -263,6 +263,16 @@ Comparing figure \@ref(fig:errorvariable) and figure \@ref(fig:error), the influ
 
 Those highly adaptable models can model complex relationships. However, they tend to overfit which leads to the poor prediction by learning too much from the data. It means that the model is very sensitive to the exact sample used to fit it. When future data is not exactly like the past data, the model prediction may have large mistakes. A simple model like ordinary linear regression tends instead to underfit which leads to the poor prediction by learning too little from the data. It systematically over-predicts or under-predicts the data regardless of how well future data resemble past data. Without evaluating models, the modeler will not know about the problem until the future samples come. Data splitting and resampling are fundamental techniques to build sound models for prediction. 
 
- _Data splitting_ is to put part of the data aside as testing set and use the rest for model training.  Many models have parameters which cannot be directly estimated from the data, such as $\lambda$ in the lasso, the number of trees in the random forest. This type of model parameter is called _tuning parameter_ and there is no analytical formula available to calculate the optimizing value. Tuning parameters often control the complexity of the model. Poor choice for the values can result in over-fitting or under-fitting.  A standard approach to estimate tuning parameters is through cross-validation.
+_Data splitting_ is to put part of the data aside as testing set (or Hold-outs) and use the rest for model training. Many models have parameters which cannot be directly estimated from the data, such as  $\lambda$ in the lasso (penalty parameter), the number of trees in the random forest. This type of model parameter is called tuning parameter, and there is no analytical formula available to calculate the optimizing value. Tuning parameters often control the complexity of the model. Poor choice for the values can result in over-fitting or under-fitting. A standard approach to estimate tuning parameters is through cross-validation which is a data resampling approach. 
 
-_Data resampling_ involves repeated sampling from the training set and fitting the model on each sample to study model variance. Suppose we want to know the variability of a model's $R^2$ (you can also use other metrics), you can repeatedly extract different samples and then fit the linear model, check how $R^2$ changes. 
+Instead of evaluating model on a single test set, more often, people will resample the training set. _Data resampling_ operates similarly: use a subset of samples to fit a model and use the rest to evaluate model performance. This process will repeat multiple times to get a performance profile. In that sense, resampling is based on splitting. The general steps are:
+
+-  Define a set of candidate values for tuning parameter(s)
+    - For each candidate value in the set
+        - Resample data
+        - Fit model
+        - Predict hold-out
+        - Calculate performance
+- Aggregate the results
+- Determine the final tuning parameter
+- Refit the model with the entire training set
