@@ -90,7 +90,7 @@ There are many cloud computing environments such as Amazon’s AWS which provide
 - Create two tables by uploading csv files (sent by training contact), watch this video for detail: <https://youtu.be/H5LxjaJgpSk>
 
 ### Addtional Setup 
-In case we cannot connect to Databrics during the training. We can also simulate Spark System and use Sparklyr in personal computer such as your own laptop and desktop. To use the simulated Spark system, we will need the following steps
+In case we cannot connect to Databricks during the training. We can also simulate Spark System and use Sparklyr in personal computer such as your own laptop and desktop. To use the simulated Spark system, we will need the following steps
 - Download and install Java, <https://www.java.com/en/download/help/windows_offline_download.xml> and version 7.0 and above of Java is needed to run this simulated Spark system. You can watch this youtube video: <https://youtu.be/RbDMvrSRXHM>
 - Restart your computer once the Java installation finishes
 
