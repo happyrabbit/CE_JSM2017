@@ -64,7 +64,7 @@ manually on your own machine from the following sources:
 
 ### Required packages
 
-We are going to need a couple of packages from CRAN: You can install them all by executing the following code chunk:
+We are going to need a couple of packages from CRAN: You can install them all by executing the following code chunk in RStudio:
 
 
 ```r
@@ -82,6 +82,33 @@ if (length(p_to_install) > 0) {
 lapply(p_needed, require, character.only = TRUE)
 
 ```
+
+### Addtional setup to run the optional local Spark demo in case we cannot connect to Databrics during the training
+We can also simulate Spark System and use Sparklyr in personal computer such as your own laptop and desktop. To use the simulated Spark system, we will need the following steps
+- Download and install Java, <https://www.java.com/en/download/help/windows_offline_download.xml> and version 7.0 and above of Java is needed to run this simulated Spark system. You can watch this youtube video: <https://youtu.be/RbDMvrSRXHM>
+- Restart your computer once the Java installation finishes
+
+- Open RStudio and run the following code:
+
+```r
+# Installing sparklyr takes a few minutes, 
+# because it installs +10 dependencies.
+
+if (!require("sparklyr")) {
+  install.packages("sparklyr")  
+}
+
+# Load sparklyr package.
+library(sparklyr)
+
+## download and create a local Spark environment, it will take a little while to finish
+spark_install(version = "1.6.2")
+
+# create a sparklyr connection 
+sc <- spark_connect(master = "local")
+
+```
+
 
 ## Live updates
 
