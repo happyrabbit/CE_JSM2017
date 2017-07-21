@@ -87,6 +87,7 @@ There are many cloud computing environments such as Amazon’s AWS which provide
 - Please go to <https://databricks.com/try-databricks> to create a free Community Edition acount
 - You can watch this video for illustration: <https://youtu.be/vx-3-htFvrg>
 - Get familar with the cloud enviroment using R notebook, watch this video for details: <https://youtu.be/0HFujX3t6TU>
+- Create two tables by uploading csv files (sent by training contact), watch this video for detail: <https://youtu.be/H5LxjaJgpSk>
 
 ### Addtional Setup 
 In case we cannot connect to Databrics during the training. We can also simulate Spark System and use Sparklyr in personal computer such as your own laptop and desktop. To use the simulated Spark system, we will need the following steps
