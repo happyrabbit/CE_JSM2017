@@ -82,14 +82,14 @@ if (length(p_to_install) > 0) {
 lapply(p_needed, require, character.only = TRUE)
 
 ```
-### Apply free Databricks Community Edition account.
+### Apply Free Databricks Community Edition Account
 There are many cloud computing environments such as Amazon’s AWS which provides a complete list of functions for heavy-duty enterprise applications. For beginners, Databricks provides an easy to use cloud system for learning purpose. Databricks is a company founded by the creators of Apache Spark and it provides a user-friendly web-based notebook environment that can create Hadoop/Spark/GPU cluster on the fly to run R/Python/Scala/SQL. We will use Databricks’ community edition to run demos for this training.
-- Please go to <https://databricks.com/try-databricks> to create a free acount
+- Please go to <https://databricks.com/try-databricks> to create a free Community Edition acount
 - You can watch this video for illustration: <https://youtu.be/vx-3-htFvrg>
 - Get familar with the cloud enviroment using R notebook, watch this video for details: <https://youtu.be/0HFujX3t6TU>
 
-### Addtional setup to run the optional local Spark demo in case we cannot connect to Databrics during the training
-We can also simulate Spark System and use Sparklyr in personal computer such as your own laptop and desktop. To use the simulated Spark system, we will need the following steps
+### Addtional Setup 
+In case we cannot connect to Databrics during the training. We can also simulate Spark System and use Sparklyr in personal computer such as your own laptop and desktop. To use the simulated Spark system, we will need the following steps
 - Download and install Java, <https://www.java.com/en/download/help/windows_offline_download.xml> and version 7.0 and above of Java is needed to run this simulated Spark system. You can watch this youtube video: <https://youtu.be/RbDMvrSRXHM>
 - Restart your computer once the Java installation finishes
 
