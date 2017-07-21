@@ -1,4 +1,4 @@
-# CE_JSM2017: The Science and Art of Data
+# CE_JSM2017: Preparing Statistician/Statistics Graduates to Be Data Scientist
 
 
 ## General information
