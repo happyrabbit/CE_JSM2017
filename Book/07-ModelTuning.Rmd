@@ -276,3 +276,5 @@ Instead of evaluating model on a single test set, more often, people will resamp
 - Aggregate the results
 - Determine the final tuning parameter
 - Refit the model with the entire training set
+
+![](http://scientistcafe.com/book/Figure/ParameterTuningProcess.png){width=100%}

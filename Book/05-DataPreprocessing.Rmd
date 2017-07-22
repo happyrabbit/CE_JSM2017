@@ -31,7 +31,7 @@ It is highly recommended to store each step of the data and the R code, making t
 
 Load the R packages first:
 
-```{r}
+```{r, message=FALSE}
 source("https://raw.githubusercontent.com/happyrabbit/CE_JSM2017/master/Rcode/00-course-setup.R")
 ```
 
