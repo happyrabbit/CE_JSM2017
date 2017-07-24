@@ -220,7 +220,7 @@ ggplot(data=rsq, aes(x=Noise, y=value, group=variable, colour=variable)) +
   ylab("R2") 
 ```
 
-Figure \@ref(fig:error) shows that:
+Fig. \@ref(fig:error) shows that:
 
 All model performance decreases sharply with increasing noise intensity. To better anticipate model performance, it helps to understand the way variable is measured. It is something need to make clear at the beginning of an analytical project. A data scientist should be aware of the quality of the data in the database. For data from the clients, it is an important to understand the quality of the data by communication.
 
@@ -257,7 +257,7 @@ ggplot(data=rsq, aes(x=Noise, y=value, group=variable, colour=variable)) +
   ylab("R2") 
 ```
 
-Comparing figure \@ref(fig:errorvariable) and figure \@ref(fig:error), the influence of the two types of error is very different. The error in response can not be overcome for any model but it is not the case for the independent variables. Imagine an extreme case, if `online_exp` is completely random, that is, no information in it, the impact on the performance of random forest and support vector machine is marginal. Linear regression and PLS still perform similarly. With the increase of noise, the performance starts to decline faster. After a certain extent, it becomes steady.  In general, if an independent variable contains error, other variables associated with it can compensate to some extent. 
+Comparing Fig. \@ref(fig:errorvariable) and Fig. \@ref(fig:error), the influence of the two types of error is very different. The error in response can not be overcome for any model but it is not the case for the independent variables. Imagine an extreme case, if `online_exp` is completely random, that is, no information in it, the impact on the performance of random forest and support vector machine is marginal. Linear regression and PLS still perform similarly. With the increase of noise, the performance starts to decline faster. After a certain extent, it becomes steady.  In general, if an independent variable contains error, other variables associated with it can compensate to some extent. 
 
 ## Data Splitting and Resampling
 
@@ -278,3 +278,4 @@ Instead of evaluating model on a single test set, more often, people will resamp
 - Refit the model with the entire training set
 
 ![](http://scientistcafe.com/book/Figure/ParameterTuningProcess.png){width=100%}
+
