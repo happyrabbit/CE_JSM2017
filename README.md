@@ -39,7 +39,7 @@ Please bring a laptop with the latest version of R and Rstudio installed (see mo
 | Slot 1 | 8.30 a.m. - 10.15 a.m. | Introduction, The art of data science, Big Data Cloud Platform |
 | Slot 2 | 10.30 a.m. - 12.30 a.m. | Big Data Cloud Platform, Data Wrangling |
 | Slot 3 | 2.00 p.m. - 3.15 p.m. | Data Pre-processing, Markdown, HTML5 Slides|
-| Slot 4 | 3.30 p.m. - 5.00 p.m. | Shiny Dashboard, Soft Skills for Data Scientists|
+| Slot 4 | 3.30 p.m. - 5.00 p.m. | Shiny Dashboard, Soft Skills for Data Scientists, Question and Evaluation|
 
 
 ## Accompanying Book
