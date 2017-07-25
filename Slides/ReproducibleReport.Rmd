@@ -1,6 +1,6 @@
 ---
 title: "Dynamic/Reproducible Report"
-author: "Hui Lin"
+author: "Ming Li </br> [Hui Lin](http://scientistcafe.com)"
 date: "`r Sys.Date()`"
 output: slidy_presentation
 ---

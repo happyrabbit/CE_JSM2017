@@ -5,8 +5,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Hui Lin" />
-  <meta name="date" content="2017-07-19" />
+  <meta name="author" content="Ming Li  Hui Lin" />
+  <meta name="date" content="2017-07-25" />
   <title>Data Wrangling</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -53,12 +53,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="slide titlepage">
   <h1 class="title">Data Wrangling</h1>
   <p class="author">
-Hui Lin
+Ming Li </br> <a href="http://scientistcafe.com">Hui Lin</a>
   </p>
-  <p class="date">2017-07-19</p>
+  <p class="date">2017-07-25</p>
 </div>
-<div id="outline" class="slide section level2">
-<h1>Outline</h1>
+<div class="slide section level1">
+
+<h2 id="outline">Outline</h2>
 <ul>
 <li>Read and write data
 <ul>
@@ -77,9 +78,7 @@ Hui Lin
 <li><code>tidyr</code> package</li>
 </ul></li>
 </ul>
-</div>
-<div id="read-and-write-data" class="slide section level2">
-<h1>Read and write data</h1>
+<h2 id="read-and-write-data">Read and write data</h2>
 <ol style="list-style-type: decimal">
 <li>It is 10x faster.</li>
 <li><p>It doesn’t change the column names.</p>
@@ -90,9 +89,7 @@ Hui Lin
 <li><p>It does not convert strings to factors by default, are able to parse dates and times and can automatically determine the data types in each column.</p></li>
 <li><p>Killing character : <strong>progress bar</strong>.</p></li>
 </ol>
-</div>
-<div id="major-functions" class="slide section level2">
-<h1>Major functions</h1>
+<h2 id="major-functions">Major functions</h2>
 <ul>
 <li><code>read_csv()</code>: reads comma delimited files</li>
 <li><code>read_csv2()</code>: reads semicolon separated files (common in countries where <code>,</code> is used as the decimal place)</li>
@@ -103,9 +100,7 @@ Hui Lin
 <li><code>read_table()</code>: reads a common variation of fixed width files where columns are separated by white space</li>
 <li><code>read_log()</code>: reads Apache style log files</li>
 </ul>
-</div>
-<div id="read_csv" class="slide section level2">
-<h1><code>read_csv()</code></h1>
+<h2 id="read_csv"><code>read_csv()</code></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readr)
 sim.dat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/SegData.csv &quot;</span>)
 <span class="kw">head</span>(sim.dat)</code></pre></div>
@@ -118,16 +113,12 @@ sim.dat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
 </ul></li>
 </ul>
 <p>Refer to <a href="http://r4ds.had.co.nz/tibbles.html" class="uri">http://r4ds.had.co.nz/tibbles.html</a> for more information about ‘tibble’.</p>
-</div>
-<div id="baby-example-1" class="slide section level2">
-<h1>Baby example 1</h1>
+<h2 id="baby-example-1">Baby example 1</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat=<span class="kw">read_csv</span>(<span class="st">&quot;2015,2016,2017</span>
 <span class="st">100,200,300</span>
 <span class="st">canola,soybean,corn&quot;</span>)
 <span class="kw">print</span>(dat)</code></pre></div>
-</div>
-<div id="baby-example-2" class="slide section level2">
-<h1>Baby example 2</h1>
+<h2 id="baby-example-2">Baby example 2</h2>
 <p>You can also add comments on the top and tell R to skip those lines:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat=<span class="kw">read_csv</span>(<span class="st">&quot;# I will never let you know that</span>
 <span class="st">          # my favorite food is carrot</span>
@@ -140,9 +131,7 @@ sim.dat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
 <span class="st">          Saturday,carrot,extremely happy</span>
 <span class="st">          Sunday,carrot,extremely happy&quot;</span>, <span class="dt">skip =</span> <span class="dv">2</span>)
 <span class="kw">print</span>(dat)</code></pre></div>
-</div>
-<div id="baby-example-3" class="slide section level2">
-<h1>Baby example 3</h1>
+<h2 id="baby-example-3">Baby example 3</h2>
 <ul>
 <li>If you don’t have column names, set <code>col_names = FALSE</code> then R will assign names “<code>X1</code>”,“<code>X2</code>”… to the columns:</li>
 </ul>
@@ -152,48 +141,36 @@ sim.dat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
 <ul>
 <li>You can also pass <code>col_names</code> a character vector which will be used as the column names. Try to replace <code>col_names=FALSE</code> with <code>col_names=c(&quot;Date&quot;,&quot;Food&quot;,&quot;Mood&quot;)</code> and see what happen.</li>
 </ul>
-</div>
-<div id="read_csv2" class="slide section level2">
-<h1><code>read_csv2()</code></h1>
+<h2 id="read_csv2"><code>read_csv2()</code></h2>
 <ul>
 <li>Read semicolon separated files:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat=<span class="kw">read_csv2</span>(<span class="st">&quot;Saturday; carrot; extremely happy </span><span class="ch">\n</span><span class="st"> Sunday; carrot; extremely happy&quot;</span>, <span class="dt">col_names=</span><span class="ot">FALSE</span>)
 <span class="kw">print</span>(dat)</code></pre></div>
-</div>
-<div id="read_tsv" class="slide section level2">
-<h1><code>read_tsv()</code></h1>
+<h2 id="read_tsv"><code>read_tsv()</code></h2>
 <ul>
 <li>Read tab delimited files：</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat=<span class="kw">read_tsv</span>(<span class="st">&quot;every</span><span class="ch">\t</span><span class="st">man</span><span class="ch">\t</span><span class="st">is</span><span class="ch">\t</span><span class="st">a</span><span class="ch">\t</span><span class="st">poet</span><span class="ch">\t</span><span class="st">when</span><span class="ch">\t</span><span class="st">he</span><span class="ch">\t</span><span class="st">is</span><span class="ch">\t</span><span class="st">in</span><span class="ch">\t</span><span class="st">love</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dt">col_names =</span> <span class="ot">FALSE</span>)
 <span class="kw">print</span>(dat)</code></pre></div>
-</div>
-<div id="read_delim" class="slide section level2">
-<h1><code>read_delim()</code></h1>
+<h2 id="read_delim"><code>read_delim()</code></h2>
 <ul>
 <li>Assign separating character</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat=<span class="kw">read_delim</span>(<span class="st">&quot;THE|UNBEARABLE|RANDOMNESS|OF|LIFE</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dt">delim =</span> <span class="st">&quot;|&quot;</span>, <span class="dt">col_names =</span> <span class="ot">FALSE</span>)
 <span class="kw">print</span>(dat)</code></pre></div>
-</div>
-<div id="substitute-for-missing-value" class="slide section level2">
-<h1>Substitute for missing value</h1>
+<h2 id="substitute-for-missing-value">Substitute for missing value</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat=<span class="kw">read_csv</span>(<span class="st">&quot;Q1,Q2,Q3</span>
 <span class="st">               5, 4,99&quot;</span>,<span class="dt">na=</span><span class="st">&quot;99&quot;</span>)
 <span class="kw">print</span>(dat)</code></pre></div>
-</div>
-<div id="write-data" class="slide section level2">
-<h1>Write data</h1>
+<h2 id="write-data">Write data</h2>
 <ul>
 <li>use <code>write_csv()</code> and <code>write_tsv()</code></li>
 <li>Encode strings in UTF-8</li>
 <li>Save dates and date-times in ISO8601 format so they are easily parsed elsewhere</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_csv</span>(sim.dat, <span class="st">&quot;sim_dat.csv&quot;</span>)</code></pre></div>
-</div>
-<div id="other-data-types" class="slide section level2">
-<h1>Other data types</h1>
+<h2 id="other-data-types">Other data types</h2>
 <ul>
 <li><code>Haven</code>: SPSS, Stata and SAS data</li>
 <li><code>Readxl</code> and <code>xlsx</code>: excel data(.xls and .xlsx)</li>
@@ -205,9 +182,7 @@ sim.dat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
 <li><a href="https://cran.r-project.org/doc/manuals/r-release/R-data.html#Acknowledgements">R data import/export manual</a></li>
 <li><code>rio</code> package：<a href="https://github.com/leeper/rio" class="uri">https://github.com/leeper/rio</a></li>
 </ul>
-</div>
-<div id="data.table-enhanced-data.frame" class="slide section level2">
-<h1><code>data.table</code>— enhanced <code>data.frame</code></h1>
+<h2 id="data.table-enhanced-data.frame"><code>data.table</code>— enhanced <code>data.frame</code></h2>
 <ul>
 <li>What is <code>data.table</code>?
 <ul>
@@ -227,9 +202,7 @@ sim.dat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
 <span class="co"># covert the existing data frame to data table</span>
 dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(sim.dat)
 <span class="kw">class</span>(dt)</code></pre></div>
-</div>
-<div id="manipulating-data-table" class="slide section level2">
-<h1>Manipulating data table</h1>
+<h2 id="manipulating-data-table">Manipulating data table</h2>
 <ul>
 <li>Calculate mean for counts of online transactions:</li>
 </ul>
@@ -238,9 +211,7 @@ dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(sim.dat)
 <li>You can’t do the same thing using data frame:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sim.dat[,<span class="kw">mean</span>(online_trans)]</code></pre></div>
-</div>
-<div id="by-group" class="slide section level2">
-<h1>By group</h1>
+<h2 id="by-group">By group</h2>
 <ul>
 <li>Calculate mean by group:</li>
 </ul>
@@ -253,9 +224,7 @@ dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(sim.dat)
 <li>Assign column names for aggregated variables:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dt[ , .(<span class="dt">avg =</span> <span class="kw">mean</span>(online_trans)), by =<span class="st"> </span>.(gender, house)]</code></pre></div>
-</div>
-<div id="general-setting-of-data.table" class="slide section level2">
-<h1>General setting of <code>data.table</code></h1>
+<h2 id="general-setting-of-data.table">General setting of <code>data.table</code></h2>
 <ul>
 <li>Different from data frame, there are three arguments for data table:</li>
 </ul>
@@ -268,9 +237,7 @@ dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(sim.dat)
 <center>
 <img src="data:image/png;base64,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" />
 </center>
-</div>
-<div id="equivalent-codes" class="slide section level2">
-<h1>Equivalent codes</h1>
+<h2 id="equivalent-codes">Equivalent codes</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Rcode 1</span>
 dt[ , <span class="kw">mean</span>(online_trans), by =<span class="st"> </span>gender]</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"># SQL <span class="dv">1</span>
@@ -283,9 +250,7 @@ dt[ , .(<span class="dt">avg =</span> <span class="kw">mean</span>(online_trans)
 dt[ age &lt;<span class="st"> </span><span class="dv">40</span>, .(<span class="dt">avg =</span> <span class="kw">mean</span>(online_trans)), by =<span class="st"> </span>.(gender, house)]</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"># SQL <span class="dv">3</span>
 <span class="kw">SELECT</span> gender, house, <span class="fu">avg</span>(online_trans) <span class="kw">AS</span> <span class="fu">avg</span> <span class="kw">FROM</span> sim.dat <span class="kw">WHERE</span> age &lt; <span class="dv">40</span> <span class="kw">GROUP</span> <span class="kw">BY</span> gender, house</code></pre></div>
-</div>
-<div id="subset" class="slide section level2">
-<h1>Subset</h1>
+<h2 id="subset">Subset</h2>
 <ul>
 <li>select row</li>
 </ul>
@@ -314,9 +279,7 @@ ans &lt;-<span class="st"> </span>dt[, age:income, with =<span class="st"> </spa
 <span class="co"># delete columns from  age to online_exp</span>
 ans &lt;-<span class="st"> </span>dt[, -(age:online_exp), with =<span class="st"> </span><span class="ot">FALSE</span>]
 ans &lt;-<span class="st"> </span>dt[, !(age:online_exp), with =<span class="st"> </span><span class="ot">FALSE</span>]</code></pre></div>
-</div>
-<div id="tabulation" class="slide section level2">
-<h1>tabulation</h1>
+<h2 id="tabulation">tabulation</h2>
 <ul>
 <li>In data table. <code>.N</code> means to count。</li>
 </ul>
@@ -338,9 +301,7 @@ dt[, .N, by=<span class="st"> </span>gender]
 dt[<span class="kw">order</span>(-online_exp)][<span class="dv">1</span>:<span class="dv">5</span>]
 <span class="co"># order the table by more than one variable</span>
 dt[<span class="kw">order</span>(gender, -online_exp)][<span class="dv">1</span>:<span class="dv">5</span>]</code></pre></div>
-</div>
-<div id="use-fread-to-import-dat" class="slide section level2">
-<h1>Use <code>fread()</code> to import dat</h1>
+<h2 id="use-fread-to-import-dat">Use <code>fread()</code> to import dat</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(topic&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/topic.csv&quot;</span>))</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html">  user  system elapsed 
   4.313   0.027   4.340</code></pre></div>
@@ -350,9 +311,7 @@ dt[<span class="kw">order</span>(gender, -online_exp)][<span class="dv">1</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(topic&lt;-data.table::<span class="kw">fread</span>(<span class="st">&quot;/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/topic.csv&quot;</span>))</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html">   user  system elapsed 
   0.217   0.005   0.221 </code></pre></div>
-</div>
-<div id="apply-lapply-and-sapply-in-base-r" class="slide section level2">
-<h1><code>apply()</code>, <code>lapply()</code> and <code>sapply()</code> in base R</h1>
+<h2 id="apply-lapply-and-sapply-in-base-r"><code>apply()</code>, <code>lapply()</code> and <code>sapply()</code> in base R</h2>
 <ul>
 <li>Similarity: apply functions over parts of data</li>
 <li>Difference:
@@ -361,9 +320,7 @@ dt[<span class="kw">order</span>(gender, -online_exp)][<span class="dv">1</span>
 <li>the type of result they will return</li>
 </ul></li>
 </ul>
-</div>
-<div id="when-do-we-use-apply" class="slide section level2">
-<h1>When do we use <code>apply()</code>?</h1>
+<h2 id="when-do-we-use-apply">When do we use <code>apply()</code>?</h2>
 <ul>
 <li>apply a function to margins of an array or matrix</li>
 <li>returns a vector or array or list of values</li>
@@ -381,9 +338,7 @@ row.sums &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span cl
 ma
 <span class="kw">apply</span>(ma, <span class="dv">1</span>, table)  <span class="co">#--&gt; a list of length 2</span>
 <span class="kw">apply</span>(ma, <span class="dv">1</span>, stats::quantile) <span class="co"># 5 x n matrix with rownames</span></code></pre></div>
-</div>
-<div id="tricky-example" class="slide section level2">
-<h1>Tricky example</h1>
+<h2 id="tricky-example">Tricky example</h2>
 <ul>
 <li>Results can have different lengths for each call.</li>
 <li>This is a trickier example. What will you get?</li>
@@ -396,16 +351,12 @@ zseq         ## a 2 x 3 matrix
 <span class="kw">dim</span>(zseq) ## 2 3
 zseq[<span class="dv">1</span>,]
 <span class="kw">apply</span>(z, <span class="dv">3</span>, function(x) <span class="kw">seq_len</span>(<span class="kw">max</span>(x)))</code></pre></div>
-</div>
-<div id="lapply-and-sapply" class="slide section level2">
-<h1><code>lapply()</code> and <code>sapply()</code></h1>
+<h2 id="lapply-and-sapply"><code>lapply()</code> and <code>sapply()</code></h2>
 <ul>
 <li><code>lapply()</code> applies a function over a list, data.frame or vector and returns a list of the same length.</li>
 <li><code>sapply()</code> is a user-friendly version and wrapper of <code>lapply()</code>. By default it returns a vector, matrix or if <code>simplify = &quot;array&quot;</code>, an array if appropriate. <code>apply(x, f, simplify = FALSE, USE.NAMES = FALSE)</code> is the same as <code>lapply(x, f)</code>. If <code>simplify=TRUE</code>, then it will return a <code>data.frame</code> instead of <code>list</code>.</li>
 </ul>
-</div>
-<div id="example-using-data-with-context" class="slide section level2">
-<h1>Example using data with context</h1>
+<h2 id="example-using-data-with-context">Example using data with context</h2>
 <ul>
 <li>Get the mean and standard deviation of all numerical variables in the data set.</li>
 </ul>
@@ -427,9 +378,7 @@ sdat&lt;-sim.dat[,!<span class="kw">lapply</span>(sim.dat,class)==<span class="s
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(sdat, function(x) <span class="kw">sd</span>(<span class="kw">na.omit</span>(x)))
 <span class="kw">sapply</span>(sdat, function(x) <span class="kw">sd</span>(<span class="kw">na.omit</span>(x)))
 <span class="kw">sapply</span>(sdat, function(x) <span class="kw">sd</span>(<span class="kw">na.omit</span>(x)), <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</code></pre></div>
-</div>
-<div id="dplyr-package" class="slide section level2">
-<h1><code>dplyr</code> package</h1>
+<h2 id="dplyr-package"><code>dplyr</code> package</h2>
 <ul>
 <li>Next iteration of <code>plyr</code> package</li>
 <li>Flexible grammar of data manipulation focusing on tools for working with data frames (hence the <code>d</code> in the name)</li>
@@ -444,9 +393,7 @@ sdat&lt;-sim.dat[,!<span class="kw">lapply</span>(sim.dat,class)==<span class="s
 <li>Create new variable</li>
 <li>Merge</li>
 </ol>
-</div>
-<div id="display" class="slide section level2">
-<h1>Display</h1>
+<h2 id="display">Display</h2>
 <ul>
 <li><code>tbl_df()</code>: Convert the data to <code>tibble</code></li>
 </ul>
@@ -456,9 +403,7 @@ sdat&lt;-sim.dat[,!<span class="kw">lapply</span>(sim.dat,class)==<span class="s
 <li><code>glimpse()</code>: This is like a transposed version of <code>tbl_df()</code></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(sim.dat)</code></pre></div>
-</div>
-<div id="subset-1" class="slide section level2">
-<h1>Subset</h1>
+<h2 id="subset-1">Subset</h2>
 <ul>
 <li>Get rows with <code>income</code> more than 300000:</li>
 </ul>
@@ -467,9 +412,7 @@ sdat&lt;-sim.dat[,!<span class="kw">lapply</span>(sim.dat,class)==<span class="s
 <ul>
 <li>Here we meet a new operator <code>%&gt;%</code>: “Pipe operator”</li>
 </ul>
-</div>
-<div id="pipe-operator" class="slide section level2">
-<h1>Pipe operator: <code>%&gt;%</code></h1>
+<h2 id="pipe-operator">Pipe operator: <code>%&gt;%</code></h2>
 <ul>
 <li>It pipes a value forward into an expression or function call</li>
 <li>What you get in the left operation will be the first argument or the only argument in the right operation.</li>
@@ -477,9 +420,7 @@ sdat&lt;-sim.dat[,!<span class="kw">lapply</span>(sim.dat,class)==<span class="s
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x %&gt;%<span class="st"> </span><span class="kw">f</span>(y) =<span class="st"> </span><span class="kw">f</span>(x, y)
 y %&gt;%<span class="st"> </span><span class="kw">f</span>(x, ., z) =<span class="st"> </span><span class="kw">f</span>(x, y, z )</code></pre></div>
 <p>For example: <code>&quot;Hello World&quot; %&gt;% substring(7, 11) %&gt;% grepl(&quot;Wo&quot;, .)</code></p>
-</div>
-<div id="pipe-operator-1" class="slide section level2">
-<h1>Pipe operator: <code>%&gt;%</code></h1>
+<h2 id="pipe-operator-1">Pipe operator: <code>%&gt;%</code></h2>
 <p>Look at the following code. Can you tell me what it does?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ave_exp &lt;-<span class="st"> </span><span class="kw">filter</span>( 
   <span class="kw">summarise</span>(
@@ -503,9 +444,7 @@ y %&gt;%<span class="st"> </span><span class="kw">f</span>(x, ., z) =<span class
    <span class="dt">ave_online_exp =</span> <span class="kw">mean</span>(online_exp), 
    <span class="dt">n =</span> <span class="kw">n</span>() ) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(n &gt;<span class="st"> </span><span class="dv">200</span>)</code></pre></div>
-</div>
-<div id="pipe-operator-2" class="slide section level2">
-<h1>Pipe operator <code>%&gt;%</code></h1>
+<h2 id="pipe-operator-2">Pipe operator <code>%&gt;%</code></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">avg_exp &lt;-<span class="st"> </span>sim.dat %&gt;%<span class="st"> </span>
 <span class="st"> </span><span class="kw">filter</span>(!<span class="kw">is.na</span>(income)) %&gt;%<span class="st"> </span>
 <span class="st"> </span><span class="kw">group_by</span>(segment) %&gt;%<span class="st"> </span>
@@ -521,9 +460,7 @@ y %&gt;%<span class="st"> </span><span class="kw">f</span>(x, ., z) =<span class
 <li>Calculate the size of each segment and saved it as a new variable named <code>n</code></li>
 <li>Get segments with size larger than 200</li>
 </ol>
-</div>
-<div id="subset---select-rows" class="slide section level2">
-<h1>Subset - select rows</h1>
+<h2 id="subset---select-rows">Subset - select rows</h2>
 <ul>
 <li><code>distinct()</code>: a generalization of <code>unique()</code> from vector to data frame</li>
 </ul>
@@ -543,9 +480,7 @@ dplyr::<span class="kw">slice</span>(sim.dat, <span class="dv">10</span>:<span c
 <li><code>top_n()</code> select the order top n entries:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dplyr::<span class="kw">top_n</span>(sim.dat,<span class="dv">2</span>,income)</code></pre></div>
-</div>
-<div id="subset---select-columns" class="slide section level2">
-<h1>Subset - select columns</h1>
+<h2 id="subset---select-columns">Subset - select columns</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># select by column name</span>
 dplyr::<span class="kw">select</span>(sim.dat,income,age,store_exp)
 
@@ -567,9 +502,7 @@ dplyr::<span class="kw">select</span>(sim.dat, age:online_exp)
 
 <span class="co"># select all columns except for age</span>
 dplyr::<span class="kw">select</span>(sim.dat, -age)</code></pre></div>
-</div>
-<div id="summarize" class="slide section level2">
-<h1>Summarize</h1>
+<h2 id="summarize">Summarize</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dplyr::<span class="kw">summarise</span>(sim.dat, <span class="dt">avg_online =</span> <span class="kw">mean</span>(online_trans)) 
 <span class="co"># apply function anyNA() to each column</span>
 <span class="co"># you can also assign a function vector such as: c(&quot;anyNA&quot;,&quot;is.factor&quot;)</span>
@@ -578,9 +511,7 @@ dplyr::<span class="kw">summarise_each</span>(sim.dat, <span class="kw">funs_</s
 <li><code>group_by()</code></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sim.dat %&gt;%<span class="st"> </span><span class="kw">group_by</span>(segment) %&gt;%<span class="st"> </span><span class="kw">summarise_each</span>(<span class="kw">funs_</span>(<span class="kw">c</span>(<span class="st">&quot;anyNA&quot;</span>)))</code></pre></div>
-</div>
-<div id="create-new-variable" class="slide section level2">
-<h1>Create new variable</h1>
+<h2 id="create-new-variable">Create new variable</h2>
 <ul>
 <li><code>mutate()</code>: compute and append one or more new columns:</li>
 </ul>
@@ -595,9 +526,7 @@ dplyr::<span class="kw">mutate_each</span>(sim.dat, <span class="kw">funs</span>
 <li><code>transmute()</code>: delete the original columns and only keep the new ones</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dplyr::<span class="kw">transmute</span>(sim.dat, <span class="dt">total_exp =</span> store_exp +<span class="st"> </span>online_exp) </code></pre></div>
-</div>
-<div id="merge" class="slide section level2">
-<h1>Merge</h1>
+<h2 id="merge">Merge</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(x&lt;-<span class="kw">data.frame</span>(<span class="kw">cbind</span>(<span class="dt">ID=</span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>),<span class="dt">x1=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))))
 (y&lt;-<span class="kw">data.frame</span>(<span class="kw">cbind</span>(<span class="dt">ID=</span><span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>),<span class="dt">y1=</span><span class="kw">c</span>(T,T,F))))</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># join to the left</span>
@@ -614,17 +543,13 @@ dplyr::<span class="kw">mutate_each</span>(sim.dat, <span class="kw">funs</span>
 <span class="co"># it gets rows in x that cannot be matched in y</span>
 <span class="co"># it doesn't bring in any values from y</span>
 <span class="kw">anti_join</span>(x,y,<span class="dt">by=</span><span class="st">&quot;ID&quot;</span>)</code></pre></div>
-</div>
-<div id="tidy-and-reshape-data" class="slide section level2">
-<h1>Tidy and Reshape Data</h1>
+<h2 id="tidy-and-reshape-data">Tidy and Reshape Data</h2>
 <ul>
 <li>“Tidy data” represent the information from a dataset as data frames where each row is an observation and each column contains the values of a variable</li>
 <li>convert data between the “wide” and the “long” format</li>
 <li>two commonly used packages for this kind of manipulations: <code>tidyr</code> and <code>reshape2</code></li>
 </ul>
-</div>
-<div id="reshape2-package" class="slide section level2">
-<h1><code>reshape2</code> package</h1>
+<h2 id="reshape2-package"><code>reshape2</code> package</h2>
 <ul>
 <li>reboot of previous package <code>reshape</code></li>
 <li>main functions:
@@ -635,17 +560,14 @@ dplyr::<span class="kw">mutate_each</span>(sim.dat, <span class="kw">funs</span>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Take a baby subset of our exemplary clothes consumers data to illustrate:</span>
 (sdat&lt;-sim.dat[<span class="dv">1</span>:<span class="dv">5</span>,<span class="dv">1</span>:<span class="dv">6</span>])</code></pre></div>
-</div>
-<div id="reshape2-example" class="slide section level2">
-<h1><code>reshape2</code> example</h1>
+<h2 id="reshape2-example"><code>reshape2</code> example</h2>
 <ul>
 <li>have a variable indicating the purchasing channel (i.e. online or in-store) and another column with the corresponding expense amount</li>
 </ul>
-<pre class="{"><code>r
-library(reshape2)
-(mdat &lt;- melt(sdat, measure.vars=c(&quot;store_exp&quot;,&quot;online_exp&quot;),
-              variable.name = &quot;Channel&quot;,
-              value.name = &quot;Expense&quot;))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape2)
+(mdat &lt;-<span class="st"> </span><span class="kw">melt</span>(sdat, <span class="dt">measure.vars=</span><span class="kw">c</span>(<span class="st">&quot;store_exp&quot;</span>,<span class="st">&quot;online_exp&quot;</span>),
+              <span class="dt">variable.name =</span> <span class="st">&quot;Channel&quot;</span>,
+              <span class="dt">value.name =</span> <span class="st">&quot;Expense&quot;</span>))</code></pre></div>
 <ul>
 <li>You can run a regression to study the effect of purchasing channel:</li>
 </ul>
@@ -655,9 +577,7 @@ mdat&lt;-<span class="kw">melt</span>(sim.dat[,<span class="dv">1</span>:<span c
               <span class="dt">value.name =</span> <span class="st">&quot;Expense&quot;</span>)
 fit&lt;-<span class="kw">lm</span>(Expense~gender+house+income+Channel+age,<span class="dt">data=</span>mdat)
 <span class="kw">summary</span>(fit)</code></pre></div>
-</div>
-<div id="reshape2-example-1" class="slide section level2">
-<h1><code>reshape2</code> example</h1>
+<h2 id="reshape2-example-1"><code>reshape2</code> example</h2>
 <ul>
 <li>compare the online and in store expense between male and female based on the house ownership</li>
 </ul>
@@ -666,9 +586,7 @@ fit&lt;-<span class="kw">lm</span>(Expense~gender+house+income+Channel+age,<span
 <li>left side : variables that you want to group by</li>
 <li>right side: variable you want to spread as columns</li>
 </ul>
-</div>
-<div id="tidyr-package" class="slide section level2">
-<h1><code>tidyr</code> package</h1>
+<h2 id="tidyr-package"><code>tidyr</code> package</h2>
 <ul>
 <li>Get a baby set to illustrate:</li>
 </ul>
@@ -678,9 +596,7 @@ fit&lt;-<span class="kw">lm</span>(Expense~gender+house+income+Channel+age,<span
 sdat&lt;-sim.dat[<span class="dv">1</span>:<span class="dv">5</span>,]%&gt;%
 <span class="st">  </span>dplyr::<span class="kw">select</span>(age,gender,store_exp,store_trans)
 sdat %&gt;%<span class="st"> </span><span class="kw">tbl_df</span>()</code></pre></div>
-</div>
-<div id="gather" class="slide section level2">
-<h1><code>gather()</code></h1>
+<h2 id="gather"><code>gather()</code></h2>
 <ul>
 <li>Analogous to <code>melt()</code> in <code>reshape2</code></li>
 </ul>
@@ -698,13 +614,9 @@ msdat %&gt;%<span class="st"> </span><span class="kw">tbl_df</span>()</code></pr
 <span class="kw">melt</span>(sdat, <span class="dt">measure.vars=</span><span class="kw">c</span>(<span class="st">&quot;store_exp&quot;</span>,<span class="st">&quot;store_trans&quot;</span>),
             <span class="dt">variable.name =</span> <span class="st">&quot;variable&quot;</span>,
               <span class="dt">value.name =</span> <span class="st">&quot;value&quot;</span>)</code></pre></div>
-</div>
-<div id="spread" class="slide section level2">
-<h1><code>spread()</code></h1>
+<h2 id="spread"><code>spread()</code></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msdat %&gt;%<span class="st"> </span><span class="kw">spread</span>(variable,value)</code></pre></div>
-</div>
-<div id="separate-and-unite" class="slide section level2">
-<h1><code>separate()</code> and <code>unite()</code></h1>
+<h2 id="separate-and-unite"><code>separate()</code> and <code>unite()</code></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># You can use `sep=` </span>
 <span class="co"># By default, it is &quot;`_`&quot;</span>
 sepdat&lt;-<span class="st"> </span>msdat %&gt;%<span class="st"> </span>
@@ -712,6 +624,12 @@ sepdat&lt;-<span class="st"> </span>msdat %&gt;%<span class="st"> </span>
 sepdat %&gt;%<span class="st"> </span><span class="kw">tbl_df</span>()</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sepdat %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">unite</span>(<span class="st">&quot;variable&quot;</span>,Source,Type,<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)</code></pre></div>
+</div>
+<div id="some-links" class="slide section level1">
+<h1>Some links</h1>
+<ul>
+<li>SQL Learning: <a href="https://www.w3schools.com/sql/" class="uri">https://www.w3schools.com/sql/</a></li>
+</ul>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
