@@ -62,7 +62,7 @@ print(dat)
 # Substitute for missing value
 
 dat=read_csv("Q1,Q2,Q3
-               5, 4,99",na="99")
+               5,4,99",na="99")
 print(dat)
 
 ## data.table

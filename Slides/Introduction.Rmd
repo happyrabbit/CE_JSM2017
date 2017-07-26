@@ -3,17 +3,14 @@ title: "Introduction: the art of data science"
 author: "Ming Li </br> [Hui Lin](http://scientistcafe.com)"
 date: "`r Sys.Date()`"
 output: 
-  slidy_presentation: default
+  slidy_presentation: 
+    footer: "http://scientistcafe.com"
   ioslides_presentation: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
-
-## Set up
-
-https://github.com/happyrabbit/CE_JSM2017
 
 
 ## Time schedule
@@ -25,13 +22,13 @@ https://github.com/happyrabbit/CE_JSM2017
 | Slot 3 | 2.00 p.m. - 3.15 p.m. | Data Pre-processing, Markdown, HTML5 Slides|
 | Slot 4 | 3.30 p.m. - 5.00 p.m. | Shiny Dashboard, Soft Skills for Data Scientists|
 
+## Set up
 
-## Outline
+https://github.com/happyrabbit/CE_JSM2017
 
-- What is it? 
-- What kind of questions can data science answer? 
-- What are the required skills for data scientist? 
-- General process of data analytics?
+## What is data science?
+
+<img src="images/awesome-me.gif" alt="HTML5 Icon" style="width:600px;height:400px;">
 
 ## What is data science?
 
@@ -63,7 +60,8 @@ Here is a list of definitions for a “data scientist”:
 
 ## %&^%$*(^).....
 
-![](/Users/happyrabbit/Dropbox/gif/panada.gif)
+![](/Users/happyrabbit/Dropbox/gif/panada.gif){width=40%}
+
 
 ## What is “hard-core pornography”?
 

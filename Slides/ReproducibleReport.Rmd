@@ -9,6 +9,18 @@ output: slidy_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## I know you click, click, copy and paste
+
+![](http://i.imgur.com/tYxVO4w.jpg)
+
+## But imagine you hear these words after you finished a project {.build}
+
+**Please do that again!** (sorry we made a mistake in the data, want to change a parameter, and yada yada)
+
+<center>
+![](http://linhui.org/images/Jokes/kidhomework.png)
+</center>
+
 ## R Markdown
 
 - Example: [EX1_Markdown.Rmd](https://raw.githubusercontent.com/happyrabbit/linhui.org/gh-pages/CE_JSM2017/Examples/EX1_Markdown.Rmd)([output](http://scientistcafe.com/CE_JSM2017/Examples/EX1_Markdown.html))

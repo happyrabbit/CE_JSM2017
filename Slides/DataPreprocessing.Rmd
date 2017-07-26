@@ -8,6 +8,10 @@ output: slidy_presentation
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+## Data can be dirty and usually is
+
+![](http://scientistcafe.com/images/dataclean.png){width=50%}
+
 
 ## Data types
 
