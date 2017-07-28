@@ -36,10 +36,10 @@ Please bring a laptop with the latest version of R and Rstudio installed (see mo
 
 |  | Time | Topic |
 |--------|-------------------------|---------------------------------------------------------|
-| Slot 1 | 8.30 a.m. - 10.15 a.m. | Introduction, The art of data science, Big Data Cloud Platform |
-| Slot 2 | 10.30 a.m. - 12.30 a.m. | Big Data Cloud Platform, Data Wrangling |
+| Slot 1 | 8.30 a.m. - 10.15 a.m. | Introduction, The art of data science, [Big Data Cloud Platform](https://github.com/happyrabbit/CE_JSM2017/blob/master/Slides/MLI-Big-Data-Cloud-Platform.pptx) |
+| Slot 2 | 10.30 a.m. - 12.30 a.m. | [Big Data Cloud Platform](https://github.com/happyrabbit/CE_JSM2017/blob/master/Slides/MLI-Big-Data-Cloud-Platform.pptx), Data Wrangling |
 | Slot 3 | 2.00 p.m. - 3.15 p.m. | Data Pre-processing, Markdown, HTML5 Slides|
-| Slot 4 | 3.30 p.m. - 5.00 p.m. | Shiny Dashboard, Soft Skills for Data Scientists, Question and Evaluation|
+| Slot 4 | 3.30 p.m. - 5.00 p.m. | Shiny Dashboard, [Soft Skills for Data Scientists](https://github.com/happyrabbit/CE_JSM2017/blob/master/Slides/MLI-Soft-Skill.pptx), Question and Evaluation|
 
 
 ## Accompanying Book
