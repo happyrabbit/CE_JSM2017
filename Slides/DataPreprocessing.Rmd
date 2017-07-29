@@ -1,7 +1,7 @@
 ---
 title: "Data Pre-processing"
-author: "Ming Li </br> [Hui Lin](http://scientistcafe.com)"
-date: "`r Sys.Date()`"
+author: "Ming Li, Amazon </br> [Hui Lin](http://scientistcafe.com), DuPont"
+date: "July 30, 2017 @ JSM2017"
 output: slidy_presentation
 ---
 
