@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Introduction\"\nauthor: \"Ming Li, Amazon </br> [Hui Lin](http://scientistcafe.com), DuPont\"\ndate: \"July 30, 2017 @ JSM2017\"\noutput: \n  slidy_presentation: \n    footer: \"http://scientistcafe.com\"\n  ioslides_presentation: default\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = FALSE)\n```\n\n## About Us: Ming Li\n\n- PhD in Statistics from Iowa State University \n- Sr. Data Scientist at Amazon\n- Previously\n    - Applied Statistics Lab of GE Global Research Center\n    - Research Statistician at SAS\n    - Data Scientist at Wal-Mart \n\n## About Us: Hui Lin\n\n> - Language: 1st Chinese; 2nd R; 3rd English\n> - Graduated from Iowa State Univ (MS & PhD in Stats)\n> - Data Scientist at DuPont Pioneer\n> - Co-founder of [ Central Iowa R User Group](http://www.meetup.com/Central-Iowa-R-User-Group/)\n> - Scientist Cafe: http://scientistcafe.com\n> - Contact: [Email](longqiman@gmail.com);   [Github](https://github.com/happyrabbit);  [Twitter](https://twitter.com/gossip_rabbit);\n[Personal Website](http://linhui.org)\n>- [Jokes](http://hui1987.com/jokes.html)\n\n\n## Survey\n\n> - Statistician\n> - Data Scientist\n> - Data Size\n> - Variable Types\n> - Run Time\n> - Model Delivery\n> - Data Access\n\n## Time schedule\n\n|  | Time | Topic |\n|--------|-------------------------|---------------------------------------------------------|\n| Slot 1 | 8.30 a.m. - 10.15 a.m. | Introduction, The art of data science, Big Data Cloud Platform |\n| Slot 2 | 10.30 a.m. - 12.30 a.m. | Big Data Cloud Platform, Data Wrangling |\n| Slot 3 | 2.00 p.m. - 3.15 p.m. | Data Pre-processing, Markdown, HTML5 Slides|\n| Slot 4 | 3.30 p.m. - 5.00 p.m. | Shiny Dashboard, Soft Skills for Data Scientists|\n\n## Set up\n\nhttps://github.com/happyrabbit/CE_JSM2017\n\n\n",
+    "created" : 1501360071012.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3137927847",
+    "id" : "6488AEB2",
+    "lastKnownWriteTime" : 1501360781,
+    "last_content_update" : 1501360781,
+    "path" : "~/Documents/GitHub/CE_JSM2017/Slides/Introduction.Rmd",
+    "project_path" : "Slides/Introduction.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

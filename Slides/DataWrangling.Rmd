@@ -1,16 +1,26 @@
 ---
 title: "Data Wrangling"
-author: "Ming Li </br> [Hui Lin](http://scientistcafe.com)"
-date: '`r Sys.Date()`'
-output:
-  slidy_presentation: default
-  ioslides_presentation: default
-  beamer_presentation: default
+author: "Ming Li, Amazon </br> [Hui Lin](http://scientistcafe.com), DuPont"
+date: "July 30, 2017 @ JSM2017"
+output: 
+  slidy_presentation: 
+    footer: "http://scientistcafe.com"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+## Issue driven
+
+> - If you don't know where to go ...
+
+> - <img src="images/watch.gif" alt="HTML5 Icon" style="width:300px;height:200px;">
+
+> - If you know where to go ...
+
+> - <img src="images/fun.gif" alt="HTML5 Icon" style="width:300px;height:200px;">
+
 
 ## Outline
 
@@ -36,8 +46,8 @@ knitr::opts_chunk$set(echo = FALSE)
     1,2,3
     4,5,6")
     ```
+    
 1. It does not convert strings to factors by default, are able to parse dates and times and can automatically determine the data types in each column. 
-
 1. Killing character : **progress bar**. 
 
 ## Major functions
@@ -330,7 +340,7 @@ dt[order(gender, -online_exp)][1:5]
 ## Use `fread()` to import dat
 
 ```r
-system.time(topic<-read.csv("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/topic.csv"))
+system.time(topic<-read.csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/topic.csv"))
 ```
 
 ```html
@@ -339,7 +349,7 @@ system.time(topic<-read.csv("/Users/happyrabbit/Documents/GitHub/DataScientistR/
 ```
 
 ```r
-system.time(topic<-readr::read_csv("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/topic.csv"))
+system.time(topic<-readr::read_csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/topic.csv"))
 ```
 
 ```html
@@ -348,7 +358,7 @@ system.time(topic<-readr::read_csv("/Users/happyrabbit/Documents/GitHub/DataScie
 ```
 
 ```r
-system.time(topic<-data.table::fread("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/topic.csv"))
+system.time(topic<-data.table::fread("https://raw.githubusercontent.com/happyrabbit/DataScientistR/master/Data/topic.csv"))
 ```
 
 ```html
@@ -521,7 +531,7 @@ avg_exp <- sim.dat %>%
   filter(n > 200)
 ```
 
-## Pipe operator `%>%`
+## Pipe operator: `%>%`
 
 ```r
 avg_exp <- sim.dat %>% 
@@ -770,7 +780,7 @@ sepdat %>%
   unite("variable",Source,Type,sep="_")
 ```
 
-# Some links
+## Some links
 
 - SQL Learning: https://www.w3schools.com/sql/
 

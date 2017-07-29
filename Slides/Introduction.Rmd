@@ -1,7 +1,7 @@
 ---
-title: "Introduction: the art of data science"
-author: "Ming Li </br> [Hui Lin](http://scientistcafe.com)"
-date: "`r Sys.Date()`"
+title: "Introduction"
+author: "Ming Li, Amazon </br> [Hui Lin](http://scientistcafe.com), DuPont"
+date: "July 30, 2017 @ JSM2017"
 output: 
   slidy_presentation: 
     footer: "http://scientistcafe.com"
@@ -12,6 +12,36 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## About Us: Ming Li
+
+- PhD in Statistics from Iowa State University 
+- Sr. Data Scientist at Amazon
+- Previously
+    - Applied Statistics Lab of GE Global Research Center
+    - Research Statistician at SAS
+    - Data Scientist at Wal-Mart 
+
+## About Us: Hui Lin
+
+> - Language: 1st Chinese; 2nd R; 3rd English
+> - Graduated from Iowa State Univ (MS & PhD in Stats)
+> - Data Scientist at DuPont Pioneer
+> - Co-founder of [ Central Iowa R User Group](http://www.meetup.com/Central-Iowa-R-User-Group/)
+> - Scientist Cafe: http://scientistcafe.com
+> - Contact: [Email](longqiman@gmail.com);   [Github](https://github.com/happyrabbit);  [Twitter](https://twitter.com/gossip_rabbit);
+[Personal Website](http://linhui.org)
+>- [Jokes](http://hui1987.com/jokes.html)
+
+
+## Survey
+
+> - Statistician
+> - Data Scientist
+> - Data Size
+> - Variable Types
+> - Run Time
+> - Model Delivery
+> - Data Access
 
 ## Time schedule
 
@@ -26,134 +56,4 @@ knitr::opts_chunk$set(echo = FALSE)
 
 https://github.com/happyrabbit/CE_JSM2017
 
-## What is data science?
 
-<img src="images/awesome-me.gif" alt="HTML5 Icon" style="width:600px;height:400px;">
-
-## What is data science?
-
-- Does big data matter?
-- Back to 1962, John Tukey wrote in “The Future of Data Analysis”:
-
-> For a long time I have thought I was a statistician, interested in inferences from the particular to the general. But as I have watched mathematical statistics evolve, I have had cause to wonder and to doubt. … All in all, I have come to feel that my central interest is in data analysis, which I take to include, among other things: procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of (mathematical) statistics which apply to analyzing data.
-
-## What is data science?
-
-- The web site for DSI gives us an idea what Data Science is:
-
-> “This coupling of scientific discovery and practice involves the collection, management, processing, analysis, visualization, and interpretation of vast amounts of heterogeneous data associated with a diverse array of scientific, translational, and interdisciplinary applications.”
-
-## What is data scientist?
-
-```{r, out.width = "850px",out.height = "400px"}
-knitr::include_graphics("http://linhui.org/images/Jokes/datascientist.png")
-```
-
-## What is data scientist?
-
-Here is a list of definitions for a “data scientist”:
-
-- “A data scientist is a data analyst who lives in California”
-- “A data scientist is someone who is better at statistics than any software engineer and better - at software engineering than any statistician.”
-- “A data scientist is a statistician who lives in San Francisco.”
-- “Data Science is statistics on a Mac.”
-
-## %&^%$*(^).....
-
-![](/Users/happyrabbit/Dropbox/gif/panada.gif){width=40%}
-
-
-## What is “hard-core pornography”?
-
-- Obscenity case of Jacobellis v. Ohio (1964)
-
-> “I know it when I see it. (Potter Stewart)”
-
-## Brief History
-
-```{r, out.width = "850px",out.height = "400px"}
-knitr::include_graphics("http://scientistcafe.com/book/Figure/DataScienceTimeline.png")
-```
-
-
-<!--In the mid-1980s, parallel distributed processing became popular under the name connectionism. The textbook by David E. Rumelhart and James McClelland[8] (1986) provided a full exposition of the use of connectionism in computers to simulate neural processes.-->
-
-## Driving Forces
-
-- John Tukey identified 4 forces driving data analysis (there was no “data science” then):
-
-1. The formal theories of math/stat 
-1. Acceleration developments in computers and display devices 
-1. The challenge, in many fields, of more and ever larger bodies of data 
-1. The emphasis on quantification in an ever wider variety of disciplines 
-
-## Is it science? Totally?
-
-- What is science? Here is what John Tukey said:
-
-> There are diverse views as to what makes a science, but three constituents will be judged essential by most, viz:  
-(a1) intellectual content,  
-(a2) organization in an understandable form,  
-(a3) reliance upon the test of experience as the ultimate standard of validity
-
-
-## Is it science? Totally?
-
-- What is science? Donald Knuth in 1974 essay [Computer Programming as an Art](http://www.paulgraham.com/knuth.html):
-
-> "Science is knowledge which we understand so well that we can teach it to a computer."
-
-
-## What questions can data science answer? 
-
-- Specific
-    1. How can we increase sales?
-    1. Dose the January campaign on product X increase the amount of purcahse from our 2017 retained customers? 
-
-- Data
-    1. Representative
-    1. Relevant
-    1. Quality
-
-## Types of Questions
-
-```{r, out.width = "800px",out.height = "400px"}
-knitr::include_graphics("http://scientistcafe.com/book/Figure/DataScienceQuestion.png")
-```
-
-
-## Types of Learning
-
-```{r, out.width = "800px",out.height = "400px"}
-knitr::include_graphics("http://scientistcafe.com/book/Figure/LearningStyles.png")
-```
-
-## Types of Algorithm
-
-```{r, out.width = "600px",out.height = "900px"}
-knitr::include_graphics("http://scientistcafe.com/book/Figure/AlogrithmTypes.png")
-```
-
-## Data Scientist Skill Set
-
-![](http://scientistcafe.com/book/Figure/SkillEN.png){width=100%}
-
-## General Process 
-
-![](http://scientistcafe.com/book/Figure/GeneralProcessEN.png){width=100%}
-
-## Automatic Data Science Pipeline
-
-![](http://scientistcafe.com/book/Figure/AutomaticDataPipeline.png){width=100%}
-
-## Some links
-
-- Online books:
-    - [The Elements of Statistical Learning](http://web.stanford.edu/~hastie/ElemStatLearn/)
-    - [An Introduction to Statistical Learning](http://www-bcf.usc.edu/~gareth/ISL/)
-    - [The Science and Art of Data](http://scientistcafe.com/CE_JSM2017/)
-
-- Hard copy books:
-    - [Applied Predictive Modeling](http://appliedpredictivemodeling.com)
-    - [R for Marketing Research and Analytics](http://r-marketing.r-forge.r-project.org)
-    - [套路！机器学习](http://scientistcafe.com/book/)
