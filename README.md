@@ -41,6 +41,12 @@ Please bring a laptop with the latest version of R and Rstudio installed (see mo
 | Slot 3 | 2.00 p.m. - 3.15 p.m. | [Data Pre-processing](http://scientistcafe.com/CE_JSM2017/slides/DataPreprocessing.html), [Markdown](http://scientistcafe.com/CE_JSM2017/slides/ReproducibleReport.html), [HTML5](http://scientistcafe.com/CE_JSM2017/slides/ReproducibleReport.html#(21))|
 | Slot 4 | 3.30 p.m. - 5.00 p.m. | [Shiny Dashboard](http://scientistcafe.com/CE_JSM2017/slides/ReproducibleReport.html), [Soft Skills for Data Scientists](https://github.com/happyrabbit/CE_JSM2017/blob/master/Slides/MLI-Soft-Skill.pptx), Question and Evaluation|
 
+**R Code**
+
+- [00-course-setup.R](https://raw.githubusercontent.com/happyrabbit/CE_JSM2017/master/Rcode/00-course-setup.R)
+- [01-intro.R](https://github.com/happyrabbit/CE_JSM2017/blob/master/Rcode/01-intro.R)
+- [02-DataWrangling.R](https://raw.githubusercontent.com/happyrabbit/CE_JSM2017/master/Rcode/02-DataWrangling.R)
+- [03-preprocessing.R](https://github.com/happyrabbit/CE_JSM2017/blob/master/Rcode/03-preprocessing.R)
 
 ## Accompanying Book
 
