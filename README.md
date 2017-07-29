@@ -44,9 +44,9 @@ Please bring a laptop with the latest version of R and Rstudio installed (see mo
 **R Code**
 
 - [00-course-setup.R](https://raw.githubusercontent.com/happyrabbit/CE_JSM2017/master/Rcode/00-course-setup.R)
-- [01-intro.R](https://github.com/happyrabbit/CE_JSM2017/blob/master/Rcode/01-intro.R)
+- [01-intro.R](https://raw.githubusercontent.com/happyrabbit/CE_JSM2017/master/Rcode/01-intro.R)
 - [02-DataWrangling.R](https://raw.githubusercontent.com/happyrabbit/CE_JSM2017/master/Rcode/02-DataWrangling.R)
-- [03-preprocessing.R](https://github.com/happyrabbit/CE_JSM2017/blob/master/Rcode/03-preprocessing.R)
+- [03-preprocessing.R](https://raw.githubusercontent.com/happyrabbit/CE_JSM2017/master/Rcode/03-preprocessing.R)
 
 ## Accompanying Book
 
