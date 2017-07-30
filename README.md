@@ -12,7 +12,8 @@
 - Understand what data scientists “in the wild” are doing to better prepared to be successfully data scientist in the future.
 - Learn how to encode a real problem to a data science problem, search for the right data, preprocess data and deploy of analytical results through a case study.
 - Get familiar with how to achieve high-performance computing for standard statistical procedures with big data infrastructure.
-- https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/2961012104553482/3725396058299890/1806228006848429/latest.html
+
+
 **Event**
 
 Joint Statistical Meetings 2017, Continuing Education Course, Baltimore, Maryland
@@ -91,9 +92,11 @@ lapply(p_needed, require, character.only = TRUE)
 ### Apply Free Databricks Community Edition Account
 There are many cloud computing environments such as Amazon’s AWS which provides a complete list of functions for heavy-duty enterprise applications. For beginners, Databricks provides an easy to use cloud system for learning purpose. Databricks is a company founded by the creators of Apache Spark and it provides a user-friendly web-based notebook environment that can create Hadoop/Spark/GPU cluster on the fly to run R/Python/Scala/SQL. We will use Databricks’ community edition to run demos for this training.
 - Please go to <https://databricks.com/try-databricks> to create a free Community Edition acount
+- Links to demo R notebook for Spark: <https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/2961012104553482/3725396058299890/1806228006848429/latest.html>
 - You can watch this video for illustration: <https://youtu.be/vx-3-htFvrg>
 - Get familar with the cloud enviroment using R notebook, watch this video for details: <https://youtu.be/0HFujX3t6TU>
 - Create two tables by uploading csv files (sent by training contact), watch this video for detail: <https://youtu.be/H5LxjaJgpSk>
+- Links to demo SQL notebook: <https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/2961012104553482/4213233595765185/1806228006848429/latest.html>
 
 ### Addtional Setup 
 In case we cannot connect to Databricks during the training. We can also simulate Spark System and use Sparklyr in personal computer such as your own laptop and desktop. To use the simulated Spark system, we will need the following steps
