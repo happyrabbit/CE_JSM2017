@@ -26,7 +26,7 @@ H-Holiday Ballroom 1
 
 Hui Lin ([website](http://scientistcafe.com), [Github](https://github.com/happyrabbit), [Twitter](https://twitter.com/gossip_rabbit))
 
-Ming Li [Email] (mli@alumni.iastate.edu)
+Ming Li Email: (mli@alumni.iastate.edu)
 
 **Requirements**
 
