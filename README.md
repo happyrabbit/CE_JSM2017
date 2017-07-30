@@ -12,7 +12,7 @@
 - Understand what data scientists “in the wild” are doing to better prepared to be successfully data scientist in the future.
 - Learn how to encode a real problem to a data science problem, search for the right data, preprocess data and deploy of analytical results through a case study.
 - Get familiar with how to achieve high-performance computing for standard statistical procedures with big data infrastructure.
-
+- https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/2961012104553482/3725396058299890/1806228006848429/latest.html
 **Event**
 
 Joint Statistical Meetings 2017, Continuing Education Course, Baltimore, Maryland
