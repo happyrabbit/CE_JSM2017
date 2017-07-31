@@ -52,6 +52,7 @@ Please bring a laptop with the latest version of R and Rstudio installed (see mo
 ## Accompanying Book
 
 - Online Book (still writing):  [The Science and Art of Data](http://scientistcafe.com/CE_JSM2017/) 
+- CE Course Handout: [PDF file] (https://github.com/happyrabbit/CE_JSM2017/blob/master/Handout/CE_11C-Handout.pdf)
 
 - 中文书: [机器学习：北美数据科学家的私房课](http://scientistcafe.com/book/) 
     - 电子工业出版社
