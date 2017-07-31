@@ -50,6 +50,8 @@ knitr::opts_chunk$set(echo = FALSE)
 1. It does not convert strings to factors by default, are able to parse dates and times and can automatically determine the data types in each column. 
 1. Killing character : **progress bar**. 
 
+    ![](http://scientistcafe.com/book/Figure/prograssbar.png){width=80%}
+
 ## Major functions
 
 - `read_csv()`: reads comma delimited files
@@ -427,8 +429,8 @@ sim.dat<-read.csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/
 # Get numerical variables
 sdat<-sim.dat[,!lapply(sim.dat,class)=="factor"]
 ## Try the following code with apply() function
-## apply(sim.dat,class)
-## Why is there the error?
+## apply(sim.dat,2,class)
+## What is the problem?
 ```
 
 - use `apply()` to get mean and standard deviation for each column
@@ -453,7 +455,7 @@ sapply(sdat, function(x) sd(na.omit(x)), simplify = FALSE)
 - It identifies the most important data manipulations and make they easy to use from R
 - It performs faster for in-memory data by writing key pieces in C++ using `Rcpp`
 
-I will illustrate the following functions in order: 
+## `dplyr` package
 
 1. Display
 1. Subset
@@ -531,7 +533,7 @@ avg_exp <- sim.dat %>%
   filter(n > 200)
 ```
 
-## Pipe operator: `%>%`
+## Let's read it
 
 ```r
 avg_exp <- sim.dat %>% 
@@ -542,14 +544,6 @@ avg_exp <- sim.dat %>%
    n = n() ) %>% 
   filter(n > 200)
 ```
-
-Isn't it much more straight forward now? Let's read it:
-
-1.	Delete observations from `sim.dat` with missing income values 
-2.	Group the data from step 1 by variable `segment`
-3.	Calculate mean of online expense for each segment and save the result as a new variable named `ave_online_exp`
-4.	Calculate the size of each segment and saved it as a new variable named `n`
-5.	Get segments with size larger than 200
 
 ## Subset - select rows
  

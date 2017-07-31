@@ -158,8 +158,8 @@ sim.dat<-read.csv("https://raw.githubusercontent.com/happyrabbit/DataScientistR/
 # Get numerical variables
 sdat<-sim.dat[,!lapply(sim.dat,class)=="factor"]
 ## Try the following code with apply() function
-## apply(sim.dat,class)
-## Why is there the error?
+## apply(sim.dat,2,class)
+## What is the problem?
 apply(sdat, MARGIN=2,function(x) mean(na.omit(x)))
 apply(sdat, MARGIN=2,function(x) sd(na.omit(x)))
 lapply(sdat, function(x) sd(na.omit(x)))
